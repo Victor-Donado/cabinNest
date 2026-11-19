@@ -1,0 +1,726 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET GLOBAL
+   ========================================================================== */
+:root {
+    --verde-oscuro: #2D3C23;
+    --naranja: #D16512;
+    --naranja-vivo: #E25E14;
+    --naranja-hover: #ff6c17;
+    --cafe-track: #90481F;
+    --borde-thumb: #AC4C19;
+    --crema-fondo: #FDF6EA;
+    --crema-borde: #F7EBDB;
+    --gris-texto: #5c5650;
+    --gris-borde: #b5ada4;
+    --texto-oscuro: #333333;
+    --blanco: #FFFFFF;
+
+    --sombra-card: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    --transicion: all 0.3s ease;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+body {
+    overflow-x: hidden;
+    color: var(--verde-oscuro);
+    background-color: var(--crema-fondo);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   2. CLASES BASE REUTILIZABLES (DRY)
+   ========================================================================== */
+.division-btn,
+#btn-iniciar,
+.btn-filtro,
+.btn-reservar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    font-weight: bolder;
+    transition: var(--transicion);
+}
+
+#btn-iniciar,
+.btn-filtro,
+.btn-reservar {
+    color: var(--blanco);
+    gap: 8px;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO Y BARRA DE NAVEGACIÓN
+   ========================================================================== */
+#cabeza {
+    background: url('/img/catalogo-cabeza.jpg') center/cover no-repeat;
+    min-height: 165px;
+    padding-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#menu {
+    padding: 10px 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 80px;
+    gap: 12px;
+}
+
+#icono-largo {
+    width: 230px;
+    height: 58px;
+    object-fit: contain;
+}
+
+#division {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.division-btn {
+    background: none;
+    border: 3px solid transparent;
+    padding: 0 18px;
+    height: 45px;
+    border-radius: 45px;
+    gap: 6px;
+    font-size: 15px;
+    color: var(--verde-oscuro);
+    white-space: nowrap;
+}
+
+.division-btn i {
+    font-size: 17px;
+}
+
+.division-btn:hover {
+    border-color: var(--verde-oscuro);
+}
+
+.a-activo {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+}
+
+#btn-iniciar {
+    background: var(--naranja);
+    padding: 0 24px;
+    height: 45px;
+    border-radius: 40px;
+    font-size: 15px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#btn-iniciar i {
+    font-size: 17px;
+}
+
+#btn-iniciar:hover {
+    transform: scale(1.06);
+}
+
+.cabeza-titulos {
+    margin-left: 14%;
+    padding-right: 20px;
+}
+
+#cabeza h1 {
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.cabeza-subtitulo {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   4. LAYOUT PRINCIPAL DEL CATÁLOGO
+   ========================================================================== */
+#catalogo {
+    background: var(--crema-fondo);
+    border-top: solid 10px var(--verde-oscuro);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 18px 24px 40px;
+}
+
+/* ==========================================================================
+   5. SIDEBAR DE FILTROS
+   ========================================================================== */
+#filtro {
+    width: 275px;
+    flex-shrink: 0;
+    background: var(--blanco);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--sombra-card);
+}
+
+#filtro-titulo {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    font-size: 19px;
+    height: 44px;
+    font-weight: bolder;
+}
+
+.flecha-filtro {
+    display: none;
+    margin-left: auto;
+    font-size: 15px;
+    transition: transform 0.3s ease;
+}
+
+.filtro-subtitulo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--verde-oscuro);
+    font-size: 16px;
+    font-weight: bolder;
+    width: 230px;
+    margin: 0 auto;
+    height: 38px;
+}
+
+.filtro-separador {
+    border-top: 2px solid var(--verde-oscuro);
+}
+
+#rango-titulo {
+    margin-top: 8px;
+}
+
+#rango-titulo span {
+    border-bottom: 2px solid var(--verde-oscuro);
+}
+
+/* --- Control deslizante de rango de precio --- */
+.range-slider-container {
+    width: 100%;
+    padding: 12px 26px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.range-values-top {
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+    color: #111111;
+    margin-bottom: 14px;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 20px;
+}
+
+.slider-track,
+.slider-fill {
+    position: absolute;
+    height: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+}
+
+.slider-track {
+    width: 100%;
+    background-color: var(--cafe-track);
+    z-index: 1;
+}
+
+.slider-fill {
+    background-color: var(--naranja-vivo);
+    z-index: 2;
+}
+
+input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    pointer-events: none;
+    z-index: 3;
+    margin: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    width: 18px;
+    height: 18px;
+    background-color: var(--blanco);
+    border: 3px solid var(--borde-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -7px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    pointer-events: auto;
+    width: 14px;
+    height: 14px;
+    background-color: var(--blanco);
+    border: 3px solid var(--borde-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-labels-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #444444;
+    font-weight: 500;
+}
+
+/* --- Radios y Checkboxes personalizados --- */
+.grupo-personas,
+.grupo-opciones {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 4px 16px 18px 24px;
+}
+
+.opcion {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    color: var(--gris-texto);
+    font-size: 14px;
+    font-weight: bolder;
+    user-select: none;
+}
+
+.opcion input[type="radio"],
+.opcion input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 1.8px solid var(--gris-borde);
+    border-radius: 5px;
+    background-color: #fcfaf7;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    margin: 0;
+    transition: all 0.15s ease;
+}
+
+.opcion input[type="radio"]:checked {
+    background-color: var(--verde-oscuro);
+    border-color: var(--verde-oscuro);
+}
+
+.opcion input[type="checkbox"]:checked {
+    background-color: var(--naranja-vivo);
+    border-color: var(--naranja-vivo);
+}
+
+.opcion input[type="radio"]:checked::before,
+.opcion input[type="checkbox"]:checked::before {
+    content: "";
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid var(--blanco);
+    border-bottom: 2px solid var(--blanco);
+    transform: rotate(-45deg);
+    margin-bottom: 2px;
+}
+
+/* --- Selector de Fechas --- */
+#fechas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 4px 16px 8px;
+}
+
+.campo-fecha {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: var(--gris-texto);
+    font-weight: bolder;
+}
+
+input[type="date"] {
+    position: relative;
+    border: none;
+    background: transparent;
+    font-size: 13.5px;
+    font-weight: bold;
+    color: var(--texto-oscuro);
+    outline: none;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* --- Botones del Filtro --- */
+#filtro-btn {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px 16px;
+}
+
+.btn-filtro {
+    width: 45%;
+    height: 36px;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+.btn-filtro:hover {
+    filter: brightness(1.08);
+}
+
+.btn-filtro:active {
+    transform: scale(1.06);
+}
+
+#btn-buscar {
+    background: var(--naranja-vivo);
+}
+
+#btn-limpiar {
+    background: var(--verde-oscuro);
+}
+
+/* ==========================================================================
+   6. RESULTADOS Y CUADRÍCULA DE CABAÑAS
+   ========================================================================== */
+#cabañas {
+    flex: 1;
+    max-width: 1020px;
+}
+
+#cabañas-cabeza {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#cabañas-resultados {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#resultados {
+    color: var(--naranja-vivo);
+}
+
+#ordenar {
+    font-size: 15px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--blanco);
+    border-radius: 50px;
+    padding: 0 16px;
+    box-shadow: var(--sombra-card);
+    height: 36px;
+    gap: 6px;
+}
+
+#ordenar select {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: var(--verde-oscuro);
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    background: none;
+}
+
+#cajas {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.cards {
+    background: var(--blanco);
+    box-shadow: var(--sombra-card);
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transicion);
+}
+
+.cards:hover {
+    transform: scale(1.03);
+}
+
+.cards img {
+    height: 182px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.titulo-cabaña {
+    font-weight: bolder;
+    font-size: 17px;
+    margin: 8px 15px 0;
+}
+
+.puntuacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 15px;
+}
+
+.puntuacion i {
+    color: var(--naranja);
+}
+
+.puntuacion p {
+    color: var(--gris-texto);
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px 12px 15px;
+    margin-top: auto;
+}
+
+.precio {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.btn-reservar {
+    background: var(--naranja-vivo);
+    font-size: 16px;
+    border-radius: 30px;
+    height: 35px;
+    padding: 0 16px;
+}
+
+.btn-reservar:hover {
+    background: var(--naranja-hover);
+}
+
+/* ==========================================================================
+   7. DISEÑO RESPONSIVO Y FILTRO DESPLEGABLE (TABLETS Y MÓVILES)
+   ========================================================================== */
+@media (max-width: 1150px) {
+    #icono-largo {
+        width: 185px;
+        height: 46px;
+    }
+
+    #division {
+        gap: 6px;
+    }
+
+    .division-btn {
+        padding: 0 12px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #btn-iniciar {
+        padding: 0 16px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .cabeza-titulos {
+        margin-left: 32px;
+    }
+
+    #cajas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    #menu {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 14px 20px;
+    }
+
+    .logo-link {
+        order: 1;
+    }
+
+    #btn-iniciar {
+        order: 2;
+    }
+
+    #division {
+        order: 3;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid rgba(45, 60, 35, 0.15);
+    }
+
+    .cabeza-titulos {
+        margin: 12px auto 0;
+        text-align: center;
+        padding: 0 16px;
+    }
+
+    #cabeza h1 {
+        font-size: 36px;
+        -webkit-text-stroke: 6px var(--crema-borde);
+        paint-order: stroke fill;
+        stroke-linejoin: round;
+    }
+
+    .cabeza-subtitulo {
+        -webkit-text-stroke: 4px var(--crema-borde);
+        paint-order: stroke fill;
+        stroke-linejoin: round;
+    }
+
+    #catalogo {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    /* Filtro convertido en desplegable (acordeón) */
+    #filtro {
+        width: 100%;
+        max-width: 540px;
+        border-radius: 16px;
+    }
+
+    #filtro-titulo {
+        cursor: pointer;
+        user-select: none;
+        height: 48px;
+    }
+
+    .flecha-filtro {
+        display: block;
+    }
+
+    #filtro.desplegado .flecha-filtro {
+        transform: rotate(180deg);
+    }
+
+    #filtro-contenido {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.35s ease;
+    }
+
+    #filtro.desplegado #filtro-contenido {
+        grid-template-rows: 1fr;
+    }
+
+    .filtro-inner {
+        overflow: hidden;
+    }
+
+    .filtro-subtitulo {
+        width: calc(100% - 44px);
+    }
+
+    #cabañas {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    #icono-largo {
+        width: 155px;
+        height: 40px;
+    }
+
+    #btn-iniciar {
+        padding: 0 14px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    #division {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .division-btn {
+        padding: 0 10px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .division-btn i {
+        font-size: 14px;
+    }
+
+    #cabeza h1 {
+        font-size: 30px;
+    }
+
+    .cabeza-subtitulo {
+        font-size: 14px;
+    }
+
+    #cajas {
+        grid-template-columns: 1fr;
+    }
+}

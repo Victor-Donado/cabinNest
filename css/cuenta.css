@@ -1,0 +1,831 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET GLOBAL
+   ========================================================================== */
+:root {
+    --verde-oscuro: #2D3C23;
+    --verde-bosque: #1f2e17;
+    --verde-suave: #EEF2E3;
+    --naranja: #D16512;
+    --naranja-hover: #b8550b;
+    --rojo-cancelar: #b83227;
+    --rojo-suave: #fdf0ef;
+    --crema-fondo: #FBF3E8;
+    --crema-caja: #FBF6EE;
+    --crema-bloqueado: #f3eee6;
+    --borde-suave: #E6DDD0;
+    --gris-texto: #5c5650;
+    --gris-boton: #f3efe9;
+    --texto-oscuro: #262320;
+    --blanco: #FFFFFF;
+
+    --sombra-card: 0 10px 26px rgba(45, 60, 35, 0.1);
+    --sombra-hover: 0 14px 32px rgba(45, 60, 35, 0.16);
+    --sombra-boton: 0 4px 12px rgba(209, 101, 18, 0.28);
+    --transicion: all 0.25s ease;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--crema-fondo);
+    color: var(--verde-oscuro);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   2. CLASES BASE REUTILIZABLES (DRY)
+   ========================================================================== */
+.division-btn,
+#btn-cerrar,
+.cuenta-tabs label,
+.botones button,
+#btn-guardar,
+.avatar-wrapper,
+.datos-icono {
+    display: flex;
+    align-items: center;
+}
+
+.division-btn,
+#btn-cerrar,
+#btn-guardar,
+.avatar-wrapper,
+.datos-icono {
+    justify-content: center;
+}
+
+.division-btn,
+#btn-cerrar,
+.cuenta-tabs label,
+.botones button,
+#btn-guardar {
+    cursor: pointer;
+    font-weight: 700;
+    transition: var(--transicion);
+}
+
+/* ==========================================================================
+   3. HEADER Y NAVEGACIÓN
+   ========================================================================== */
+#cabeza {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#menu {
+    padding: 10px 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 80px;
+    gap: 12px;
+}
+
+#icono-largo {
+    width: 230px;
+    height: 58px;
+    object-fit: contain;
+}
+
+#division {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.division-btn {
+    background: none;
+    border: 3px solid transparent;
+    padding: 0 18px;
+    height: 45px;
+    border-radius: 45px;
+    gap: 6px;
+    font-size: 15px;
+    color: var(--verde-oscuro);
+    white-space: nowrap;
+}
+
+.division-btn i {
+    font-size: 17px;
+}
+
+.division-btn:hover {
+    border-color: var(--verde-oscuro);
+}
+
+.a-activo {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+}
+
+#btn-cerrar {
+    border: none;
+    background: var(--naranja);
+    color: var(--blanco);
+    padding: 0 22px;
+    height: 45px;
+    border-radius: 40px;
+    font-size: 15px;
+    gap: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#btn-cerrar i {
+    font-size: 17px;
+}
+
+#btn-cerrar:hover {
+    background: var(--naranja-hover);
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   4. CONTENIDO PRINCIPAL Y ALTERNANCIA DE VISTAS (CSS PURO)
+   ========================================================================== */
+#cuerpo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: url('/img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
+    width: 100%;
+    padding: 100px 24px 45px;
+}
+
+.cuenta {
+    width: 100%;
+    max-width: 1180px;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    z-index: 2;
+}
+
+.radio-oculto {
+    display: none;
+}
+
+/* Ocultar ambas vistas por defecto y mostrar la seleccionada */
+.reservas,
+.datos-caja {
+    display: none;
+}
+
+#radio-reservas:checked ~ .reservas {
+    display: flex;
+}
+
+#radio-datos:checked ~ .datos-caja {
+    display: flex;
+}
+
+/* ==========================================================================
+   5. PANEL LATERAL DE PERFIL (.cuenta-menu)
+   ========================================================================== */
+.cuenta-menu {
+    width: 285px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 96px;
+    background: var(--blanco);
+    border: 1px solid rgba(45, 60, 35, 0.14);
+    border-radius: 22px;
+    box-shadow: var(--sombra-card);
+    overflow: hidden;
+}
+
+.cuenta-cabeza {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 18px 18px;
+    border-bottom: 1px solid var(--borde-suave);
+}
+
+.cuenta-banner {
+    width: calc(100% + 36px);
+    height: 68px;
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, #445b34 100%);
+    margin-bottom: -44px;
+}
+
+.avatar-wrapper {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: var(--blanco);
+    border: 4px solid var(--blanco);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+    z-index: 1;
+}
+
+.avatar-wrapper i {
+    font-size: 84px;
+    color: var(--verde-oscuro);
+    line-height: 1;
+}
+
+.nombre {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+    margin-bottom: 2px;
+}
+
+.correo {
+    font-size: 13.5px;
+    color: var(--gris-texto);
+    word-break: break-word;
+}
+
+.cuenta-tabs {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cuenta-tabs label {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    background: var(--gris-boton);
+    color: var(--verde-oscuro);
+    font-size: 15px;
+    gap: 10px;
+    user-select: none;
+}
+
+.cuenta-tabs label i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+#radio-reservas:not(:checked) ~ .cuenta-menu #btn-reservas:hover,
+#radio-datos:not(:checked) ~ .cuenta-menu #btn-datos:hover {
+    background: var(--verde-suave);
+    border-color: rgba(45, 60, 35, 0.2);
+}
+
+#radio-reservas:checked ~ .cuenta-menu #btn-reservas,
+#radio-datos:checked ~ .cuenta-menu #btn-datos {
+    background: var(--naranja);
+    color: var(--blanco);
+    box-shadow: var(--sombra-boton);
+}
+
+/* ==========================================================================
+   6. VISTA 1: TARJETAS DE RESERVAS (.reservas-caja)
+   ========================================================================== */
+.reservas {
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.reservas-caja {
+    display: flex;
+    align-items: stretch;
+    background: var(--blanco);
+    border: 1px solid rgba(45, 60, 35, 0.14);
+    border-radius: 20px;
+    box-shadow: var(--sombra-card);
+    overflow: hidden;
+    transition: var(--transicion);
+}
+
+.reservas-caja:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
+    border-color: rgba(209, 101, 18, 0.35);
+}
+
+.reserva-imagen {
+    width: 245px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.reserva-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.reservas-caja:hover .reserva-imagen img {
+    transform: scale(1.05);
+}
+
+.reservas-info {
+    flex: 1;
+    min-width: 0;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.reserva-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reserva-encabezado h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+}
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.estado i {
+    color: #9be58f;
+    font-size: 13px;
+}
+
+.fechas {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    background: var(--crema-caja);
+    border: 1px solid var(--borde-suave);
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+}
+
+.fechas i {
+    color: var(--naranja);
+    font-size: 15px;
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--borde-suave);
+}
+
+.botones button {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    gap: 7px;
+}
+
+.btn-calificar {
+    border: none;
+    background: var(--naranja);
+    color: var(--blanco);
+    box-shadow: 0 3px 10px rgba(209, 101, 18, 0.25);
+}
+
+.btn-calificar:hover {
+    background: var(--naranja-hover);
+    transform: translateY(-1px);
+}
+
+.btn-comprobante {
+    background: var(--verde-suave);
+    border: 1px solid rgba(45, 60, 35, 0.22);
+    color: var(--verde-oscuro);
+}
+
+.btn-comprobante:hover {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+}
+
+.btn-cancelar {
+    background: transparent;
+    border: 1px solid rgba(184, 50, 39, 0.35);
+    color: var(--rojo-cancelar);
+    margin-left: auto;
+}
+
+.btn-cancelar:hover {
+    background: var(--rojo-suave);
+    border-color: var(--rojo-cancelar);
+}
+
+.calificacion:empty {
+    display: none;
+}
+
+/* ==========================================================================
+   7. VISTA 2: TARJETA DE INFORMACIÓN PERSONAL (.datos-caja)
+   ========================================================================== */
+.datos-caja {
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 22px;
+    background: var(--blanco);
+    border: 1px solid rgba(45, 60, 35, 0.14);
+    border-radius: 22px;
+    box-shadow: var(--sombra-card);
+    padding: 26px 28px;
+}
+
+.datos-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--borde-suave);
+}
+
+.datos-icono {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--verde-suave);
+    color: var(--verde-oscuro);
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.datos-encabezado h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+}
+
+.datos-encabezado p {
+    font-size: 14px;
+    color: var(--gris-texto);
+    margin-top: 2px;
+}
+
+.datos-formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 20px;
+}
+
+.campo-dato {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+.campo-dato label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+}
+
+.etiqueta-bloqueada,
+.etiqueta-editable {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.etiqueta-bloqueada {
+    background: var(--crema-bloqueado);
+    color: var(--gris-texto);
+}
+
+.etiqueta-editable {
+    background: var(--verde-suave);
+    color: var(--verde-oscuro);
+}
+
+.campo-dato input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Campos de solo lectura (Nombre, Apellido, Documento) */
+.campo-dato input[readonly] {
+    background-color: var(--crema-bloqueado);
+    border: 1.5px solid var(--borde-suave);
+    color: var(--gris-texto);
+    cursor: not-allowed;
+}
+
+/* Campos editables (Teléfono, Correo) */
+.campo-dato input:not([readonly]) {
+    background-color: var(--blanco);
+    border: 2px solid rgba(209, 101, 18, 0.5);
+    color: var(--texto-oscuro);
+}
+
+.campo-dato input:not([readonly]):focus {
+    border-color: var(--naranja);
+    box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.14);
+}
+
+.datos-pie {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 14px;
+    margin-top: 4px;
+    border-top: 1px solid var(--borde-suave);
+}
+
+.nota-seguridad {
+    font-size: 13px;
+    color: var(--gris-texto);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nota-seguridad i {
+    color: var(--verde-oscuro);
+}
+
+#btn-guardar {
+    border: none;
+    background: var(--naranja);
+    color: var(--blanco);
+    height: 44px;
+    padding: 0 26px;
+    border-radius: 999px;
+    font-size: 15px;
+    gap: 9px;
+    box-shadow: var(--sombra-boton);
+}
+
+#btn-guardar:hover {
+    background: var(--naranja-hover);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   8. DECORACIÓN INFERIOR (OLAS Y PLANTAS)
+   ========================================================================== */
+#footer {
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+    pointer-events: none;
+}
+
+.ola-animada {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+.ola-capa-1 {
+    animation: moverOla 12s linear infinite;
+}
+
+.ola-capa-2 {
+    animation: moverOla 15s linear infinite -2s;
+}
+
+@keyframes moverOla {
+    from { transform: translateX(-90px); }
+    to   { transform: translateX(85px); }
+}
+
+.planta-decorativa {
+    position: absolute;
+    height: 145px;
+    bottom: 0;
+}
+
+#planta1 { left: -25px; }
+#planta2 { right: -25px; transform: scaleX(-1); }
+
+/* ==========================================================================
+   9. DISEÑO RESPONSIVO (TABLETS Y TELÉFONOS)
+   ========================================================================== */
+@media (max-width: 1100px) {
+    #menu {
+        padding: 10px 20px 0;
+    }
+
+    #icono-largo {
+        width: 185px;
+        height: 46px;
+    }
+
+    #division {
+        gap: 6px;
+    }
+
+    .division-btn {
+        padding: 0 12px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #btn-cerrar {
+        padding: 0 16px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 960px) {
+    #menu {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 18px 0;
+        gap: 8px;
+    }
+
+    .logo-link { order: 1; }
+    #btn-cerrar { order: 2; }
+
+    #icono-largo {
+        width: 180px;
+        height: 44px;
+    }
+
+    #division {
+        order: 3;
+        width: 100%;
+        padding-top: 6px;
+        border-top: 1px solid rgba(45, 60, 35, 0.15);
+    }
+
+    .division-btn {
+        height: 36px;
+        padding: 0 12px;
+        font-size: 14px;
+    }
+
+    #cuerpo {
+        padding-top: 112px;
+        background-size: auto 260px;
+    }
+
+    .cuenta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cuenta-menu {
+        position: static;
+        width: 100%;
+        max-width: 540px;
+    }
+
+    .cuenta-tabs {
+        flex-direction: row;
+    }
+
+    .reservas,
+    .datos-caja {
+        width: 100%;
+    }
+
+    .planta-decorativa {
+        height: 105px;
+    }
+}
+
+@media (max-width: 680px) {
+    #icono-largo {
+        width: 155px;
+        height: 38px;
+    }
+
+    #btn-cerrar {
+        padding: 0 14px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    #division {
+        gap: 2px;
+    }
+
+    .division-btn {
+        padding: 0 8px;
+        height: 34px;
+        font-size: 12.5px;
+        gap: 4px;
+    }
+
+    .division-btn i {
+        font-size: 13px;
+    }
+
+    #cuerpo {
+        padding: 98px 14px 30px;
+        background-size: auto 235px;
+    }
+
+    .cuenta-tabs {
+        flex-direction: column;
+    }
+
+    .reservas-caja {
+        flex-direction: column;
+    }
+
+    .reserva-imagen {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .reservas-info {
+        padding: 16px;
+    }
+
+    .reserva-encabezado h2 {
+        font-size: 20px;
+    }
+
+    .botones {
+        justify-content: flex-start;
+    }
+
+    .btn-cancelar {
+        margin-left: 0;
+    }
+
+    .datos-caja {
+        padding: 20px 18px;
+    }
+
+    .datos-formulario {
+        grid-template-columns: 1fr;
+    }
+
+    #btn-guardar {
+        width: 100%;
+    }
+
+    .planta-decorativa {
+        height: 75px;
+        opacity: 0.8;
+    }
+}

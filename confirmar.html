@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Confirmar Reserva</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/confirmar.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ================= ENCABEZADO Y NAVEGACIÓN ================= -->
+    <header id="cabeza">
+        <div id="menu">
+            <a href="index.html" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+            </a>
+
+            <nav id="division" aria-label="Navegación principal">
+                <a href="index.html" class="division-btn">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="catalogo.html" class="division-btn">
+                    <i class="fa-solid fa-campground"></i>
+                    <span>Cabañas</span>
+                </a>
+                <a href="index.html#nosotros" class="division-btn">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Nosotros</span>
+                </a>
+                <a href="#contacto" class="division-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+
+            <a href="cuenta.html" id="btn-iniciar" aria-hidden="true" tabindex="-1">
+                <i class="fa-solid fa-user"></i>
+                <span>Cuenta</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO PRINCIPAL: CONFIRMACIÓN ================= -->
+    <main id="confirmar">
+        <div class="confirmar-div">
+
+            <!-- Columna Izquierda: Formulario de datos del huésped -->
+            <section class="registrar" aria-labelledby="titulo-confirmar">
+                <header class="registrar-header">
+                    <h1 id="titulo-confirmar">Completa tu Reserva</h1>
+                    <p class="subtitulo-confirmar">Solo unos datos más para asegurar tu estadía</p>
+                </header>
+
+                <div id="informacion-huesped">
+                    <div class="huesped-titulo">
+                        <i class="fa-solid fa-user"></i>
+                        <h2>Información del Huésped</h2>
+                    </div>
+
+                    <form class="formulario" id="form-reserva">
+                        <div class="campo">
+                            <label for="nombre-huesped">Nombre Completo</label>
+                            <input type="text" id="nombre-huesped" name="nombre" placeholder="Ingresa tu nombre completo" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="correo-huesped">Correo Electrónico</label>
+                            <input type="email" id="correo-huesped" name="correo" placeholder="tucorreo@ejemplo.com" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="telefono-huesped">Teléfono</label>
+                            <input type="tel" id="telefono-huesped" name="telefono" placeholder="Ingresa tu número de teléfono" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="comentarios-huesped">Comentarios</label>
+                            <input type="text" id="comentarios-huesped" name="comentarios" placeholder="¿Algún comentario especial?">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Columna Derecha: Tarjeta Resumen de la Cabaña -->
+            <aside class="cabaña" aria-label="Resumen de la cabaña seleccionada">
+                <div class="cabana-imagen-wrapper">
+                    <img src="img/cabaña1.jpg" alt="Cabaña Vista al Lago">
+                </div>
+
+                <div class="cabana-contenido">
+                    <div class="cabana-encabezado">
+                        <h3>Cabaña Vista al Lago</h3>
+                        <div class="puntuacion">
+                            <i class="fa-solid fa-star"></i>
+                            <p class="reseñas">4.7 <span>(98 reseñas)</span></p>
+                        </div>
+                    </div>
+
+                    <div class="fechas-div">
+                        <div class="fechas-icono">
+                            <i class="fa-regular fa-calendar-days"></i>
+                        </div>
+                        <div class="fechas">
+                            <span class="fechas-etiqueta">Fechas de estadía</span>
+                            <p id="fechas-reservadas">25/11/2026 - 28/11/2026</p>
+                        </div>
+                        <span class="badge-huespedes">
+                            <i class="fa-solid fa-user-group"></i> 3 Personas
+                        </span>
+                    </div>
+
+                    <div class="total">
+                        <div class="total-desglose">
+                            <span class="total-etiqueta">Total a pagar</span>
+                            <p>$120 × 3 noches</p>
+                        </div>
+                        <p class="total-monto">$360</p>
+                    </div>
+
+                    <button type="submit" form="form-reserva" id="confirmar-btn">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Confirmar Reserva</span>
+                    </button>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+</body>
+</html>

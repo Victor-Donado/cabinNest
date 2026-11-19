@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Reserva</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reserva.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ================= ENCABEZADO Y NAVEGACIÓN ================= -->
+    <header id="cabeza">
+        <div id="menu">
+            <a href="index.html" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+            </a>
+
+            <nav id="division" aria-label="Navegación principal">
+                <a href="index.html" class="division-btn">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="catalogo.html" class="division-btn">
+                    <i class="fa-solid fa-campground"></i>
+                    <span>Cabañas</span>
+                </a>
+                <a href="index.html#nosotros" class="division-btn">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Nosotros</span>
+                </a>
+                <a href="#contacto" class="division-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+
+            <a href="login.html" id="btn-reservar">
+                <i class="fa-solid fa-user"></i>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO PRINCIPAL: DETALLE Y RESERVA ================= -->
+    <main id="reserva">
+        <div class="reserva-div">
+
+            <!-- Columna Izquierda: Galería, Comodidades y Descripción -->
+            <section id="informacion" aria-label="Información de la cabaña">
+                <a id="volver" href="catalogo.html">
+                    <i class="fa-solid fa-circle-left"></i>
+                    <span>Volver al catálogo</span>
+                </a>
+
+                <div id="informacion-txt">
+                    <h1>Cabaña Vista al Lago</h1>
+                    <div class="valoracion">
+                        <i class="fa-solid fa-star"></i>
+                        <p class="reseñas">4.7 (98 reseñas)</p>
+                    </div>
+                </div>
+
+                <p class="subtitulo-cabana">Una experiencia única y con todas las comodidades</p>
+
+                <!-- Galería + Lista de Servicios -->
+                <div class="cabaña-reserva">
+                    <div class="fotos">
+                        <div id="galeria-principal" class="galeria-contenedor">
+                            <!-- Controles de estado en CSS puro -->
+                            <input type="radio" name="control-galeria" id="seleccion-foto-1" class="radio-oculto" checked>
+                            <input type="radio" name="control-galeria" id="seleccion-foto-2" class="radio-oculto">
+                            <input type="radio" name="control-galeria" id="seleccion-foto-3" class="radio-oculto">
+
+                            <!-- Visor principal -->
+                            <div id="visor-foto-grande" class="visor-principal">
+                                <!-- Foto 1 -->
+                                <div id="diapositiva-1" class="diapositiva">
+                                    <img src="img/cabaña1.jpg" alt="Cabaña en el bosque al atardecer" class="imagen-principal">
+                                    <div class="insignia-contador">
+                                        <svg class="icono-camara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                            <circle cx="12" cy="13" r="4"/>
+                                        </svg>
+                                        <span>1 / 3</span>
+                                    </div>
+                                    <label for="seleccion-foto-3" class="boton-navegacion boton-anterior" aria-label="Foto anterior">❮</label>
+                                    <label for="seleccion-foto-2" class="boton-navegacion boton-siguiente" aria-label="Foto siguiente">❯</label>
+                                </div>
+
+                                <!-- Foto 2 -->
+                                <div id="diapositiva-2" class="diapositiva">
+                                    <img src="img/f2.jpg" alt="Sala interior con chimenea de madera" class="imagen-principal">
+                                    <div class="insignia-contador">
+                                        <svg class="icono-camara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                            <circle cx="12" cy="13" r="4"/>
+                                        </svg>
+                                        <span>2 / 3</span>
+                                    </div>
+                                    <label for="seleccion-foto-1" class="boton-navegacion boton-anterior" aria-label="Foto anterior">❮</label>
+                                    <label for="seleccion-foto-3" class="boton-navegacion boton-siguiente" aria-label="Foto siguiente">❯</label>
+                                </div>
+
+                                <!-- Foto 3 -->
+                                <div id="diapositiva-3" class="diapositiva">
+                                    <img src="img/f3.jpg" alt="Dormitorio acogedor de madera" class="imagen-principal">
+                                    <div class="insignia-contador">
+                                        <svg class="icono-camara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                            <circle cx="12" cy="13" r="4"/>
+                                        </svg>
+                                        <span>3 / 3</span>
+                                    </div>
+                                    <label for="seleccion-foto-2" class="boton-navegacion boton-anterior" aria-label="Foto anterior">❮</label>
+                                    <label for="seleccion-foto-1" class="boton-navegacion boton-siguiente" aria-label="Foto siguiente">❯</label>
+                                </div>
+                            </div>
+
+                            <!-- Miniaturas -->
+                            <div id="barra-miniaturas" class="fila-miniaturas">
+                                <label for="seleccion-foto-1" id="miniatura-1" class="miniatura">
+                                    <img src="img/cabaña1.jpg" alt="Miniatura 1" class="imagen-miniatura">
+                                </label>
+                                <label for="seleccion-foto-2" id="miniatura-2" class="miniatura">
+                                    <img src="img/f2.jpg" alt="Miniatura 2" class="imagen-miniatura">
+                                </label>
+                                <label for="seleccion-foto-3" id="miniatura-3" class="miniatura">
+                                    <img src="img/f3.jpg" alt="Miniatura 3" class="imagen-miniatura">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Servicios y Comodidades -->
+                    <div class="caracteristicas">
+                        <div id="caracteristicas-titulo" class="caracteristicas-list">
+                            <i class="fa-brands fa-yelp"></i>
+                            <h2>Servicios y Comodidades</h2>
+                        </div>
+                        <ul class="lista-comodidades">
+                            <li class="caracteristicas-list">
+                                <i class="fa-solid fa-wifi"></i>
+                                <span>WiFi gratis</span>
+                            </li>
+                            <li class="caracteristicas-list">
+                                <i class="fa-solid fa-fan"></i>
+                                <span>Aire Acondicionado</span>
+                            </li>
+                            <li class="caracteristicas-list">
+                                <i class="fa-solid fa-person-swimming"></i>
+                                <span>Piscina</span>
+                            </li>
+                            <li class="caracteristicas-list">
+                                <i class="fa-solid fa-water"></i>
+                                <span>Vista al Lago</span>
+                            </li>
+                            <li class="caracteristicas-list">
+                                <i class="fa-solid fa-kitchen-set"></i>
+                                <span>Cocina Equipada</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Descripción y Banner Ecológico -->
+                <div id="descripcion">
+                    <article id="descripcion1">
+                        <div id="descripcion-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                            <h3>Descripción</h3>
+                        </div>
+                        <p>Disfrute de una estadía inolvidable en nuestra cabaña Bosque Encantado, rodeada de naturaleza, aire puro y paisajes espectaculares. Ideal para familias, parejas o grupos de amigos que buscan desconectarse y relajarse.</p>
+                    </article>
+
+                    <aside id="descripcion2">
+                        <img src="img/tree.png" alt="Árbol ilustrativo">
+                        <div id="descripcion2-txt">
+                            <h4>Conecta con la naturaleza</h4>
+                            <p>Respira aire puro y vive una experiencia inolvidable</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Columna Derecha: Calendario Interactivo de Reserva -->
+            <aside id="calendario" aria-label="Formulario de reserva">
+                <div class="tarjeta-reserva">
+                    <div class="encabezado-tarjeta">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <h2>Reservar Esta Cabaña</h2>
+                    </div>
+
+                    <div class="cuerpo-tarjeta">
+                        <div class="navegacion-calendario">
+                            <button type="button" class="boton-nav" id="mesAnterior" aria-label="Mes anterior">‹</button>
+                            <div class="etiqueta-mes" id="etiquetaMes">Noviembre 2026</div>
+                            <button type="button" class="boton-nav" id="mesSiguiente" aria-label="Mes siguiente">›</button>
+                        </div>
+
+                        <div class="dias-semana">
+                            <div>Do</div><div>Lu</div><div>Ma</div><div>Mi</div><div>Ju</div><div>Vi</div><div>Sá</div>
+                        </div>
+
+                        <div class="cuadricula-dias" id="cuadriculaDias"></div>
+
+                        <div class="leyenda">
+                            <div class="item-leyenda"><span class="punto entrada"></span> Entrada</div>
+                            <div class="item-leyenda"><span class="punto salida"></span> Salida</div>
+                            <div class="item-leyenda"><span class="punto ocupado"></span> Ocupado</div>
+                        </div>
+
+                        <div class="caja-info">
+                            <div class="info-izquierda">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a453f" stroke-width="1.8">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <span>Noches</span>
+                            </div>
+                            <div class="info-derecha">
+                                <span id="cantidadNoches">0</span>
+                            </div>
+                        </div>
+
+                        <div class="caja-info">
+                            <div class="info-izquierda">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a453f" stroke-width="1.8">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                </svg>
+                                <label for="selectorHuespedes">Huéspedes</label>
+                            </div>
+                            <div class="info-derecha">
+                                <select id="selectorHuespedes" class="selector-huespedes">
+                                    <option value="1">1 Persona</option>
+                                    <option value="2" selected>2 Personas</option>
+                                    <option value="3">3 Personas</option>
+                                    <option value="4">4+ Personas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="seccion-precio">
+                            <div class="precio-noche">$120 <span>/ noche</span></div>
+                            <div class="precio-total" id="precioTotal">Total: $0</div>
+                        </div>
+
+                        <button type="button" class="boton-confirmar" id="botonConfirmar">
+                            <span>Confirmar Reserva</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/calendario.js"></script>
+</body>
+</html>

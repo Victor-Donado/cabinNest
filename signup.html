@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Crear Cuenta</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/signup.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ================= ENCABEZADO Y NAVEGACIÓN ================= -->
+    <header id="cabeza">
+        <div id="menu">
+            <a href="index.html" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+            </a>
+
+            <nav id="division" aria-label="Navegación principal">
+                <a href="index.html" class="division-btn">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="catalogo.html" class="division-btn">
+                    <i class="fa-solid fa-campground"></i>
+                    <span>Cabañas</span>
+                </a>
+                <a href="index.html#nosotros" class="division-btn">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Nosotros</span>
+                </a>
+                <a href="#contacto" class="division-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+
+            <a href="login.html" id="btn-iniciar">
+                <i class="fa-solid fa-user"></i>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO PRINCIPAL: REGISTRO ================= -->
+    <main id="cuerpo">
+        <div class="registrarse-caja">
+
+            <!-- Panel Izquierdo: Beneficios -->
+            <section class="caja1" aria-labelledby="titulo-unete">
+                <div class="caja1-contenido">
+                    <h1 id="titulo-unete">Únete a CabinNest</h1>
+                    <p class="subtitulo-unete">Crea tu cuenta y comienza a vivir experiencias inolvidables en nuestras cabañas</p>
+
+                    <img class="cabaña" src="img/cabaña1.jpg" alt="Cabaña de lujo rodeada de naturaleza">
+
+                    <ul class="cosas">
+                        <li class="apunte">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Reserva fácilmente tus cabañas</span>
+                        </li>
+                        <li class="apunte">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Gestiona tus reservas</span>
+                        </li>
+                        <li class="apunte">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Recibe promociones</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <img class="fondo" src="img/fondo-caja1.jpg" alt="Tu refugio en la naturaleza">
+            </section>
+
+            <!-- Panel Derecho: Formulario de Registro -->
+            <section class="caja2" aria-labelledby="titulo-registro">
+                <div class="titulo">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <h2 id="titulo-registro">Crear una Cuenta</h2>
+                </div>
+
+                <form id="formulario" action="login.html" method="POST">
+                    <div class="fila1">
+                        <input type="text" id="nombre-completo" name="nombre" placeholder="Nombre Completo" aria-label="Nombre Completo" required>
+                        <input type="number" id="cedula" name="cedula" placeholder="C.C." aria-label="Cédula de Ciudadanía" required>
+                    </div>
+
+                    <input type="email" id="correo-registro" name="correo" placeholder="Correo Electrónico" aria-label="Correo Electrónico" required>
+                    <input type="tel" id="telefono-registro" name="telefono" placeholder="Teléfono" aria-label="Teléfono" required>
+                    <input type="password" id="password-registro" name="password" placeholder="Contraseña" aria-label="Contraseña" required>
+                    <input type="password" id="confirmar-password" name="confirmar_password" placeholder="Confirmar Contraseña" aria-label="Confirmar Contraseña" required>
+
+                    <button type="submit" id="btn-registrarse">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Registrarse</span>
+                    </button>
+                </form>
+
+                <p class="iniciar-sesion">
+                    <span>¿Ya tienes una cuenta?</span>
+                    <a href="login.html">Iniciar Sesión</a>
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ================= PIE DECORATIVO (OLAS Y PLANTAS) ================= -->
+    <footer id="footer" aria-hidden="true">
+        <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradiente-ola-signup">
+                    <stop stop-color="#225d1d"></stop>
+                    <stop offset="1" stop-color="#38ff4f"></stop>
+                </linearGradient>
+                <path id="w" d="M -160 40 L -101.33333333333334 27 L -42.66666666666667 40 L 15.999999999999993 27 L 74.66666666666666 40 L 133.33333333333331 27 L 192 40 L 192 80 L -160 80 Z"></path>
+            </defs>
+            <g>
+                <use href="#w" x="48" y="0" fill="url(#gradiente-ola-signup)" opacity="0.3" class="ola-capa-1"></use>
+                <use href="#w" x="68" y="3" fill="url(#gradiente-ola-signup)" opacity="0.4" class="ola-capa-2"></use>
+            </g>
+        </svg>
+
+        <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="">
+        <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="">
+    </footer>
+
+</body>
+</html>

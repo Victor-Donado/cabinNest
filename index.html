@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest | Alquiler de Cabañas</title>
+    
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/inicio.css">
+    
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ================= SECCIÓN HERO & NAVEGACIÓN ================= -->
+    <section id="inicio" class="hero">
+        <header id="menu" class="navbar">
+            <a href="index.html" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+            </a>
+
+            <nav id="division" class="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="division-btn a-activo">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="catalogo.html" class="division-btn">
+                    <i class="fa-solid fa-campground"></i>
+                    <span>Cabañas</span>
+                </a>
+                <a href="#nosotros" class="division-btn">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Nosotros</span>
+                </a>
+                <a href="#contacto" class="division-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+
+            <a href="login.html" id="btn-iniciar" class="btn-primario">
+                <i class="fa-solid fa-user"></i>
+                <span>Iniciar Sesión</span>
+            </a>
+        </header>
+
+        <div id="inicio-portada" class="hero-contenido">
+            <div class="txt-naturaleza">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Naturaleza en su máxima expresión</span>
+            </div>
+
+            <h1 class="txt">
+                Alquila tu cabaña
+                <span class="txt-destacado">y vive una experiencia</span>
+                inolvidable
+            </h1>
+
+            <p class="txt-descripcion">
+                Descansa, desconecta y disfruta de la naturaleza<br>
+                en nuestras cabañas de lujo.
+            </p>
+
+            <form id="buscar" class="buscador-form" action="catalogo.html" method="GET">
+                <div class="campo-busqueda">
+                    <label for="date-in">Check-in</label>
+                    <input type="date" id="date-in" name="checkin">
+                </div>
+
+                <div class="campo-busqueda campo-bordes">
+                    <label for="date-out">Check-out</label>
+                    <input type="date" id="date-out" name="checkout">
+                </div>
+
+                <div id="huespedes" class="campo-busqueda">
+                    <div class="huespedes-control">
+                        <label for="num-huesped">Huéspedes</label>
+                        <input type="number" name="huespedes" id="num-huesped" min="1" value="1">
+                    </div>
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <button type="submit" id="btn-buscar" class="btn-primario">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Buscar</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN SERVICIOS ================= -->
+    <main>
+        <section id="nosotros" class="servicios">
+            <header class="servicios-header">
+                <h2 id="nosotros-p1">--------- Nuestros Servicios ---------</h2>
+                <p id="nosotros-p2">Todo lo que necesitas para una estadía perfecta</p>
+            </header>
+
+            <div id="informacion" class="servicios-grid">
+                <article class="card-inf">
+                    <div class="circulo-icono icono--verde">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <div class="card-txt">
+                        <h3>Entorno Natural</h3>
+                        <p>Respira aire puro y contacta con la naturaleza</p>
+                    </div>
+                </article>
+
+                <article class="card-inf">
+                    <div class="circulo-icono icono--cafe">
+                        <i class="fa-regular fa-house"></i>
+                    </div>
+                    <div class="card-txt">
+                        <h3>Cabañas de Lujo</h3>
+                        <p>Comodidad y diseño en un solo lugar</p>
+                    </div>
+                </article>
+
+                <article class="card-inf">
+                    <div class="circulo-icono icono--verde">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="card-txt">
+                        <h3>Reserva Segura</h3>
+                        <p>Compra con confianza y total seguridad</p>
+                    </div>
+                </article>
+
+                <article class="card-inf">
+                    <div class="circulo-icono icono--cafe">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                    </div>
+                    <div class="card-txt">
+                        <h3>Soporte 24/7</h3>
+                        <p>Estamos siempre para ti</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Decoración Inferior (Olas y Plantas) -->
+            <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="gradiente-ola">
+                        <stop stop-color="#225d1d"></stop>
+                        <stop offset="1" stop-color="#38ff4f"></stop>
+                    </linearGradient>
+                    <path id="w" d="M -160 40 L -101.33333333333334 27 L -42.66666666666667 40 L 15.999999999999993 27 L 74.66666666666666 40 L 133.33333333333331 27 L 192 40 L 192 80 L -160 80 Z"></path>
+                </defs>
+                <g>
+                    <use href="#w" x="48" y="0" fill="url(#gradiente-ola)" opacity="0.3" class="ola-capa-1"></use>
+                    <use href="#w" x="68" y="3" fill="url(#gradiente-ola)" opacity="0.4" class="ola-capa-2"></use>
+                </g>
+            </svg>
+
+            <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="" aria-hidden="true">
+            <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="" aria-hidden="true">
+        </section>
+    </main>
+</body>
+</html>
