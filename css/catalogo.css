@@ -63,7 +63,7 @@ a {
    3. ENCABEZADO Y BARRA DE NAVEGACIÓN
    ========================================================================== */
 #cabeza {
-    background: url('/img/catalogo-cabeza.jpg') center/cover no-repeat;
+    background: url('../img/catalogo-cabeza.jpg') center/cover no-repeat;
     min-height: 165px;
     padding-bottom: 14px;
     display: flex;

@@ -152,7 +152,7 @@ ul {
 #reserva {
     display: flex;
     justify-content: center;
-    background: url('/img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
+    background: url('../img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
     min-height: 100vh;
     width: 100%;
     padding: 95px 24px 50px;

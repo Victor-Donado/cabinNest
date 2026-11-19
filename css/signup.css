@@ -148,7 +148,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: url('/img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
+    background: url('../img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
     width: 100%;
     padding: 88px 24px 24px;
 }

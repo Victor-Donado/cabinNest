@@ -133,7 +133,7 @@ a {
    4. HERO Y BUSCADOR (ESCRITORIO > 960px)
    ========================================================================== */
 #inicio {
-    background: url('/img/inicio-fondo.jpg') center/cover no-repeat;
+    background: url('../img/inicio-fondo.jpg') center/cover no-repeat;
     min-height: 520px;
     padding-bottom: 35px;
     display: flex;
@@ -473,7 +473,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     #inicio {
         background-image:
             linear-gradient(to bottom, rgba(251, 242, 228, 0.92) 0%, rgba(251, 242, 228, 0.82) 65%, rgba(251, 242, 228, 0.45) 100%),
-            url('/img/inicio-fondo.jpg');
+            url('../img/inicio-fondo.jpg');
         background-position: right center;
     }
 
