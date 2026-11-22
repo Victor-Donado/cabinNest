@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Usuarios</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/usuarios.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Control oculto para abrir/cerrar menú desplegable en <= 740px -->
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-hidden="true">
+
+    <!-- ================= MENÚ LATERAL / DESPLEGABLE ================= -->
+    <aside class="menu" aria-label="Menú de administración">
+        <!-- Cabecera del menú solo visible cuando se despliega en <= 740px -->
+        <div class="menu-movil-top">
+            <span>Menú</span>
+            <label for="menu-toggle" class="btn-cerrar-menu" aria-label="Cerrar menú">
+                <i class="fa-solid fa-xmark"></i>
+            </label>
+        </div>
+
+        <div class="img-cabeza">
+            <a href="index.html">
+                <img class="icono-menu" src="img/icono-largo.png" alt="Logo de CabinNest">
+            </a>
+        </div>
+
+        <nav class="botones" aria-label="Secciones del panel">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chess-board"></i>
+                <span>DashBoard</span>
+            </a>
+            <a href="reservas.html">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Reservas</span>
+            </a>
+            <a class="activo" href="pagos.html">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Pagos</span>
+            </a>
+            <a href="cabanas.html">
+                <i class="fa-solid fa-campground"></i>
+                <span>Cabañas</span>
+            </a>
+            <a href="usuarios.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Usuarios</span>
+            </a>
+        </nav>
+
+        <img class="img-footer" src="img/menu-admin.jpg" alt="Ilustración natural CabinNest">
+    </aside>
+
+    <!-- Fondo oscuro para cerrar el menú al hacer clic afuera -->
+    <label for="menu-toggle" class="menu-overlay" aria-label="Cerrar menú"></label>
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+    <main class="dashboard">
+
+        <!-- Cabecera Superior -->
+        <header class="cabeza-dashboard">
+            <label for="menu-toggle" class="btn-hamburguesa" role="button" tabindex="0" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="cabeza-txt">
+                <h1>Gestión de Usuarios</h1>
+                <p>Consulta los usuarios inscritos y revisa sus reservas</p>
+            </div>
+
+            <button type="button" id="cerrar-sesion">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </header>
+
+        <!-- Cuerpo: Lista de Usuarios Inscritos -->
+        <div class="dashboard-contenido">
+            <section class="usuarios-caja" aria-labelledby="titulo-lista-usuarios">
+
+                <div class="usuarios-barra">
+                    <div class="usuarios-titulo">
+                        <i class="fa-solid fa-users"></i>
+                        <h2 id="titulo-lista-usuarios">Usuarios Inscritos</h2>
+                        <span class="contador-usuarios">10 registrados</span>
+                    </div>
+                </div>
+
+                <!-- Encabezado de Columnas -->
+                <div class="tabla-encabezado" aria-hidden="true">
+                    <span>Nombre</span>
+                    <span>Apellido</span>
+                    <span>Correo Electrónico</span>
+                    <span>Teléfono</span>
+                    <span class="col-accion">Acciones</span>
+                </div>
+
+                <!-- Listado de 10 Usuarios -->
+                <div class="lista-usuarios">
+
+                    <!-- Usuario 1 -->
+                    <article class="usuario-item" data-nombre-completo="María López">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales">ML</span>
+                            <strong>María</strong>
+                        </div>
+                        <div class="dato-usuario">López</div>
+                        <div class="dato-usuario dato-correo">maria.lopez@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 312 458 9021</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Vista al Lago</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 25/11/2026 - 30/11/2026 • 4 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Bosque Encantado</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 10/08/2026 - 14/08/2026 • 2 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 2 -->
+                    <article class="usuario-item" data-nombre-completo="Carlos Mendoza">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales naranja">CM</span>
+                            <strong>Carlos</strong>
+                        </div>
+                        <div class="dato-usuario">Mendoza</div>
+                        <div class="dato-usuario dato-correo">carlos.mendoza@hotmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 300 781 3412</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Roble Tranquilo</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 02/12/2026 - 06/12/2026 • 3 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 3 -->
+                    <article class="usuario-item" data-nombre-completo="Valentina Ríos">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales">VR</span>
+                            <strong>Valentina</strong>
+                        </div>
+                        <div class="dato-usuario">Ríos</div>
+                        <div class="dato-usuario dato-correo">vale.rios98@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 315 629 1104</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Vista al Lago</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 14/09/2026 - 18/09/2026 • 2 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Mirador del Valle</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 03/05/2026 - 07/05/2026 • 4 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Bosque Encantado</strong>
+                                    <span class="badge-estado cancelada">Cancelada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 12/02/2026 - 15/02/2026 • 2 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 4 -->
+                    <article class="usuario-item" data-nombre-completo="Andrés Quintero">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales naranja">AQ</span>
+                            <strong>Andrés</strong>
+                        </div>
+                        <div class="dato-usuario">Quintero</div>
+                        <div class="dato-usuario dato-correo">aquintero.dev@outlook.com</div>
+                        <div class="dato-usuario dato-telefono">+57 318 904 7753</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Bosque Encantado</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 28/11/2026 - 01/12/2026 • 5 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 5 -->
+                    <article class="usuario-item" data-nombre-completo="Camila Herrera">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales">CH</span>
+                            <strong>Camila</strong>
+                        </div>
+                        <div class="dato-usuario">Herrera</div>
+                        <div class="dato-usuario dato-correo">camila.herrera@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 320 512 8839</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Mirador del Valle</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 15/12/2026 - 20/12/2026 • 6 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Roble Tranquilo</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 20/07/2026 - 24/07/2026 • 3 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 6 -->
+                    <article class="usuario-item" data-nombre-completo="Sebastián Vargas">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales naranja">SV</span>
+                            <strong>Sebastián</strong>
+                        </div>
+                        <div class="dato-usuario">Vargas</div>
+                        <div class="dato-usuario dato-correo">sebastian.vargas@yahoo.com</div>
+                        <div class="dato-usuario dato-telefono">+57 311 237 6490</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Vista al Lago</strong>
+                                    <span class="badge-estado cancelada">Cancelada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 05/10/2026 - 08/10/2026 • 2 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 7 -->
+                    <article class="usuario-item" data-nombre-completo="Daniela Castro">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales">DC</span>
+                            <strong>Daniela</strong>
+                        </div>
+                        <div class="dato-usuario">Castro</div>
+                        <div class="dato-usuario dato-correo">daniela.castro@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 301 845 2910</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Roble Tranquilo</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 11/11/2026 - 15/11/2026 • 2 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Vista al Lago</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 22/12/2026 - 27/12/2026 • 4 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 8 -->
+                    <article class="usuario-item" data-nombre-completo="Julián Morales">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales naranja">JM</span>
+                            <strong>Julián</strong>
+                        </div>
+                        <div class="dato-usuario">Morales</div>
+                        <div class="dato-usuario dato-correo">jmorales.arq@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 314 670 5328</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Bosque Encantado</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 18/06/2026 - 22/06/2026 • 3 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 9 -->
+                    <article class="usuario-item" data-nombre-completo="Sofía Navarro">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales">SN</span>
+                            <strong>Sofía</strong>
+                        </div>
+                        <div class="dato-usuario">Navarro</div>
+                        <div class="dato-usuario dato-correo">sofia.navarro@icloud.com</div>
+                        <div class="dato-usuario dato-telefono">+57 319 394 1287</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Mirador del Valle</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 24/11/2026 - 29/11/2026 • 2 huéspedes</p>
+                            </div>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Vista al Lago</strong>
+                                    <span class="badge-estado completada">Completada</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 09/04/2026 - 12/04/2026 • 2 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Usuario 10 -->
+                    <article class="usuario-item" data-nombre-completo="Mateo Delgado">
+                        <div class="dato-usuario dato-nombre">
+                            <span class="avatar-iniciales naranja">MD</span>
+                            <strong>Mateo</strong>
+                        </div>
+                        <div class="dato-usuario">Delgado</div>
+                        <div class="dato-usuario dato-correo">mateo.delgado@gmail.com</div>
+                        <div class="dato-usuario dato-telefono">+57 310 923 4065</div>
+                        <div class="dato-usuario col-accion">
+                            <button type="button" class="btn-reservas">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span>Reservas</span>
+                            </button>
+                        </div>
+                        <div class="reservas-usuario-data" hidden>
+                            <div class="reserva-modal-item">
+                                <div class="reserva-modal-top">
+                                    <strong>Cabaña Roble Tranquilo</strong>
+                                    <span class="badge-estado activa">Activa</span>
+                                </div>
+                                <p class="reserva-modal-detalle"><i class="fa-regular fa-calendar"></i> 08/12/2026 - 12/12/2026 • 4 huéspedes</p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ================= VENTANA MODAL DE RESERVAS ================= -->
+    <div id="modal-reservas" class="modal-fondo" role="dialog" aria-modal="true" aria-labelledby="modal-titulo-usuario">
+        <div class="modal-ventana">
+            <header class="modal-encabezado">
+                <button type="button" id="btn-cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar ventana">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-titulo-grupo">
+                    <h3 id="modal-titulo-usuario">Reservas del Usuario</h3>
+                    <span id="modal-subtitulo-usuario">Historial registrado en CabinNest</span>
+                </div>
+            </header>
+
+            <div id="modal-lista-reservas" class="modal-cuerpo"></div>
+        </div>
+    </div>
+
+    <script>
+        const modalFondo = document.getElementById('modal-reservas');
+        const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+        const modalTitulo = document.getElementById('modal-titulo-usuario');
+        const modalLista = document.getElementById('modal-lista-reservas');
+        const botonesReservas = document.querySelectorAll('.btn-reservas');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        botonesReservas.forEach((boton) => {
+            boton.addEventListener('click', () => {
+                const tarjetaUsuario = boton.closest('.usuario-item');
+                const nombreUsuario = tarjetaUsuario.dataset.nombreCompleto;
+                const reservasOcultas = tarjetaUsuario.querySelector('.reservas-usuario-data');
+
+                modalTitulo.textContent = `Reservas de ${nombreUsuario}`;
+                modalLista.innerHTML = reservasOcultas
+                    ? reservasOcultas.innerHTML
+                    : '<p class="sin-reservas">Este usuario aún no tiene reservas registradas.</p>';
+
+                modalFondo.classList.add('activo');
+            });
+        });
+
+        const cerrarModal = () => modalFondo.classList.remove('activo');
+
+        btnCerrarModal.addEventListener('click', cerrarModal);
+
+        modalFondo.addEventListener('click', (evento) => {
+            if (evento.target === modalFondo) cerrarModal();
+        });
+
+        document.addEventListener('keydown', (evento) => {
+            if (evento.key === 'Escape') {
+                if (modalFondo.classList.contains('activo')) cerrarModal();
+                if (menuToggle && menuToggle.checked) menuToggle.checked = false;
+            }
+        });
+    </script>
+
+</body>
+</html>

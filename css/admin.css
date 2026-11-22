@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #FBF3E7;
+}
+.cuerpo{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/cabeza-reserva.jpg);
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+a {
+    text-decoration: none;
+    background: #E46F18;
+    height: 40px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.caveza{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.caveza img{
+    width: 300px;
+}
+.caja-iniciar{
+    gap: 20px;
+    width: 1000px;
+    border: 10px solid white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    height: 500px;
+    border-radius: 30px;
+    margin-top: 10px;
+    display: flex;
+    overflow: hidden;
+}
+.izq{
+    width: 45%;
+    height: 100%;
+    background: #F8EBD8;
+    display: flex;
+    flex-direction: column;
+}
+.cabeza-izq, .titulo{
+    font-size: 12px;
+    background: #344F27;
+    display: flex;
+    padding: 20px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bolder;
+    border-radius: 20px 20px 0 0;
+}
+.cabeza-izq i{
+    font-size: 30px;
+}
+.img-caja{
+    position: relative;
+    width: 100%;
+}
+.img-caja img{
+    width: 100%;
+}
+.iconos-caja{
+    display: flex;
+    width: 100%;
+}
+.iconos{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #344F27;
+    width: 33%;
+}
+.iconos i{
+    font-size: 20px;
+}
+.izq-footer{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+.img-caja {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 0px 0px 28px 28px; /* Redondea las 4 esquinas exteriores */
+  overflow: hidden;
+}
+
+.img-caja img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cabin-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  fill: #F8EBD8;
+  pointer-events: none;
+}
+.der{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titulo{
+    width: 100%;
+    border-radius: 20px;
+    font-size: 10px;
+    gap: 10px;
+}
+.titulo i{
+    font-size: 30px;
+}
+.formulario{
+    margin: auto;
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.formulario button{
+    border: none;
+    background: #E46F18;
+    height: 40px;
+    width: 80%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.formulario button i{
+    font-size: 25px;
+    margin-right: 10px
+}
+.der input {
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    font-size: 15px;
+    color: var(--texto-oscuro);
+    background-color: white;
+    border: 2px solid rgba(209, 101, 18, 0.5);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.der input:focus {
+    border-color: #e470187d;
+    box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.15);
+}
+.der-footer{
+    width: 80%;
+    background: #EDE9CD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    color: #344F27;
+    height: 40px;
+    border-radius: 40px;
+    margin: auto;
+}
+/*===================================================================*/
+#footer {
+    position: absolute;
+    width: 100%;
+    margin-top: auto;
+    pointer-events: none;
+    bottom: 0;
+}
+
+.ola-animada {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+.ola-capa-1 {
+    animation: moverOla 12s linear infinite;
+}
+
+.ola-capa-2 {
+    animation: moverOla 15s linear infinite -2s;
+}
+
+@keyframes moverOla {
+    from { transform: translateX(-90px); }
+    to   { transform: translateX(85px); }
+}
+
+.planta-decorativa {
+    position: absolute;
+    height: 145px;
+    bottom: 0;
+}
+
+#planta1 { left: -25px; }
+#planta2 { right: -25px; transform: scaleX(-1); }

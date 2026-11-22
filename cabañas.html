@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Cabañas</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cabañas.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Control oculto para abrir/cerrar menú desplegable en <= 740px -->
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-hidden="true">
+
+    <!-- ================= MENÚ LATERAL / DESPLEGABLE ================= -->
+    <aside class="menu" aria-label="Menú de administración">
+        <div class="menu-movil-top">
+            <span>Menú</span>
+            <label for="menu-toggle" class="btn-cerrar-menu" aria-label="Cerrar menú">
+                <i class="fa-solid fa-xmark"></i>
+            </label>
+        </div>
+
+        <div class="img-cabeza">
+            <a href="index.html">
+                <img class="icono-menu" src="img/icono-largo.png" alt="Logo de CabinNest">
+            </a>
+        </div>
+
+        <nav class="botones" aria-label="Secciones del panel">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chess-board"></i>
+                <span>DashBoard</span>
+            </a>
+            <a href="reservas.html">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Reservas</span>
+            </a>
+            <a class="activo" href="pagos.html">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Pagos</span>
+            </a>
+            <a href="cabanas.html">
+                <i class="fa-solid fa-campground"></i>
+                <span>Cabañas</span>
+            </a>
+            <a href="usuarios.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Usuarios</span>
+            </a>
+        </nav>
+
+        <img class="img-footer" src="img/menu-admin.jpg" alt="Ilustración natural CabinNest">
+    </aside>
+
+    <!-- Fondo oscuro para cerrar el menú al hacer clic afuera -->
+    <label for="menu-toggle" class="menu-overlay" aria-label="Cerrar menú"></label>
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+    <main class="dashboard">
+
+        <!-- Cabecera Superior -->
+        <header class="cabeza-dashboard">
+            <label for="menu-toggle" class="btn-hamburguesa" role="button" tabindex="0" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="cabeza-txt">
+                <h1>Gestión de Cabañas</h1>
+                <p>Administra disponibilidad, tarifas activas e inventario</p>
+            </div>
+
+            <button type="button" id="cerrar-sesion">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </header>
+
+        <!-- Cuerpo: Catálogo Administrativo de Cabañas -->
+        <div class="dashboard-contenido">
+            <section class="cabanas-contenedor" aria-labelledby="titulo-lista-cabanas">
+
+                <div class="cabanas-barra">
+                    <div class="cabanas-titulo">
+                        <i class="fa-solid fa-campground"></i>
+                        <h2 id="titulo-lista-cabanas">Cabañas Registradas</h2>
+                        <span id="contador-cabanas" class="contador-cabanas">4 cabañas</span>
+                    </div>
+
+                    <div class="cabanas-controles">
+                        <div class="buscador-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="buscador-cabanas" placeholder="Buscar cabaña" aria-label="Buscar cabañas">
+                        </div>
+
+                        <button type="button" id="btn-abrir-nueva" class="btn-agregar-cabana" aria-label="Agregar nueva cabaña" title="Agregar nueva cabaña">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grid de Tarjetas de Cabañas -->
+                <div id="lista-cabanas" class="lista-cabanas">
+
+                    <!-- Cabaña 1: Ocupada -->
+                    <article class="cabana-card" data-nombre-cabana="Cabaña Vista al Lago">
+                        <div class="cabana-foto-box">
+                            <img src="img/cabaña1.jpg" alt="Cabaña Vista al Lago">
+                            <span class="estado-pill ocupada">
+                                <i class="fa-solid fa-user-lock"></i> Ocupada
+                            </span>
+                        </div>
+
+                        <div class="cabana-info">
+                            <div class="cabana-top">
+                                <h3>Cabaña Vista al Lago</h3>
+                                <span class="capacidad-tag"><i class="fa-solid fa-users"></i> Máx. 4</span>
+                            </div>
+
+                            <div class="huesped-box">
+                                <div class="huesped-fila">
+                                    <i class="fa-solid fa-user"></i>
+                                    <strong>María López</strong>
+                                    <span class="huesped-cant">• 4 huéspedes</span>
+                                </div>
+                                <div class="huesped-correo">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <span>maria.lopez@gmail.com</span>
+                                </div>
+                            </div>
+
+                            <div class="tarifa-control">
+                                <label for="tarifa-cab-1"><i class="fa-solid fa-tag"></i> Tarifa actual:</label>
+                                <select id="tarifa-cab-1" class="select-tarifa">
+                                    <option value="180.00">Temporada Baja — $180.00 / noche</option>
+                                    <option value="230.00" selected>Temporada Media — $230.00 / noche</option>
+                                    <option value="290.00">Temporada Alta — $290.00 / noche</option>
+                                </select>
+                            </div>
+
+                            <div class="cabana-acciones">
+                                <button type="button" class="btn-inventario">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <span>Inventario</span>
+                                </button>
+                                <button type="button" class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="inventario-data" hidden>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Cama King Size</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Jacuzzi Exterior Climatizado</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Juego de Toallas Premium</strong><span>Cantidad: 6</span></div>
+                                <span class="inv-estado bueno">Bueno</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Cafetera Espresso</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cabaña 2: Desocupada -->
+                    <article class="cabana-card" data-nombre-cabana="Cabaña Bosque Encantado">
+                        <div class="cabana-foto-box">
+                            <img src="img/cabaña1.jpg" alt="Cabaña Bosque Encantado">
+                            <span class="estado-pill desocupada">
+                                <i class="fa-solid fa-circle-check"></i> Desocupada
+                            </span>
+                        </div>
+
+                        <div class="cabana-info">
+                            <div class="cabana-top">
+                                <h3>Cabaña Bosque Encantado</h3>
+                                <span class="capacidad-tag"><i class="fa-solid fa-users"></i> Máx. 6</span>
+                            </div>
+
+                            <div class="libre-box">
+                                <i class="fa-solid fa-door-open"></i>
+                                <span>Disponible para asignación o reserva inmediata</span>
+                            </div>
+
+                            <div class="tarifa-control">
+                                <label for="tarifa-cab-2"><i class="fa-solid fa-tag"></i> Tarifa actual:</label>
+                                <select id="tarifa-cab-2" class="select-tarifa">
+                                    <option value="200.00" selected>Temporada Baja — $200.00 / noche</option>
+                                    <option value="250.00">Temporada Media — $250.00 / noche</option>
+                                    <option value="320.00">Temporada Alta — $320.00 / noche</option>
+                                </select>
+                            </div>
+
+                            <div class="cabana-acciones">
+                                <button type="button" class="btn-inventario">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <span>Inventario</span>
+                                </button>
+                                <button type="button" class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="inventario-data" hidden>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Camas Dobles</strong><span>Cantidad: 3</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Chimenea a Leña</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado bueno">Bueno</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Kit de Parrilla Exterior</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado revision">En revisión</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cabaña 3: Ocupada -->
+                    <article class="cabana-card" data-nombre-cabana="Cabaña Roble Tranquilo">
+                        <div class="cabana-foto-box">
+                            <img src="img/cabaña1.jpg" alt="Cabaña Roble Tranquilo">
+                            <span class="estado-pill ocupada">
+                                <i class="fa-solid fa-user-lock"></i> Ocupada
+                            </span>
+                        </div>
+
+                        <div class="cabana-info">
+                            <div class="cabana-top">
+                                <h3>Cabaña Roble Tranquilo</h3>
+                                <span class="capacidad-tag"><i class="fa-solid fa-users"></i> Máx. 3</span>
+                            </div>
+
+                            <div class="huesped-box">
+                                <div class="huesped-fila">
+                                    <i class="fa-solid fa-user"></i>
+                                    <strong>Carlos Mendoza</strong>
+                                    <span class="huesped-cant">• 3 huéspedes</span>
+                                </div>
+                                <div class="huesped-correo">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <span>carlos.mendoza@hotmail.com</span>
+                                </div>
+                            </div>
+
+                            <div class="tarifa-control">
+                                <label for="tarifa-cab-3"><i class="fa-solid fa-tag"></i> Tarifa actual:</label>
+                                <select id="tarifa-cab-3" class="select-tarifa">
+                                    <option value="150.00">Temporada Baja — $150.00 / noche</option>
+                                    <option value="195.00" selected>Temporada Media — $195.00 / noche</option>
+                                    <option value="240.00">Temporada Alta — $240.00 / noche</option>
+                                </select>
+                            </div>
+
+                            <div class="cabana-acciones">
+                                <button type="button" class="btn-inventario">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <span>Inventario</span>
+                                </button>
+                                <button type="button" class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="inventario-data" hidden>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Cama Queen</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Sofá Cama</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Smart TV 50"</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cabaña 4: Desocupada -->
+                    <article class="cabana-card" data-nombre-cabana="Cabaña Mirador del Valle">
+                        <div class="cabana-foto-box">
+                            <img src="img/cabaña1.jpg" alt="Cabaña Mirador del Valle">
+                            <span class="estado-pill desocupada">
+                                <i class="fa-solid fa-circle-check"></i> Desocupada
+                            </span>
+                        </div>
+
+                        <div class="cabana-info">
+                            <div class="cabana-top">
+                                <h3>Cabaña Mirador del Valle</h3>
+                                <span class="capacidad-tag"><i class="fa-solid fa-users"></i> Máx. 5</span>
+                            </div>
+
+                            <div class="libre-box">
+                                <i class="fa-solid fa-door-open"></i>
+                                <span>Disponible para asignación o reserva inmediata</span>
+                            </div>
+
+                            <div class="tarifa-control">
+                                <label for="tarifa-cab-4"><i class="fa-solid fa-tag"></i> Tarifa actual:</label>
+                                <select id="tarifa-cab-4" class="select-tarifa">
+                                    <option value="210.00">Temporada Baja — $210.00 / noche</option>
+                                    <option value="265.00">Temporada Media — $265.00 / noche</option>
+                                    <option value="340.00" selected>Temporada Alta — $340.00 / noche</option>
+                                </select>
+                            </div>
+
+                            <div class="cabana-acciones">
+                                <button type="button" class="btn-inventario">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <span>Inventario</span>
+                                </button>
+                                <button type="button" class="btn-eliminar">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Eliminar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="inventario-data" hidden>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Cama King + Litera</strong><span>Cantidad: 2</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Cocina Integral Equipada</strong><span>Cantidad: 1</span></div>
+                                <span class="inv-estado optimo">Óptimo</span>
+                            </div>
+                            <div class="inv-item">
+                                <div class="inv-nombre"><strong>Hamaca Tejida de Terraza</strong><span>Cantidad: 2</span></div>
+                                <span class="inv-estado bueno">Bueno</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Mensaje cuando no hay coincidencias en el buscador -->
+                    <div id="sin-resultados-cabanas" class="sin-resultados" hidden>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>No se encontraron cabañas que coincidan con tu búsqueda.</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ================= MODAL 1: INVENTARIO DE LA CABAÑA ================= -->
+    <div id="modal-inventario" class="modal-fondo" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-inventario">
+        <div class="modal-ventana modal-mediana">
+            <header class="modal-encabezado">
+                <button type="button" class="btn-cerrar-modal" data-cerrar="modal-inventario" aria-label="Cerrar ventana">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-titulo-grupo">
+                    <h3 id="titulo-modal-inventario">Inventario de Cabaña</h3>
+                    <span>Elementos registrados en la tabla inventario</span>
+                </div>
+            </header>
+
+            <div id="cuerpo-modal-inventario" class="modal-cuerpo"></div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL 2: AGREGAR NUEVA CABAÑA (+) ================= -->
+    <div id="modal-nueva-cabana" class="modal-fondo" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-nueva">
+        <div class="modal-ventana modal-formulario">
+            <header class="modal-encabezado">
+                <button type="button" class="btn-cerrar-modal" data-cerrar="modal-nueva-cabana" aria-label="Cerrar ventana">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-titulo-grupo">
+                    <h3 id="titulo-modal-nueva">Registrar Nueva Cabaña</h3>
+                    <span>Completa los datos de cabaña, 3 fotografías obligatorias y tarifas</span>
+                </div>
+            </header>
+
+            <form id="form-nueva-cabana" class="modal-cuerpo form-grid">
+
+                <!-- 1. Tabla: cabaña -->
+                <fieldset class="bloque-form">
+                    <legend><i class="fa-solid fa-campground"></i> Datos de la Cabaña</legend>
+                    <div class="campos-dos-col">
+                        <div class="campo-grupo">
+                            <label for="cab-nombre">Nombre de la cabaña *</label>
+                            <input type="text" id="cab-nombre" name="nombre" maxlength="80" placeholder="Ej: Cabaña Refugio del Río" required>
+                        </div>
+
+                        <div class="campo-grupo">
+                            <label for="cab-capacidad">Capacidad (huéspedes) *</label>
+                            <input type="number" id="cab-capacidad" name="capacidad" min="1" max="20" placeholder="Ej: 4" required>
+                        </div>
+
+                        <div class="campo-grupo">
+                            <label for="cab-estado">Estado inicial *</label>
+                            <select id="cab-estado" name="estado" required>
+                                <option value="Desocupada" selected>Desocupada</option>
+                                <option value="Ocupada">Ocupada</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-grupo campo-span-2">
+                            <label for="cab-descripcion">Descripción</label>
+                            <textarea id="cab-descripcion" name="descripcion" rows="2" placeholder="Describe las comodidades, vista y características de la cabaña..."></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 2. Tabla: cabaña_foto (3 fotos obligatorias) -->
+                <fieldset class="bloque-form">
+                    <legend><i class="fa-regular fa-images"></i> Fotografías de la Cabaña (3 obligatorias)</legend>
+                    <div class="fotos-grid">
+                        <div class="campo-foto principal">
+                            <label for="foto-principal">
+                                <i class="fa-solid fa-camera"></i>
+                                <strong>1. Foto Principal *</strong>
+                                <span>Exterior de la cabaña</span>
+                            </label>
+                            <input type="file" id="foto-principal" name="foto_principal" accept="image/*" required>
+                        </div>
+
+                        <div class="campo-foto">
+                            <label for="foto-secundaria-1">
+                                <i class="fa-regular fa-image"></i>
+                                <strong>2. Foto Secundaria *</strong>
+                                <span>Interior / Habitación</span>
+                            </label>
+                            <input type="file" id="foto-secundaria-1" name="foto_secundaria_1" accept="image/*" required>
+                        </div>
+
+                        <div class="campo-foto">
+                            <label for="foto-secundaria-2">
+                                <i class="fa-regular fa-image"></i>
+                                <strong>3. Foto Secundaria *</strong>
+                                <span>Terraza / Amenidades</span>
+                            </label>
+                            <input type="file" id="foto-secundaria-2" name="foto_secundaria_2" accept="image/*" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 3. Tabla: tarifa -->
+                <fieldset class="bloque-form">
+                    <div class="legend-barra">
+                        <legend><i class="fa-solid fa-tags"></i> Tarifas por Temporada</legend>
+                        <button type="button" id="btn-mas-tarifa" class="btn-mini-add">
+                            <i class="fa-solid fa-plus"></i> Añadir tarifa
+                        </button>
+                    </div>
+
+                    <div id="contenedor-tarifas" class="lista-subfilas">
+                        <div class="subfila-tarifa">
+                            <div class="campo-grupo">
+                                <label>Temporada *</label>
+                                <input type="text" name="temporada[]" maxlength="40" placeholder="Ej: Temporada Regular" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Precio / noche ($) *</label>
+                                <input type="number" name="precio_noche[]" step="0.01" min="1" placeholder="180.00" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Fecha inicio *</label>
+                                <input type="date" name="fecha_inicio[]" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Fecha fin *</label>
+                                <input type="date" name="fecha_fin[]" required>
+                            </div>
+                            <label class="check-activa">
+                                <input type="checkbox" name="activa[]" checked>
+                                <span>Tarifa activa</span>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 4. Tabla: inventario -->
+                <fieldset class="bloque-form">
+                    <div class="legend-barra">
+                        <legend><i class="fa-solid fa-boxes-stacked"></i> Inventario Inicial</legend>
+                        <button type="button" id="btn-mas-inventario" class="btn-mini-add">
+                            <i class="fa-solid fa-plus"></i> Añadir elemento
+                        </button>
+                    </div>
+
+                    <div id="contenedor-inventario" class="lista-subfilas">
+                        <div class="subfila-inventario">
+                            <div class="campo-grupo">
+                                <label>Elemento *</label>
+                                <input type="text" name="nombre_elemento[]" maxlength="100" placeholder="Ej: Cama King Size" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Cantidad *</label>
+                                <input type="number" name="cantidad[]" min="1" value="1" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Estado *</label>
+                                <select name="estado_inv[]" required>
+                                    <option value="Óptimo" selected>Óptimo</option>
+                                    <option value="Bueno">Bueno</option>
+                                    <option value="En revisión">En revisión</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-pie">
+                    <button type="submit" class="btn-guardar-cabana">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Guardar Cabaña</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const listaCabanas = document.getElementById('lista-cabanas');
+        const contadorCabanas = document.getElementById('contador-cabanas');
+        const inputBuscador = document.getElementById('buscador-cabanas');
+        const mensajeSinResultados = document.getElementById('sin-resultados-cabanas');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        const modalInventario = document.getElementById('modal-inventario');
+        const tituloModalInv = document.getElementById('titulo-modal-inventario');
+        const cuerpoModalInv = document.getElementById('cuerpo-modal-inventario');
+
+        const modalNueva = document.getElementById('modal-nueva-cabana');
+        const btnAbrirNueva = document.getElementById('btn-abrir-nueva');
+        const formNuevaCabana = document.getElementById('form-nueva-cabana');
+
+        // Filtrado en tiempo real y actualización de contador
+        const filtrarCabanas = () => {
+            const termino = inputBuscador.value.toLowerCase().trim();
+            const tarjetas = listaCabanas.querySelectorAll('.cabana-card');
+            let visibles = 0;
+
+            tarjetas.forEach((card) => {
+                const textoCard = card.textContent.toLowerCase();
+                const coincide = textoCard.includes(termino);
+                card.style.display = coincide ? '' : 'none';
+                if (coincide) visibles++;
+            });
+
+            contadorCabanas.textContent = `${visibles} ${visibles === 1 ? 'cabaña' : 'cabañas'}`;
+            mensajeSinResultados.hidden = visibles > 0;
+        };
+
+        inputBuscador.addEventListener('input', filtrarCabanas);
+
+        // Delegación de eventos en las tarjetas (Inventario y Eliminar)
+        listaCabanas.addEventListener('click', (e) => {
+            const btnInv = e.target.closest('.btn-inventario');
+            const btnDel = e.target.closest('.btn-eliminar');
+
+            if (btnInv) {
+                const card = btnInv.closest('.cabana-card');
+                const nombre = card.dataset.nombreCabana;
+                const invData = card.querySelector('.inventario-data');
+
+                tituloModalInv.textContent = `Inventario — ${nombre}`;
+                cuerpoModalInv.innerHTML = invData
+                    ? invData.innerHTML
+                    : '<p class="texto-vacio">No hay elementos registrados en el inventario.</p>';
+                modalInventario.classList.add('activo');
+            }
+
+            if (btnDel) {
+                const card = btnDel.closest('.cabana-card');
+                const nombre = card.dataset.nombreCabana;
+                if (confirm(`¿Deseas eliminar "${nombre}" del catálogo?`)) {
+                    card.remove();
+                    filtrarCabanas();
+                }
+            }
+        });
+
+        // Abrir modal de Nueva Cabaña (+)
+        btnAbrirNueva.addEventListener('click', () => {
+            modalNueva.classList.add('activo');
+        });
+
+        // Añadir filas extra de tarifas e inventario en el formulario
+        document.getElementById('btn-mas-tarifa').addEventListener('click', () => {
+            const fila = document.createElement('div');
+            fila.className = 'subfila-tarifa';
+            fila.innerHTML = `
+                <div class="campo-grupo">
+                    <label>Temporada *</label>
+                    <input type="text" name="temporada[]" maxlength="40" placeholder="Ej: Temporada Alta" required>
+                </div>
+                <div class="campo-grupo">
+                    <label>Precio / noche ($) *</label>
+                    <input type="number" name="precio_noche[]" step="0.01" min="1" placeholder="250.00" required>
+                </div>
+                <div class="campo-grupo">
+                    <label>Fecha inicio *</label>
+                    <input type="date" name="fecha_inicio[]" required>
+                </div>
+                <div class="campo-grupo">
+                    <label>Fecha fin *</label>
+                    <input type="date" name="fecha_fin[]" required>
+                </div>
+                <label class="check-activa">
+                    <input type="checkbox" name="activa[]">
+                    <span>Tarifa activa</span>
+                </label>
+            `;
+            document.getElementById('contenedor-tarifas').appendChild(fila);
+        });
+
+        document.getElementById('btn-mas-inventario').addEventListener('click', () => {
+            const fila = document.createElement('div');
+            fila.className = 'subfila-inventario';
+            fila.innerHTML = `
+                <div class="campo-grupo">
+                    <label>Elemento *</label>
+                    <input type="text" name="nombre_elemento[]" maxlength="100" placeholder="Ej: Juego de Toallas" required>
+                </div>
+                <div class="campo-grupo">
+                    <label>Cantidad *</label>
+                    <input type="number" name="cantidad[]" min="1" value="1" required>
+                </div>
+                <div class="campo-grupo">
+                    <label>Estado *</label>
+                    <select name="estado_inv[]" required>
+                        <option value="Óptimo" selected>Óptimo</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="En revisión">En revisión</option>
+                    </select>
+                </div>
+            `;
+            document.getElementById('contenedor-inventario').appendChild(fila);
+        });
+
+        // Guardar nueva cabaña y mostrarla en la lista
+        formNuevaCabana.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('cab-nombre').value.trim();
+            const capacidad = document.getElementById('cab-capacidad').value;
+            const estado = document.getElementById('cab-estado').value;
+            const filePrincipal = document.getElementById('foto-principal').files[0];
+            const imgUrl = filePrincipal ? URL.createObjectURL(filePrincipal) : 'img/cabaña1.jpg';
+
+            const temporadas = formNuevaCabana.querySelectorAll('input[name="temporada[]"]');
+            const precios = formNuevaCabana.querySelectorAll('input[name="precio_noche[]"]');
+            const activas = formNuevaCabana.querySelectorAll('input[name="activa[]"]');
+            let opcionesTarifaHTML = '';
+
+            temporadas.forEach((tempInput, idx) => {
+                const precioVal = parseFloat(precios[idx].value || 0).toFixed(2);
+                const esActiva = activas[idx].checked ? 'selected' : '';
+                opcionesTarifaHTML += `<option value="${precioVal}" ${esActiva}>${tempInput.value} — $${precioVal} / noche</option>`;
+            });
+
+            const elementos = formNuevaCabana.querySelectorAll('input[name="nombre_elemento[]"]');
+            const cantidades = formNuevaCabana.querySelectorAll('input[name="cantidad[]"]');
+            const estadosInv = formNuevaCabana.querySelectorAll('select[name="estado_inv[]"]');
+            let invHTML = '';
+
+            elementos.forEach((elInput, idx) => {
+                const estTexto = estadosInv[idx].value;
+                const claseBadge = estTexto === 'Óptimo' ? 'optimo' : (estTexto === 'Bueno' ? 'bueno' : 'revision');
+                invHTML += `
+                    <div class="inv-item">
+                        <div class="inv-nombre"><strong>${elInput.value}</strong><span>Cantidad: ${cantidades[idx].value}</span></div>
+                        <span class="inv-estado ${claseBadge}">${estTexto}</span>
+                    </div>
+                `;
+            });
+
+            const esOcupada = estado === 'Ocupada';
+            const badgeEstadoHTML = esOcupada
+                ? '<span class="estado-pill ocupada"><i class="fa-solid fa-user-lock"></i> Ocupada</span>'
+                : '<span class="estado-pill desocupada"><i class="fa-solid fa-circle-check"></i> Desocupada</span>';
+
+            const infoOcupacionHTML = esOcupada
+                ? `<div class="huesped-box">
+                       <div class="huesped-fila"><i class="fa-solid fa-user"></i><strong>Huésped Asignado</strong><span class="huesped-cant">• ${capacidad} huéspedes</span></div>
+                       <div class="huesped-correo"><i class="fa-regular fa-envelope"></i><span>reserva.activa@cabinnest.com</span></div>
+                   </div>`
+                : `<div class="libre-box"><i class="fa-solid fa-door-open"></i><span>Disponible para asignación o reserva inmediata</span></div>`;
+
+            const nuevaCard = document.createElement('article');
+            nuevaCard.className = 'cabana-card';
+            nuevaCard.dataset.nombreCabana = nombre;
+            nuevaCard.innerHTML = `
+                <div class="cabana-foto-box">
+                    <img src="${imgUrl}" alt="${nombre}">
+                    ${badgeEstadoHTML}
+                </div>
+                <div class="cabana-info">
+                    <div class="cabana-top">
+                        <h3>${nombre}</h3>
+                        <span class="capacidad-tag"><i class="fa-solid fa-users"></i> Máx. ${capacidad}</span>
+                    </div>
+                    ${infoOcupacionHTML}
+                    <div class="tarifa-control">
+                        <label><i class="fa-solid fa-tag"></i> Tarifa actual:</label>
+                        <select class="select-tarifa">${opcionesTarifaHTML}</select>
+                    </div>
+                    <div class="cabana-acciones">
+                        <button type="button" class="btn-inventario"><i class="fa-solid fa-boxes-stacked"></i><span>Inventario</span></button>
+                        <button type="button" class="btn-eliminar"><i class="fa-solid fa-trash-can"></i><span>Eliminar</span></button>
+                    </div>
+                </div>
+                <div class="inventario-data" hidden>${invHTML}</div>
+            `;
+
+            listaCabanas.prepend(nuevaCard);
+            filtrarCabanas();
+            formNuevaCabana.reset();
+            modalNueva.classList.remove('activo');
+        });
+
+        // Cerrar ventanas con la X de arriba a la izquierda o haciendo clic afuera
+        document.querySelectorAll('.btn-cerrar-modal').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                document.getElementById(btn.dataset.cerrar).classList.remove('activo');
+            });
+        });
+
+        [modalInventario, modalNueva].forEach((modal) => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('activo');
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modalInventario.classList.remove('activo');
+                modalNueva.classList.remove('activo');
+                if (menuToggle && menuToggle.checked) menuToggle.checked = false;
+            }
+        });
+    </script>
+
+</body>
+</html>

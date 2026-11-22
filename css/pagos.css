@@ -1,0 +1,729 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET GLOBAL
+   ========================================================================== */
+:root {
+    --verde-oscuro: #304026;
+    --verde-bosque: #22301a;
+    --verde-suave: #e9f0e4;
+    --naranja: #DF6D10;
+    --naranja-hover: #c55c09;
+    --naranja-suave: #f9ebe0;
+    --rojo-alerta: #c84b31;
+    --rojo-suave: #fbeae6;
+    --amarillo: #b45309;
+    --amarillo-suave: #fef3c7;
+    --azul-info: #1d4ed8;
+    --azul-suave: #e0e7ff;
+    --crema-fondo: #F8EFDE;
+    --crema-fila: #fcf9f3;
+    --borde-suave: #ebe3d5;
+    --gris-texto: #6b655e;
+    --texto-oscuro: #1f241d;
+    --blanco: #FFFFFF;
+
+    --sombra-menu: 2px 0 14px rgba(0, 0, 0, 0.18);
+    --sombra-card: 0 6px 18px rgba(48, 64, 38, 0.08);
+    --sombra-boton: 0 4px 12px rgba(223, 109, 16, 0.3);
+    --transicion: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--crema-fondo);
+    color: var(--texto-oscuro);
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   2. CLASES BASE REUTILIZABLES (DRY)
+   ========================================================================== */
+.menu .img-cabeza,
+.botones a,
+#cerrar-sesion,
+.btn-cerrar-menu,
+.buscador-box {
+    display: flex;
+    align-items: center;
+}
+
+.menu .img-cabeza,
+#cerrar-sesion,
+.btn-cerrar-menu {
+    justify-content: center;
+}
+
+.botones a,
+#cerrar-sesion,
+.btn-cerrar-menu,
+.btn-hamburguesa,
+.select-filtro {
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+/* ==========================================================================
+   3. MENÚ LATERAL Y CONTROLES DE DESPLIEGUE (IDÉNTICO AL RESTO DEL PANEL)
+   ========================================================================== */
+.menu-checkbox,
+.menu-movil-top,
+.menu-overlay,
+.btn-hamburguesa {
+    display: none;
+}
+
+.menu {
+    width: 200px;
+    flex-shrink: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--verde-oscuro);
+    box-shadow: var(--sombra-menu);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 95;
+}
+
+.menu .img-cabeza {
+    width: 100%;
+    background: var(--blanco);
+    height: 78px;
+    padding: 8px 12px;
+    border-radius: 0 0 20px 20px;
+    flex-shrink: 0;
+}
+
+.img-cabeza a {
+    display: flex;
+    justify-content: center;
+}
+
+.img-cabeza img {
+    width: 88%;
+    height: auto;
+    object-fit: contain;
+}
+
+.botones {
+    width: 84%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.botones a {
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 50px;
+    gap: 10px;
+}
+
+.botones a i {
+    width: 18px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.botones a:hover:not(.activo) {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(3px);
+}
+
+.botones a.activo {
+    background: var(--naranja);
+    box-shadow: var(--sombra-boton);
+}
+
+.img-footer {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. CONTENEDOR PRINCIPAL Y CABECERA SUPERIOR
+   ========================================================================== */
+.dashboard {
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabeza-dashboard {
+    width: 100%;
+    min-height: 76px;
+    flex-shrink: 0;
+    background: url('../img/cabeza-dashboard.jpg') center / cover no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 22px;
+}
+
+.cabeza-txt {
+    flex: 1;
+    min-width: 0;
+}
+
+.cabeza-txt h1 {
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+    line-height: 1.15;
+}
+
+.cabeza-txt p {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    margin-top: 2px;
+}
+
+#cerrar-sesion {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--blanco);
+    border: none;
+    border-radius: 999px;
+    padding: 9px 18px;
+    background: var(--naranja);
+    gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: var(--sombra-boton);
+}
+
+#cerrar-sesion:hover {
+    background: var(--naranja-hover);
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   5. CAJA DE PAGOS RECIENTES (AJUSTADA A 100VW Y 100VH)
+   ========================================================================== */
+.dashboard-contenido {
+    flex: 1;
+    min-height: 0;
+    padding: 14px 22px 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pagos-caja {
+    flex: 1;
+    min-height: 0;
+    background: var(--blanco);
+    border: 1px solid rgba(48, 64, 38, 0.12);
+    border-radius: 18px;
+    box-shadow: var(--sombra-card);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pagos-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borde-suave);
+    flex-shrink: 0;
+}
+
+.pagos-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--verde-bosque);
+    min-width: 0;
+}
+
+.pagos-titulo i {
+    font-size: 18px;
+    color: var(--verde-oscuro);
+    flex-shrink: 0;
+}
+
+.pagos-titulo h2 {
+    font-size: 19px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.contador-pagos {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--verde-suave);
+    color: var(--verde-oscuro);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pagos-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.buscador-box {
+    width: 250px;
+    height: 35px;
+    background: var(--crema-fila);
+    border: 1.5px solid var(--borde-suave);
+    border-radius: 999px;
+    padding: 0 13px;
+    gap: 8px;
+    transition: var(--transicion);
+}
+
+.buscador-box:focus-within {
+    border-color: var(--naranja);
+    background: var(--blanco);
+    box-shadow: 0 0 0 3px rgba(223, 109, 16, 0.14);
+}
+
+.buscador-box i {
+    color: var(--gris-texto);
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.buscador-box:focus-within i {
+    color: var(--naranja);
+}
+
+.buscador-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--texto-oscuro);
+}
+
+.select-filtro {
+    height: 35px;
+    padding: 0 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    background: var(--crema-fila);
+    border: 1.5px solid var(--borde-suave);
+    border-radius: 999px;
+    outline: none;
+}
+
+.select-filtro:focus {
+    border-color: var(--naranja);
+    background: var(--blanco);
+}
+
+/* Cuadrícula de 7 columnas (campos de la tabla pago) */
+.tabla-encabezado,
+.pago-item {
+    display: grid;
+    grid-template-columns: 88px 105px 1.35fr 1fr 1.25fr 1.1fr 115px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+}
+
+.tabla-encabezado {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--gris-texto);
+    background: var(--crema-fila);
+    border-radius: 10px;
+    height: 36px;
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+.col-estado {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lista-pagos {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    padding-right: 4px;
+}
+
+.lista-pagos::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lista-pagos::-webkit-scrollbar-track {
+    background: var(--crema-fila);
+    border-radius: 10px;
+}
+
+.lista-pagos::-webkit-scrollbar-thumb {
+    background: rgba(48, 64, 38, 0.25);
+    border-radius: 10px;
+}
+
+.pago-item {
+    min-height: 48px;
+    flex-shrink: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--borde-suave);
+    transition: background-color 0.2s ease;
+}
+
+.pago-item:last-child {
+    border-bottom: none;
+}
+
+.pago-item:hover {
+    background-color: var(--crema-fila);
+    border-radius: 10px;
+}
+
+.badge-id {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+    background: var(--crema-fondo);
+    border: 1px solid var(--borde-suave);
+    padding: 3px 9px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.badge-reserva {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    background: var(--verde-suave);
+    padding: 3px 9px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dato-fecha,
+.dato-metodo {
+    min-width: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--gris-texto);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dato-fecha i {
+    color: var(--verde-oscuro);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.dato-metodo i {
+    color: var(--naranja);
+    font-size: 12.5px;
+    flex-shrink: 0;
+}
+
+.dato-metodo span {
+    color: var(--texto-oscuro);
+    font-weight: 500;
+}
+
+.dato-monto strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde-bosque);
+}
+
+.tag-tipo {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--gris-texto);
+    background: var(--crema-fila);
+    border: 1px solid var(--borde-suave);
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.badge-estado {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.badge-estado.aprobado {
+    background: var(--verde-suave);
+    color: var(--verde-oscuro);
+}
+
+.badge-estado.pendiente {
+    background: var(--amarillo-suave);
+    color: var(--amarillo);
+}
+
+.badge-estado.rechazado {
+    background: var(--rojo-suave);
+    color: var(--rojo-alerta);
+}
+
+.badge-estado.reembolsado {
+    background: var(--azul-suave);
+    color: var(--azul-info);
+}
+
+.sin-resultados {
+    text-align: center;
+    padding: 36px 16px;
+    color: var(--gris-texto);
+}
+
+.sin-resultados[hidden] {
+    display: none;
+}
+
+.sin-resultados i {
+    font-size: 28px;
+    color: var(--verde-oscuro);
+    opacity: 0.45;
+    margin-bottom: 8px;
+}
+
+.sin-resultados p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   6. DISEÑO RESPONSIVO Y MENÚ DESPLEGABLE (<= 1050px y <= 740px)
+   ========================================================================== */
+@media (max-width: 1050px) {
+    .pagos-barra {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .pagos-controles {
+        width: 100%;
+    }
+
+    .buscador-box {
+        flex: 1;
+        width: auto;
+    }
+
+    .tabla-encabezado {
+        display: none;
+    }
+
+    .pago-item {
+        min-height: auto;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 12px;
+        padding: 11px 12px;
+    }
+
+    .col-estado {
+        justify-content: flex-end;
+    }
+
+    .dato-reserva::before,
+    .dato-fecha::before,
+    .dato-monto::before,
+    .dato-metodo::before,
+    .dato-tipo::before {
+        content: attr(data-etiqueta);
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--gris-texto);
+        font-size: 12px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 740px) {
+    .menu .img-cabeza{
+        display: none;
+    }
+
+    .btn-hamburguesa {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 34px;
+        height: 24px;
+        flex-shrink: 0;
+        user-select: none;
+    }
+
+    .btn-hamburguesa span {
+        display: block;
+        width: 100%;
+        height: 4.5px;
+        background-color: var(--verde-oscuro);
+        border-radius: 6px;
+    }
+
+    .btn-hamburguesa:hover span {
+        background-color: var(--naranja);
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 230px;
+        height: 100vh;
+        justify-content: flex-start;
+        padding: 16px 0 24px;
+        transition: left 0.3s ease;
+    }
+
+    .menu-movil-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 18px 14px;
+        margin-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--blanco);
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .btn-cerrar-menu {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.14);
+        color: var(--blanco);
+        font-size: 15px;
+    }
+
+    .btn-cerrar-menu:hover {
+        background: var(--naranja);
+    }
+
+    .botones {
+        margin: 0 auto;
+        width: 86%;
+        gap: 10px;
+    }
+
+    .menu-checkbox:checked ~ .menu {
+        left: 0;
+    }
+
+    .menu-checkbox:checked ~ .menu-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(24, 32, 19, 0.48);
+        backdrop-filter: blur(1.5px);
+        z-index: 90;
+    }
+
+    .cabeza-dashboard {
+        padding: 12px 16px;
+        gap: 12px;
+    }
+
+    .cabeza-txt h1 {
+        font-size: 21px;
+    }
+
+    .cabeza-txt p {
+        font-size: 12.5px;
+    }
+
+    #cerrar-sesion {
+        padding: 8px 14px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .dashboard-contenido {
+        padding: 12px 14px 14px;
+    }
+}
+
+@media (max-width: 540px) {
+    .cabeza-txt h1 {
+        font-size: 18px;
+    }
+
+    .cabeza-txt p {
+        font-size: 11.5px;
+    }
+
+    #cerrar-sesion {
+        padding: 7px 11px;
+        font-size: 12px;
+    }
+
+    .pagos-controles {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pago-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .col-estado {
+        justify-content: flex-start;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest-Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="cuerpo">
+        <div class="caveza">
+            <img src="img/icono-largo.png" alt="">
+            <a href="index.html">Ir a la Pagina Web</a>
+        </div>
+        <div class="caja-iniciar">
+            <div class="izq">
+                <div class="cabeza-izq">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h1>Panel Administrativo</h1>
+                </div>
+                <div class="img-caja">
+                    <img src="../img/cabaña1.jpg" alt="Cabaña en el bosque" class="cabin-img">
+                    <svg class="cabin-wave" viewBox="0 0 1440 150" preserveAspectRatio="none">
+                        <path d="M45,150 C200,145 310,52 470,52 C680,52 930,118 1140,118 C1270,118 1360,98 1440,82 L1440,150 Z"></path>
+                    </svg>
+                </div>
+                <div class="iconos-caja">
+                    <div class="iconos">
+                        <i class="fa-solid fa-arrow-up-right-dots"></i>
+                        <p>Gestiona <br> Reservas</p>
+                    </div>
+                    <div class="iconos" style="border-left: 2px solid #344F27; border-right: 2px solid #344F27;">
+                        <i class="fa-solid fa-house-circle-check"></i>
+                        <p>Administra <br> Cabañas</p>
+                    </div>
+                    <div class="iconos">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <p>Consulta <br> Reportes</p>
+                    </div>
+                </div>
+                <img class="izq-footer" src="../img/fondo-caja1.jpg" alt="">
+            </div>
+            <div class="der">
+                <div class="titulo">
+                    <i class="fa-solid fa-gear"></i>
+                    <h1>Iniciar Sesión - Administrador</h1>
+                </div>
+                <form class="formulario">
+                    <input type="text" placeholder="Correo Electrónico">
+                    <input type="password" name="" id="" placeholder="Contraseña">
+                    <button>
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <p>Iniciar Sesión</p>
+                    </button>
+                </form>
+                <div class="der-footer">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <p>Solo personal autorizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" aria-hidden="true">
+        <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradiente-ola-login">
+                    <stop stop-color="#225d1d"></stop>
+                    <stop offset="1" stop-color="#38ff4f"></stop>
+                </linearGradient>
+                <path id="w" d="M -160 40 L -101.33333333333334 27 L -42.66666666666667 40 L 15.999999999999993 27 L 74.66666666666666 40 L 133.33333333333331 27 L 192 40 L 192 80 L -160 80 Z"></path>
+            </defs>
+            <g>
+                <use href="#w" x="48" y="0" fill="url(#gradiente-ola-login)" opacity="0.3" class="ola-capa-1"></use>
+                <use href="#w" x="68" y="3" fill="url(#gradiente-ola-login)" opacity="0.4" class="ola-capa-2"></use>
+            </g>
+        </svg>
+
+        <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="">
+        <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="">
+    </footer>
+</body>
+</html>

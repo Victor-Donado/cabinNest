@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabinNest - Reservas</title>
+
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reservas.css">
+
+    <!-- Iconos -->
+    <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Control oculto para abrir/cerrar menú desplegable en <= 740px -->
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-hidden="true">
+
+    <!-- ================= MENÚ LATERAL / DESPLEGABLE ================= -->
+    <aside class="menu" aria-label="Menú de administración">
+        <div class="menu-movil-top">
+            <span>Menú</span>
+            <label for="menu-toggle" class="btn-cerrar-menu" aria-label="Cerrar menú">
+                <i class="fa-solid fa-xmark"></i>
+            </label>
+        </div>
+
+        <div class="img-cabeza">
+            <a href="index.html">
+                <img class="icono-menu" src="img/icono-largo.png" alt="Logo de CabinNest">
+            </a>
+        </div>
+
+        <nav class="botones" aria-label="Secciones del panel">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chess-board"></i>
+                <span>DashBoard</span>
+            </a>
+            <a href="reservas.html">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Reservas</span>
+            </a>
+            <a class="activo" href="pagos.html">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Pagos</span>
+            </a>
+            <a href="cabanas.html">
+                <i class="fa-solid fa-campground"></i>
+                <span>Cabañas</span>
+            </a>
+            <a href="usuarios.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Usuarios</span>
+            </a>
+        </nav>
+
+        <img class="img-footer" src="img/menu-admin.jpg" alt="Ilustración natural CabinNest">
+    </aside>
+
+    <!-- Fondo oscuro para cerrar el menú al hacer clic afuera -->
+    <label for="menu-toggle" class="menu-overlay" aria-label="Cerrar menú"></label>
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+    <main class="dashboard">
+
+        <!-- Cabecera Superior -->
+        <header class="cabeza-dashboard">
+            <label for="menu-toggle" class="btn-hamburguesa" role="button" tabindex="0" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="cabeza-txt">
+                <h1>Gestión de Reservas</h1>
+                <p>Visualiza las reservas registradas recientemente y sus fechas de estadía</p>
+            </div>
+
+            <button type="button" id="cerrar-sesion">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </header>
+
+        <!-- Cuerpo: Tabla de Reservas Recientes -->
+        <div class="dashboard-contenido">
+            <section class="reservas-caja" aria-labelledby="titulo-lista-reservas">
+
+                <div class="reservas-barra">
+                    <div class="reservas-titulo">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <h2 id="titulo-lista-reservas">Reservas Recientes</h2>
+                        <span id="contador-reservas" class="contador-reservas">10 registros</span>
+                    </div>
+
+                    <div class="reservas-controles">
+                        <div class="buscador-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="buscador-reservas" placeholder="Buscar por ID, cliente o fecha..." aria-label="Buscar reservas">
+                        </div>
+
+                        <select id="filtro-estado" class="select-filtro" aria-label="Filtrar por estado">
+                            <option value="todos">Todos los estados</option>
+                            <option value="Confirmada">Confirmada</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En curso">En curso</option>
+                            <option value="Completada">Completada</option>
+                            <option value="Cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Encabezado de Columnas (Campos de la tabla reserva) -->
+                <div class="tabla-encabezado" aria-hidden="true">
+                    <span>ID Reserva</span>
+                    <span>Cliente (ID)</span>
+                    <span>Fecha Reserva</span>
+                    <span>Check-in</span>
+                    <span>Check-out</span>
+                    <span class="col-estado">Estado</span>
+                </div>
+
+                <!-- Listado de Reservas Registradas Recientemente -->
+                <div id="lista-reservas" class="lista-reservas">
+
+                    <!-- Reserva 1 -->
+                    <article class="reserva-item" data-estado="Confirmada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1050</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #101</span>
+                            <strong>María López</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>21/11/2026 17:15</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>25/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>30/11/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado confirmada">Confirmada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 2 -->
+                    <article class="reserva-item" data-estado="Pendiente">
+                        <div class="dato-id">
+                            <span class="badge-id">#1049</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #104</span>
+                            <strong>Andrés Quintero</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>21/11/2026 15:42</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>28/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>01/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado pendiente">Pendiente</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 3 -->
+                    <article class="reserva-item" data-estado="Confirmada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1048</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #102</span>
+                            <strong>Carlos Mendoza</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>21/11/2026 11:08</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>02/12/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>06/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado confirmada">Confirmada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 4 -->
+                    <article class="reserva-item" data-estado="En curso">
+                        <div class="dato-id">
+                            <span class="badge-id">#1047</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #109</span>
+                            <strong>Sofía Navarro</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>20/11/2026 19:30</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>21/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>24/11/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado en-curso">En curso</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 5 -->
+                    <article class="reserva-item" data-estado="Confirmada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1046</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #110</span>
+                            <strong>Mateo Delgado</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>20/11/2026 16:05</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>08/12/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>12/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado confirmada">Confirmada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 6 -->
+                    <article class="reserva-item" data-estado="Pendiente">
+                        <div class="dato-id">
+                            <span class="badge-id">#1045</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #105</span>
+                            <strong>Camila Herrera</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>19/11/2026 20:47</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>15/12/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>20/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado pendiente">Pendiente</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 7 -->
+                    <article class="reserva-item" data-estado="Cancelada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1044</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #106</span>
+                            <strong>Sebastián Vargas</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>19/11/2026 09:14</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>29/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>02/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado cancelada">Cancelada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 8 -->
+                    <article class="reserva-item" data-estado="Confirmada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1043</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #107</span>
+                            <strong>Daniela Castro</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>18/11/2026 18:22</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>22/12/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>27/12/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado confirmada">Confirmada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 9 -->
+                    <article class="reserva-item" data-estado="Completada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1042</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #103</span>
+                            <strong>Valentina Ríos</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>16/11/2026 13:50</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>17/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>20/11/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado completada">Completada</span>
+                        </div>
+                    </article>
+
+                    <!-- Reserva 10 -->
+                    <article class="reserva-item" data-estado="Completada">
+                        <div class="dato-id">
+                            <span class="badge-id">#1041</span>
+                        </div>
+                        <div class="dato-cliente">
+                            <span class="id-cliente-tag">ID #108</span>
+                            <strong>Julián Morales</strong>
+                        </div>
+                        <div class="dato-fecha-reg" data-etiqueta="Registrada:">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>14/11/2026 10:11</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-in:">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            <span>15/11/2026</span>
+                        </div>
+                        <div class="dato-fecha" data-etiqueta="Check-out:">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>18/11/2026</span>
+                        </div>
+                        <div class="col-estado">
+                            <span class="badge-estado completada">Completada</span>
+                        </div>
+                    </article>
+
+                    <!-- Mensaje cuando no hay coincidencias -->
+                    <div id="sin-resultados-reservas" class="sin-resultados" hidden>
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <p>No se encontraron reservas que coincidan con el filtro aplicado.</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const listaReservas = document.getElementById('lista-reservas');
+        const inputBuscador = document.getElementById('buscador-reservas');
+        const selectEstado = document.getElementById('filtro-estado');
+        const contadorReservas = document.getElementById('contador-reservas');
+        const mensajeVacio = document.getElementById('sin-resultados-reservas');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        const filtrarReservas = () => {
+            const termino = inputBuscador.value.toLowerCase().trim();
+            const estadoFiltro = selectEstado.value;
+            const filas = listaReservas.querySelectorAll('.reserva-item');
+            let visibles = 0;
+
+            filas.forEach((fila) => {
+                const textoFila = fila.textContent.toLowerCase();
+                const estadoFila = fila.dataset.estado;
+
+                const coincideTexto = textoFila.includes(termino);
+                const coincideEstado = estadoFiltro === 'todos' || estadoFila === estadoFiltro;
+
+                const mostrar = coincideTexto && coincideEstado;
+                fila.style.display = mostrar ? '' : 'none';
+                if (mostrar) visibles++;
+            });
+
+            contadorReservas.textContent = `${visibles} ${visibles === 1 ? 'registro' : 'registros'}`;
+            mensajeVacio.hidden = visibles > 0;
+        };
+
+        inputBuscador.addEventListener('input', filtrarReservas);
+        selectEstado.addEventListener('change', filtrarReservas);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuToggle && menuToggle.checked) {
+                menuToggle.checked = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
