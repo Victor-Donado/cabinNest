@@ -1,75 +1,51 @@
-/* ==========================================================================
-   1. VARIABLES Y RESET
-   ========================================================================== */
-:root {
-    --verde-oscuro: #2D3C23;
-    --verde-icono: #2D3E22;
-    --salvia: #DEE2BF;
-    --naranja: #D16512;
-    --cafe: #84491D;
-    --crema-fondo: #FBF2E4;
-    --crema-borde: #F7EBDB;
-    --texto: #333333;
-    --blanco: #FFFFFF;
-    --sombra-buscador: 5px 5px 10px rgba(0, 0, 0, 0.85);
-    --sombra-card: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    --transicion: all 0.3s ease;
-}
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lora', serif;
 }
 
-html {
+html{
     scroll-behavior: smooth;
 }
 
-body {
+body{
     overflow-x: hidden;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
 }
 
-a {
+a{
     text-decoration: none;
 }
 
-/* ==========================================================================
-   2. CLASES REUTILIZABLES
-   ========================================================================== */
 .division-btn,
 .btn-primario,
 .txt-naturaleza,
 #huespedes,
-.circulo-icono {
+.circulo-icono{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btn-primario {
+.btn-primario{
     cursor: pointer;
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #D16512;
+    color: white;
     font-size: 15px;
     font-weight: bold;
     gap: 8px;
     white-space: nowrap;
-    transition: var(--transicion);
+    transition: 0.3s;
 }
 
-.btn-primario:hover {
+.btn-primario:hover{
     transform: scale(1.04);
     filter: brightness(1.05);
 }
-
-/* ==========================================================================
-   3. HEADER Y NAVEGACIÓN (ESCRITORIO > 960px)
-   ========================================================================== */
-#menu {
+/*=======================================*/
+#menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,20 +57,20 @@ a {
     gap: 12px;
 }
 
-#icono-largo {
+#icono-largo{
     width: 220px;
     height: 55px;
     object-fit: contain;
 }
 
-#division {
+#division{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
-.division-btn {
+.division-btn{
     cursor: pointer;
     background: none;
     border: 3px solid transparent;
@@ -104,35 +80,32 @@ a {
     gap: 6px;
     font-size: 15px;
     font-weight: bolder;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
     white-space: nowrap;
-    transition: var(--transicion);
+    transition: 0.3s;
 }
 
-.division-btn i {
+.division-btn i{
     font-size: 16px;
 }
 
-.division-btn:hover {
-    border-color: var(--verde-oscuro);
+.division-btn:hover{
+    border-color: #2D3C23;
 }
 
-.a-activo {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.a-activo{
+    background: #2D3C23;
+    color: white;
 }
 
-#btn-iniciar {
+#btn-iniciar{
     padding: 0 22px;
     height: 44px;
     border-radius: 40px;
     flex-shrink: 0;
 }
-
-/* ==========================================================================
-   4. HERO Y BUSCADOR (ESCRITORIO > 960px)
-   ========================================================================== */
-#inicio {
+/*=======================================*/
+#inicio{
     background: url('../img/inicio-fondo.jpg') center/cover no-repeat;
     min-height: 520px;
     padding-bottom: 35px;
@@ -140,15 +113,15 @@ a {
     flex-direction: column;
 }
 
-#inicio-portada {
+#inicio-portada{
     width: fit-content;
     max-width: calc(100% - 110px);
     margin: auto 0 auto 75px;
 }
 
-.txt-naturaleza {
-    background: var(--salvia);
-    color: var(--verde-oscuro);
+.txt-naturaleza{
+    background: #DEE2BF;
+    color: #2D3C23;
     font-size: 15px;
     font-weight: bolder;
     width: fit-content;
@@ -158,46 +131,46 @@ a {
     border-radius: 30px;
 }
 
-.txt {
+.txt{
     font-size: 62px;
     line-height: 1.15;
     font-weight: bold;
-    color: var(--verde-oscuro);
-    -webkit-text-stroke: 16px var(--crema-borde);
+    color: #2D3C23;
+    -webkit-text-stroke: 16px #F7EBDB;
     paint-order: stroke fill;
     stroke-linejoin: round;
     stroke-linecap: round;
     margin: 10px 0;
 }
 
-.txt-destacado {
+.txt-destacado{
     display: block;
-    color: var(--naranja);
+    color: #D16512;
 }
 
-.txt-descripcion {
+.txt-descripcion{
     font-size: 18px;
     margin-bottom: 18px;
 }
 
-#buscar {
+#buscar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--blanco);
+    background: white;
     min-height: 72px;
     width: 100%;
     max-width: 680px;
     border-radius: 20px;
-    box-shadow: var(--sombra-buscador);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.85);
     text-align: center;
     font-size: 16px;
-    color: var(--texto);
+    color: #333;
     padding: 8px 14px;
     gap: 4px;
 }
 
-.campo-busqueda {
+.campo-busqueda{
     flex: 1;
     min-width: 0;
     padding: 0 10px;
@@ -206,23 +179,23 @@ a {
     align-items: center;
 }
 
-.campo-bordes {
-    border-left: 2px solid var(--naranja);
-    border-right: 2px solid var(--naranja);
+.campo-bordes{
+    border-left: 2px solid #D16512;
+    border-right: 2px solid #D16512;
 }
 
-#huespedes {
+#huespedes{
     flex-direction: row;
     gap: 8px;
 }
 
-#huespedes i {
+#huespedes i{
     font-size: 19px;
 }
 
-#huespedes input[type="number"] {
+#huespedes input[type="number"]{
     text-align: center;
-    border: 2px solid var(--naranja);
+    border: 2px solid #D16512;
     font-size: 15px;
     font-weight: bold;
     border-radius: 5px;
@@ -231,65 +204,62 @@ a {
 }
 
 #huespedes input[type="number"]::-webkit-inner-spin-button,
-#huespedes input[type="number"]::-webkit-outer-spin-button {
+#huespedes input[type="number"]::-webkit-outer-spin-button{
     opacity: 1;
 }
 
-input[type="date"] {
+input[type="date"]{
     border: none;
     background: transparent;
     font-size: 15px;
     font-weight: bold;
-    color: var(--texto);
+    color: #333;
     outline: none;
     cursor: pointer;
     max-width: 100%;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator{
     transform: scale(1.25);
     cursor: pointer;
 }
 
-#btn-buscar {
+#btn-buscar{
     height: 50px;
     padding: 0 20px;
     border-radius: 15px;
     flex-shrink: 0;
 }
-
-/* ==========================================================================
-   5. SECCIÓN NUESTROS SERVICIOS
-   ========================================================================== */
-#nosotros {
+/*=======================================*/
+#nosotros{
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    background: var(--crema-fondo);
+    background: #FBF2E4;
     min-height: 260px;
     padding-top: 20px;
     overflow: hidden;
 }
 
-.servicios-header {
+.servicios-header{
     padding: 0 15px;
     z-index: 1;
 }
 
-#nosotros-p1 {
+#nosotros-p1{
     font-size: 30px;
     font-weight: bolder;
 }
 
-#nosotros-p2 {
+#nosotros-p2{
     font-size: 18px;
     margin-top: 4px;
 }
 
-#informacion {
+#informacion{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -300,167 +270,157 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     z-index: 1;
 }
 
-.card-inf {
+.card-inf{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 275px;
     height: 100px;
-    background: var(--blanco);
+    background: white;
     text-align: left;
     border-radius: 20px;
-    box-shadow: var(--sombra-card);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     padding: 0 12px;
-    transition: var(--transicion);
+    transition: 0.3s;
 }
 
-.card-inf:hover {
+.card-inf:hover{
     transform: scale(1.05);
 }
 
-.circulo-icono {
+.circulo-icono{
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 100%;
     font-size: 24px;
     flex-shrink: 0;
 }
 
-.icono--verde {
-    background: var(--color-salvia, #DEE2BF);
-    color: var(--verde-icono);
+.icono--verde{
+    background: #DEE2BF;
+    color: #2D3E22;
 }
 
-.icono--cafe {
-    background: var(--cafe);
-    color: var(--blanco);
+.icono--cafe{
+    background: #84491D;
+    color: white;
 }
 
-.card-txt {
+.card-txt{
     width: 175px;
 }
 
-.card-txt h3 {
+.card-txt h3{
     font-weight: bolder;
     font-size: 17px;
     margin-bottom: 3px;
 }
 
-.card-txt p {
+.card-txt p{
     font-size: 14px;
 }
-
-/* ==========================================================================
-   6. DECORACIONES (OLAS Y PLANTAS)
-   ========================================================================== */
-.ola-animada {
+/*=======================================*/
+.ola-animada{
     display: block;
     width: 100%;
     height: 50px;
 }
 
-.ola-capa-1 {
+.ola-capa-1{
     animation: moverOla 12s linear infinite;
 }
 
-.ola-capa-2 {
+.ola-capa-2{
     animation: moverOla 15s linear infinite -2s;
 }
 
-@keyframes moverOla {
+@keyframes moverOla{
     from { transform: translateX(-90px); }
     to   { transform: translateX(85px); }
 }
 
-.planta-decorativa {
+.planta-decorativa{
     position: absolute;
     height: 150px;
     bottom: 0;
     pointer-events: none;
 }
 
-#planta1 { left: 0; }
-#planta2 { right: 0; transform: scaleX(-1); }
-
-/* ==========================================================================
-   7. RESPONSIVO: LAPTOPS PEQUEÑAS / TABLETS HORIZONTALES (961px - 1150px)
-   ========================================================================== */
-@media (max-width: 1150px) {
-    #menu {
+#planta1{ left: 0; }
+#planta2{ right: 0; transform: scaleX(-1); }
+/*=======================================*/
+@media (max-width: 1150px){
+    #menu{
         padding: 0 20px;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 185px;
         height: 46px;
     }
 
-    #division {
+    #division{
         gap: 4px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
     }
 
-    #btn-iniciar {
+    #btn-iniciar{
         padding: 0 16px;
         height: 40px;
         font-size: 14px;
     }
 
-    #inicio-portada {
+    #inicio-portada{
         margin-left: 40px;
         max-width: calc(100% - 80px);
     }
 
-    .txt {
+    .txt{
         font-size: 50px;
-        -webkit-text-stroke: 12px var(--crema-borde);
+        -webkit-text-stroke: 12px #F7EBDB;
     }
 
-    #informacion {
+    #informacion{
         display: grid;
         grid-template-columns: repeat(2, minmax(260px, 340px));
         justify-content: center;
     }
 
-    .card-inf {
+    .card-inf{
         width: 100%;
     }
 }
 
-/* ==========================================================================
-   8. RESPONSIVO: TABLETS VERTICALES (541px - 960px -> incluye 820px y 790px)
-   ========================================================================== */
-@media (max-width: 960px) {
-    /* Menú en 2 filas: arriba Logo + Iniciar Sesión | abajo los 4 enlaces */
-    #menu {
+@media (max-width: 960px){
+    #menu{
         flex-wrap: wrap;
         height: auto;
         padding: 14px 24px;
         gap: 12px;
     }
 
-    .logo-link {
+    .logo-link{
         order: 1;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 185px;
         height: 46px;
     }
 
-    #btn-iniciar {
+    #btn-iniciar{
         order: 2;
         padding: 0 18px;
         height: 40px;
         font-size: 14px;
     }
 
-    #division {
+    #division{
         order: 3;
         width: 100%;
         justify-content: center;
@@ -469,15 +429,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         border-top: 1px solid rgba(45, 60, 35, 0.15);
     }
 
-    /* Velo suave para asegurar contraste del texto sobre la imagen */
-    #inicio {
+    #inicio{
         background-image:
             linear-gradient(to bottom, rgba(251, 242, 228, 0.92) 0%, rgba(251, 242, 228, 0.82) 65%, rgba(251, 242, 228, 0.45) 100%),
             url('../img/inicio-fondo.jpg');
         background-position: right center;
     }
 
-    #inicio-portada {
+    #inicio-portada{
         width: 90%;
         max-width: 620px;
         margin: 22px auto 10px auto;
@@ -487,21 +446,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         text-align: center;
     }
 
-    .txt {
+    .txt{
         font-size: 46px;
-        -webkit-text-stroke: 10px var(--crema-borde);
+        -webkit-text-stroke: 10px #F7EBDB;
     }
 
-    .txt-descripcion br {
+    .txt-descripcion br{
         display: none;
     }
 
-    .txt-descripcion {
+    .txt-descripcion{
         max-width: 520px;
     }
 
-    /* Buscador en cuadrícula 2x2: imposible que se salga el botón Buscar */
-    #buscar {
+    #buscar{
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
@@ -511,158 +469,150 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         gap: 14px;
     }
 
-    .campo-busqueda {
+    .campo-busqueda{
         width: 100%;
         padding: 6px 4px;
     }
 
-    .campo-bordes {
-        border-left: 2px solid var(--naranja);
+    .campo-bordes{
+        border-left: 2px solid #D16512;
         border-right: none;
     }
 
-    #huespedes {
+    #huespedes{
         border-top: 1px solid rgba(209, 101, 18, 0.3);
         padding-top: 12px;
     }
 
-    #btn-buscar {
+    #btn-buscar{
         width: 100%;
         height: 46px;
         align-self: end;
     }
 
-    /* Servicios */
-    #nosotros-p1 {
+    #nosotros-p1{
         font-size: 26px;
     }
 
-    #informacion {
+    #informacion{
         grid-template-columns: repeat(2, 1fr);
         width: 92%;
         gap: 16px;
     }
 
-    .card-inf {
+    .card-inf{
         height: auto;
         min-height: 100px;
         padding: 14px 12px;
         gap: 12px;
     }
 
-    .card-txt {
+    .card-txt{
         width: auto;
         flex: 1;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 115px;
     }
 }
 
-/* ==========================================================================
-   9. RESPONSIVO: TELÉFONOS MÓVILES (max-width: 540px)
-   ========================================================================== */
-@media (max-width: 540px) {
-    #menu {
+@media (max-width: 540px){
+    #menu{
         padding: 12px 15px;
         gap: 10px;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 150px;
         height: 38px;
     }
 
-    #btn-iniciar {
+    #btn-iniciar{
         padding: 0 14px;
         height: 36px;
         font-size: 13px;
     }
 
-    /* Enlaces en cuadrícula 2x2 táctil */
-    #division {
+    #division{
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 8px;
     }
 
-    .division-btn {
+    .division-btn{
         width: 100%;
         height: 38px;
         font-size: 13px;
         background: rgba(255, 255, 255, 0.6);
     }
 
-    .division-btn.a-activo {
-        background: var(--verde-oscuro);
+    .division-btn.a-activo{
+        background: #2D3C23;
     }
 
-    /* Hero móvil */
-    #inicio-portada {
+    #inicio-portada{
         width: 92%;
         margin: 15px auto 0 auto;
     }
 
-    .txt-naturaleza {
+    .txt-naturaleza{
         font-size: 13px;
         padding: 0 14px;
     }
 
-    .txt {
+    .txt{
         font-size: 33px;
-        -webkit-text-stroke: 7px var(--crema-borde);
+        -webkit-text-stroke: 7px #F7EBDB;
         margin: 12px 0;
     }
 
-    .txt-descripcion {
+    .txt-descripcion{
         font-size: 15px;
         line-height: 1.4;
     }
 
-    /* Buscador en 1 columna */
-    #buscar {
+    #buscar{
         grid-template-columns: 1fr;
         padding: 16px;
         gap: 12px;
     }
 
-    .campo-bordes {
+    .campo-bordes{
         border-left: none;
-        border-top: 2px solid var(--naranja);
-        border-bottom: 2px solid var(--naranja);
+        border-top: 2px solid #D16512;
+        border-bottom: 2px solid #D16512;
         padding: 10px 0;
     }
 
-    #huespedes {
+    #huespedes{
         border-top: none;
         padding-top: 2px;
     }
 
-    #btn-buscar {
+    #btn-buscar{
         height: 46px;
     }
 
-    /* Servicios en 1 columna */
-    #nosotros-p1 {
+    #nosotros-p1{
         font-size: 19px;
     }
 
-    #nosotros-p2 {
+    #nosotros-p2{
         font-size: 15px;
     }
 
-    #informacion {
+    #informacion{
         grid-template-columns: 1fr;
         width: 90%;
         gap: 12px;
     }
 
-    .card-inf {
+    .card-inf{
         padding: 14px 16px;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 85px;
         opacity: 0.75;
     }

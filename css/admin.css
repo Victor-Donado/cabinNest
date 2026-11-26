@@ -5,21 +5,34 @@
     font-family: 'Lora', serif;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+html{
     background: #FBF3E7;
+    overflow-x: hidden;
 }
-.cuerpo{
+
+body{
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #FBF3E7;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.cuerpo{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-image: url(../img/cabeza-reserva.jpg);
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
 }
-a {
+
+a{
     text-decoration: none;
     background: #E46F18;
     height: 40px;
@@ -27,44 +40,63 @@ a {
     text-align: center;
     justify-content: center;
     display: flex;
-    padding: 5px;
+    padding: 5px 22px;
     color: white;
     font-size: 18px;
     font-weight: bolder;
     border-radius: 40px;
     cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
+
+a:hover{
+    background: #c95d0e;
+}
+
 .caveza{
     width: 100%;
-    height: fit-content;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 10px 30px 0;
+    gap: 16px;
 }
+
 .caveza img{
     width: 300px;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
+
 .caja-iniciar{
     gap: 20px;
-    width: 1000px;
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    min-height: 500px;
     border: 10px solid white;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    margin: auto;
-    height: 500px;
+    margin: 10px auto 24px;
     border-radius: 30px;
-    margin-top: 10px;
     display: flex;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.55);
+    position: relative;
+    z-index: 2;
 }
+
 .izq{
     width: 45%;
-    height: 100%;
     background: #F8EBD8;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
 }
+
 .cabeza-izq, .titulo{
     font-size: 12px;
     background: #344F27;
@@ -73,123 +105,144 @@ a {
     height: 50px;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     color: white;
     font-weight: bolder;
     border-radius: 20px 20px 0 0;
 }
+
 .cabeza-izq i{
-    font-size: 30px;
+    font-size: 26px;
 }
+
 .img-caja{
     position: relative;
     width: 100%;
+    max-width: 1200px;
+    border-radius: 0 0 28px 28px;
+    overflow: hidden;
 }
+
 .img-caja img{
     width: 100%;
+    object-fit: cover;
+    display: block;
 }
+
+.cabin-wave{
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    fill: #F8EBD8;
+    pointer-events: none;
+}
+
 .iconos-caja{
     display: flex;
+    justify-content: space-around;
     width: 100%;
+    padding: 8px 6px;
 }
+
 .iconos{
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #344F27;
-    width: 33%;
+    width: 33.33%;
+    padding: 0 4px;
 }
+
 .iconos i{
     font-size: 20px;
+    margin-bottom: 4px;
 }
+
 .izq-footer{
     width: 100%;
     margin-top: auto;
     margin-bottom: 0;
-}
-.img-caja {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  border-radius: 0px 0px 28px 28px; /* Redondea las 4 esquinas exteriores */
-  overflow: hidden;
+    display: block;
+    object-fit: cover;
 }
 
-.img-caja img {
-  width: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.cabin-wave {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  fill: #F8EBD8;
-  pointer-events: none;
-}
 .der{
-    height: 100%;
     width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .titulo{
     width: 100%;
     border-radius: 20px;
     font-size: 10px;
     gap: 10px;
 }
+
 .titulo i{
-    font-size: 30px;
+    font-size: 26px;
 }
+
 .formulario{
     margin: auto;
     width: 90%;
-    height: 200px;
+    min-height: 210px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 16px;
 }
+
 .formulario button{
     border: none;
     background: #E46F18;
-    height: 40px;
+    height: 42px;
     width: 80%;
     align-items: center;
     text-align: center;
     justify-content: center;
     display: flex;
-    padding: 5px;
+    padding: 5px 16px;
     color: white;
     font-size: 18px;
     font-weight: bolder;
     border-radius: 40px;
     cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
+
+.formulario button:hover{
+    background: #c95d0e;
+    transform: scale(1.02);
+}
+
 .formulario button i{
-    font-size: 25px;
-    margin-right: 10px
+    font-size: 22px;
+    margin-right: 10px;
 }
-.der input {
+
+.der input{
     width: 100%;
-    height: 40px;
+    height: 42px;
     padding: 0 14px;
     font-size: 15px;
-    color: var(--texto-oscuro);
+    color: #2D3C23;
     background-color: white;
     border: 2px solid rgba(209, 101, 18, 0.5);
     border-radius: 10px;
     outline: none;
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.der input:focus {
+
+.der input:focus{
     border-color: #e470187d;
     box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.15);
 }
+
 .der-footer{
     width: 80%;
     background: #EDE9CD;
@@ -197,45 +250,188 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 18px;
+    gap: 8px;
+    padding: 6px 14px;
+    font-size: 17px;
     color: #344F27;
-    height: 40px;
+    min-height: 40px;
     border-radius: 40px;
     margin: auto;
 }
+
 /*===================================================================*/
-#footer {
-    position: absolute;
+#footer{
+    position: relative;
     width: 100%;
     margin-top: auto;
+    overflow: hidden;
     pointer-events: none;
-    bottom: 0;
 }
 
-.ola-animada {
+.ola-animada{
     display: block;
     width: 100%;
     height: 50px;
 }
 
-.ola-capa-1 {
+.ola-capa-1{
     animation: moverOla 12s linear infinite;
 }
 
-.ola-capa-2 {
+.ola-capa-2{
     animation: moverOla 15s linear infinite -2s;
 }
 
-@keyframes moverOla {
+@keyframes moverOla{
     from { transform: translateX(-90px); }
     to   { transform: translateX(85px); }
 }
 
-.planta-decorativa {
+.planta-decorativa{
     position: absolute;
     height: 145px;
     bottom: 0;
 }
 
-#planta1 { left: -25px; }
-#planta2 { right: -25px; transform: scaleX(-1); }
+#planta1{ left: -25px; }
+#planta2{ right: -25px; transform: scaleX(-1); }
+
+/*======================== RESPONSIVE TABLET ========================*/
+@media (max-width: 860px){
+    .cuerpo{
+        background-size: auto 280px;
+    }
+
+    .caveza{
+        padding: 12px 20px 4px;
+    }
+
+    .caveza img{
+        width: 210px;
+    }
+
+    a{
+        height: 36px;
+        font-size: 15px;
+        padding: 4px 16px;
+    }
+
+    .caja-iniciar{
+        flex-direction: column;
+        width: calc(100% - 28px);
+        min-height: auto;
+        border-width: 8px;
+        border-radius: 24px;
+        gap: 16px;
+        padding-bottom: 14px;
+    }
+
+    .izq,
+    .der{
+        width: 100%;
+    }
+    .izq{
+        display: none;
+    }
+
+    .img-caja img{
+        height: 175px;
+    }
+
+    .izq-footer{
+        max-height: 85px;
+    }
+
+    .formulario{
+        margin: 22px auto;
+        min-height: auto;
+        gap: 14px;
+    }
+
+    .formulario button{
+        width: 90%;
+    }
+
+    .der-footer{
+        width: 90%;
+        font-size: 15px;
+        margin: 4px auto 8px;
+    }
+
+    .planta-decorativa{
+        height: 95px;
+    }
+}
+
+/*======================== RESPONSIVE MÓVIL =========================*/
+@media (max-width: 540px){
+    .cuerpo{
+        background-size: auto 230px;
+    }
+
+    .caveza{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px 6px;
+    }
+
+    .caveza img{
+        width: 185px;
+    }
+
+    a{
+        height: 34px;
+        font-size: 14px;
+        padding: 4px 14px;
+    }
+
+    .caja-iniciar{
+        width: calc(100% - 20px);
+        border-width: 6px;
+        border-radius: 20px;
+        margin-top: 8px;
+        margin: auto;
+    }
+
+    .izq{
+        display: none;
+    }
+
+    .titulo{
+        height: auto;
+        min-height: 48px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        text-align: center;
+    }
+
+    .titulo h1,
+    .titulo h2{
+        font-size: 17px;
+    }
+
+    .titulo i{
+        font-size: 20px;
+    }
+
+    .formulario{
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .formulario button{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .der-footer{
+        width: 94%;
+        font-size: 13.5px;
+    }
+
+    .planta-decorativa{
+        height: 70px;
+        opacity: 0.8;
+    }
+}

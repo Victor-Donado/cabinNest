@@ -1,60 +1,31 @@
-/* ==========================================================================
-   1. VARIABLES Y RESET GLOBAL
-   ========================================================================== */
-:root {
-    --verde-oscuro: #2D3C23;
-    --verde-bosque: #1f2e17;
-    --verde-suave: #EEF2E3;
-    --naranja: #D16512;
-    --naranja-hover: #b8550b;
-    --rojo-cancelar: #b83227;
-    --rojo-suave: #fdf0ef;
-    --crema-fondo: #FBF3E8;
-    --crema-caja: #FBF6EE;
-    --crema-bloqueado: #f3eee6;
-    --borde-suave: #E6DDD0;
-    --gris-texto: #5c5650;
-    --gris-boton: #f3efe9;
-    --texto-oscuro: #262320;
-    --blanco: #FFFFFF;
-
-    --sombra-card: 0 10px 26px rgba(45, 60, 35, 0.1);
-    --sombra-hover: 0 14px 32px rgba(45, 60, 35, 0.16);
-    --sombra-boton: 0 4px 12px rgba(209, 101, 18, 0.28);
-    --transicion: all 0.25s ease;
-}
-
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Lora', serif;
 }
 
-body {
+body{
     overflow-x: hidden;
-    background-color: var(--crema-fondo);
-    color: var(--verde-oscuro);
+    background: #FBF3E8;
+    color: #2D3C23;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-a {
+a{
     text-decoration: none;
     cursor: pointer;
 }
 
-/* ==========================================================================
-   2. CLASES BASE REUTILIZABLES (DRY)
-   ========================================================================== */
 .division-btn,
 #btn-cerrar,
 .cuenta-tabs label,
 .botones button,
 #btn-guardar,
 .avatar-wrapper,
-.datos-icono {
+.datos-icono{
     display: flex;
     align-items: center;
 }
@@ -63,7 +34,7 @@ a {
 #btn-cerrar,
 #btn-guardar,
 .avatar-wrapper,
-.datos-icono {
+.datos-icono{
     justify-content: center;
 }
 
@@ -71,16 +42,13 @@ a {
 #btn-cerrar,
 .cuenta-tabs label,
 .botones button,
-#btn-guardar {
+#btn-guardar{
     cursor: pointer;
-    font-weight: 700;
-    transition: var(--transicion);
+    font-weight: bold;
+    transition: 0.25s;
 }
-
-/* ==========================================================================
-   3. HEADER Y NAVEGACIÓN
-   ========================================================================== */
-#cabeza {
+/*=======================================*/
+#cabeza{
     width: 100%;
     position: absolute;
     top: 0;
@@ -88,7 +56,7 @@ a {
     z-index: 10;
 }
 
-#menu {
+#menu{
     padding: 10px 32px 0;
     display: flex;
     justify-content: space-between;
@@ -100,20 +68,20 @@ a {
     gap: 12px;
 }
 
-#icono-largo {
+#icono-largo{
     width: 230px;
     height: 58px;
     object-fit: contain;
 }
 
-#division {
+#division{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
 }
 
-.division-btn {
+.division-btn{
     background: none;
     border: 3px solid transparent;
     padding: 0 18px;
@@ -121,27 +89,27 @@ a {
     border-radius: 45px;
     gap: 6px;
     font-size: 15px;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
     white-space: nowrap;
 }
 
-.division-btn i {
+.division-btn i{
     font-size: 17px;
 }
 
-.division-btn:hover {
-    border-color: var(--verde-oscuro);
+.division-btn:hover{
+    border-color: #2D3C23;
 }
 
-.a-activo {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.a-activo{
+    background: #2D3C23;
+    color: white;
 }
 
-#btn-cerrar {
+#btn-cerrar{
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #D16512;
+    color: white;
     padding: 0 22px;
     height: 45px;
     border-radius: 40px;
@@ -151,19 +119,16 @@ a {
     flex-shrink: 0;
 }
 
-#btn-cerrar i {
+#btn-cerrar i{
     font-size: 17px;
 }
 
-#btn-cerrar:hover {
-    background: var(--naranja-hover);
+#btn-cerrar:hover{
+    background: #b8550b;
     transform: scale(1.05);
 }
-
-/* ==========================================================================
-   4. CONTENIDO PRINCIPAL Y ALTERNANCIA DE VISTAS (CSS PURO)
-   ========================================================================== */
-#cuerpo {
+/*=======================================*/
+#cuerpo{
     flex: 1;
     display: flex;
     justify-content: center;
@@ -173,7 +138,7 @@ a {
     padding: 100px 24px 45px;
 }
 
-.cuenta {
+.cuenta{
     width: 100%;
     max-width: 1180px;
     display: flex;
@@ -182,171 +147,164 @@ a {
     z-index: 2;
 }
 
-.radio-oculto {
+.radio-oculto{
     display: none;
 }
 
-/* Ocultar ambas vistas por defecto y mostrar la seleccionada */
 .reservas,
-.datos-caja {
+.datos-caja{
     display: none;
 }
 
-#radio-reservas:checked ~ .reservas {
+#radio-reservas:checked ~ .reservas{
     display: flex;
 }
 
-#radio-datos:checked ~ .datos-caja {
+#radio-datos:checked ~ .datos-caja{
     display: flex;
 }
 
-/* ==========================================================================
-   5. PANEL LATERAL DE PERFIL (.cuenta-menu)
-   ========================================================================== */
-.cuenta-menu {
+.cuenta-menu{
     width: 285px;
     flex-shrink: 0;
     position: sticky;
     top: 96px;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(45, 60, 35, 0.14);
     border-radius: 22px;
-    box-shadow: var(--sombra-card);
+    box-shadow: 0 10px 26px rgba(45, 60, 35, 0.1);
     overflow: hidden;
 }
 
-.cuenta-cabeza {
+.cuenta-cabeza{
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 0 18px 18px;
-    border-bottom: 1px solid var(--borde-suave);
+    border-bottom: 1px solid #E6DDD0;
 }
 
-.cuenta-banner {
+.cuenta-banner{
     width: calc(100% + 36px);
     height: 68px;
-    background: linear-gradient(135deg, var(--verde-oscuro) 0%, #445b34 100%);
+    background: linear-gradient(135deg, #2D3C23 0%, #445b34 100%);
     margin-bottom: -44px;
 }
 
-.avatar-wrapper {
+.avatar-wrapper{
     width: 92px;
     height: 92px;
-    border-radius: 50%;
-    background: var(--blanco);
-    border: 4px solid var(--blanco);
+    border-radius: 100%;
+    background: white;
+    border: 4px solid white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin-bottom: 10px;
     z-index: 1;
 }
 
-.avatar-wrapper i {
+.avatar-wrapper i{
     font-size: 84px;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
     line-height: 1;
 }
 
-.nombre {
+.nombre{
     font-size: 19px;
-    font-weight: 700;
-    color: var(--verde-bosque);
+    font-weight: bold;
+    color: #1f2e17;
     margin-bottom: 2px;
 }
 
-.correo {
+.correo{
     font-size: 13.5px;
-    color: var(--gris-texto);
+    color: #5c5650;
     word-break: break-word;
 }
 
-.cuenta-tabs {
+.cuenta-tabs{
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.cuenta-tabs label {
+.cuenta-tabs label{
     width: 100%;
     height: 44px;
     padding: 0 16px;
     border-radius: 14px;
     border: 1px solid transparent;
-    background: var(--gris-boton);
-    color: var(--verde-oscuro);
+    background: #f3efe9;
+    color: #2D3C23;
     font-size: 15px;
     gap: 10px;
     user-select: none;
 }
 
-.cuenta-tabs label i {
+.cuenta-tabs label i{
     font-size: 16px;
     width: 20px;
     text-align: center;
 }
 
 #radio-reservas:not(:checked) ~ .cuenta-menu #btn-reservas:hover,
-#radio-datos:not(:checked) ~ .cuenta-menu #btn-datos:hover {
-    background: var(--verde-suave);
+#radio-datos:not(:checked) ~ .cuenta-menu #btn-datos:hover{
+    background: #EEF2E3;
     border-color: rgba(45, 60, 35, 0.2);
 }
 
 #radio-reservas:checked ~ .cuenta-menu #btn-reservas,
-#radio-datos:checked ~ .cuenta-menu #btn-datos {
-    background: var(--naranja);
-    color: var(--blanco);
-    box-shadow: var(--sombra-boton);
+#radio-datos:checked ~ .cuenta-menu #btn-datos{
+    background: #D16512;
+    color: white;
+    box-shadow: 0 4px 12px rgba(209, 101, 18, 0.28);
 }
-
-/* ==========================================================================
-   6. VISTA 1: TARJETAS DE RESERVAS (.reservas-caja)
-   ========================================================================== */
-.reservas {
+/*=======================================*/
+.reservas{
     flex: 1;
     min-width: 0;
     flex-direction: column;
     gap: 18px;
 }
 
-.reservas-caja {
+.reservas-caja{
     display: flex;
     align-items: stretch;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(45, 60, 35, 0.14);
     border-radius: 20px;
-    box-shadow: var(--sombra-card);
+    box-shadow: 0 10px 26px rgba(45, 60, 35, 0.1);
     overflow: hidden;
-    transition: var(--transicion);
+    transition: 0.25s;
 }
 
-.reservas-caja:hover {
+.reservas-caja:hover{
     transform: translateY(-2px);
-    box-shadow: var(--sombra-hover);
+    box-shadow: 0 14px 32px rgba(45, 60, 35, 0.16);
     border-color: rgba(209, 101, 18, 0.35);
 }
 
-.reserva-imagen {
+.reserva-imagen{
     width: 245px;
     flex-shrink: 0;
     overflow: hidden;
 }
 
-.reserva-imagen img {
+.reserva-imagen img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.45s ease;
+    transition: 0.45s;
 }
 
-.reservas-caja:hover .reserva-imagen img {
+.reservas-caja:hover .reserva-imagen img{
     transform: scale(1.05);
 }
 
-.reservas-info {
+.reservas-info{
     flex: 1;
     min-width: 0;
     padding: 18px 22px;
@@ -356,7 +314,7 @@ a {
     gap: 12px;
 }
 
-.reserva-encabezado {
+.reserva-encabezado{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -364,58 +322,58 @@ a {
     gap: 10px;
 }
 
-.reserva-encabezado h2 {
+.reserva-encabezado h2{
     font-size: 23px;
-    font-weight: 700;
-    color: var(--verde-bosque);
+    font-weight: bold;
+    color: #1f2e17;
 }
 
-.estado {
+.estado{
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+    background: #2D3C23;
+    color: white;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: bold;
     padding: 6px 14px;
     border-radius: 999px;
 }
 
-.estado i {
+.estado i{
     color: #9be58f;
     font-size: 13px;
 }
 
-.fechas {
+.fechas{
     display: inline-flex;
     align-items: center;
     gap: 9px;
     width: fit-content;
-    background: var(--crema-caja);
-    border: 1px solid var(--borde-suave);
+    background: #FBF6EE;
+    border: 1px solid #E6DDD0;
     padding: 7px 14px;
     border-radius: 10px;
     font-size: 14.5px;
-    font-weight: 700;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
 }
 
-.fechas i {
-    color: var(--naranja);
+.fechas i{
+    color: #D16512;
     font-size: 15px;
 }
 
-.botones {
+.botones{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     padding-top: 10px;
-    border-top: 1px solid var(--borde-suave);
+    border-top: 1px solid #E6DDD0;
 }
 
-.botones button {
+.botones button{
     height: 36px;
     padding: 0 16px;
     border-radius: 999px;
@@ -423,119 +381,116 @@ a {
     gap: 7px;
 }
 
-.btn-calificar {
+.btn-calificar{
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #D16512;
+    color: white;
     box-shadow: 0 3px 10px rgba(209, 101, 18, 0.25);
 }
 
-.btn-calificar:hover {
-    background: var(--naranja-hover);
+.btn-calificar:hover{
+    background: #b8550b;
     transform: translateY(-1px);
 }
 
-.btn-comprobante {
-    background: var(--verde-suave);
+.btn-comprobante{
+    background: #EEF2E3;
     border: 1px solid rgba(45, 60, 35, 0.22);
-    color: var(--verde-oscuro);
+    color: #2D3C23;
 }
 
-.btn-comprobante:hover {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.btn-comprobante:hover{
+    background: #2D3C23;
+    color: white;
 }
 
-.btn-cancelar {
+.btn-cancelar{
     background: transparent;
     border: 1px solid rgba(184, 50, 39, 0.35);
-    color: var(--rojo-cancelar);
+    color: #b83227;
     margin-left: auto;
 }
 
-.btn-cancelar:hover {
-    background: var(--rojo-suave);
-    border-color: var(--rojo-cancelar);
+.btn-cancelar:hover{
+    background: #fdf0ef;
+    border-color: #b83227;
 }
 
-.calificacion:empty {
+.calificacion:empty{
     display: none;
 }
-
-/* ==========================================================================
-   7. VISTA 2: TARJETA DE INFORMACIÓN PERSONAL (.datos-caja)
-   ========================================================================== */
-.datos-caja {
+/*=======================================*/
+.datos-caja{
     flex: 1;
     min-width: 0;
     flex-direction: column;
     gap: 22px;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(45, 60, 35, 0.14);
     border-radius: 22px;
-    box-shadow: var(--sombra-card);
+    box-shadow: 0 10px 26px rgba(45, 60, 35, 0.1);
     padding: 26px 28px;
 }
 
-.datos-encabezado {
+.datos-encabezado{
     display: flex;
     align-items: center;
     gap: 14px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--borde-suave);
+    border-bottom: 1px solid #E6DDD0;
 }
 
-.datos-icono {
+.datos-icono{
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    background: var(--verde-suave);
-    color: var(--verde-oscuro);
+    background: #EEF2E3;
+    color: #2D3C23;
     font-size: 22px;
     flex-shrink: 0;
 }
 
-.datos-encabezado h2 {
+.datos-encabezado h2{
     font-size: 23px;
-    font-weight: 700;
-    color: var(--verde-bosque);
+    font-weight: bold;
+    color: #1f2e17;
 }
 
-.datos-encabezado p {
+.datos-encabezado p{
     font-size: 14px;
-    color: var(--gris-texto);
+    color: #5c5650;
     margin-top: 2px;
 }
 
-.datos-formulario {
+.datos-formulario{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px 20px;
 }
 
-.campo-dato {
+.campo-dato{
     display: flex;
     flex-direction: column;
     gap: 7px;
 }
 
-.campo-completo {
+.campo-completo{
     grid-column: 1 / -1;
 }
 
-.campo-dato label {
+.campo-dato label{
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 14.5px;
-    font-weight: 700;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
 }
 
 .etiqueta-bloqueada,
-.etiqueta-editable {
+.etiqueta-editable{
     font-size: 11.5px;
-    font-weight: 600;
+    font-weight: bold;
     padding: 2px 9px;
     border-radius: 999px;
     display: inline-flex;
@@ -543,47 +498,45 @@ a {
     gap: 4px;
 }
 
-.etiqueta-bloqueada {
-    background: var(--crema-bloqueado);
-    color: var(--gris-texto);
+.etiqueta-bloqueada{
+    background: #f3eee6;
+    color: #5c5650;
 }
 
-.etiqueta-editable {
-    background: var(--verde-suave);
-    color: var(--verde-oscuro);
+.etiqueta-editable{
+    background: #EEF2E3;
+    color: #2D3C23;
 }
 
-.campo-dato input {
+.campo-dato input{
     width: 100%;
     height: 44px;
     padding: 0 14px;
     font-size: 15px;
     border-radius: 10px;
     outline: none;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: 0.25s;
 }
 
-/* Campos de solo lectura (Nombre, Apellido, Documento) */
-.campo-dato input[readonly] {
-    background-color: var(--crema-bloqueado);
-    border: 1.5px solid var(--borde-suave);
-    color: var(--gris-texto);
+.campo-dato input[readonly]{
+    background: #f3eee6;
+    border: 1.5px solid #E6DDD0;
+    color: #5c5650;
     cursor: not-allowed;
 }
 
-/* Campos editables (Teléfono, Correo) */
-.campo-dato input:not([readonly]) {
-    background-color: var(--blanco);
+.campo-dato input:not([readonly]){
+    background: white;
     border: 2px solid rgba(209, 101, 18, 0.5);
-    color: var(--texto-oscuro);
+    color: #262320;
 }
 
-.campo-dato input:not([readonly]):focus {
-    border-color: var(--naranja);
+.campo-dato input:not([readonly]):focus{
+    border-color: #D16512;
     box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.14);
 }
 
-.datos-pie {
+.datos-pie{
     grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
@@ -592,239 +545,233 @@ a {
     gap: 14px;
     padding-top: 14px;
     margin-top: 4px;
-    border-top: 1px solid var(--borde-suave);
+    border-top: 1px solid #E6DDD0;
 }
 
-.nota-seguridad {
+.nota-seguridad{
     font-size: 13px;
-    color: var(--gris-texto);
+    color: #5c5650;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.nota-seguridad i {
-    color: var(--verde-oscuro);
+.nota-seguridad i{
+    color: #2D3C23;
 }
 
-#btn-guardar {
+#btn-guardar{
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #D16512;
+    color: white;
     height: 44px;
     padding: 0 26px;
     border-radius: 999px;
     font-size: 15px;
     gap: 9px;
-    box-shadow: var(--sombra-boton);
+    box-shadow: 0 4px 12px rgba(209, 101, 18, 0.28);
 }
 
-#btn-guardar:hover {
-    background: var(--naranja-hover);
+#btn-guardar:hover{
+    background: #b8550b;
     transform: translateY(-1px);
 }
-
-/* ==========================================================================
-   8. DECORACIÓN INFERIOR (OLAS Y PLANTAS)
-   ========================================================================== */
-#footer {
+/*=======================================*/
+#footer{
     position: relative;
     width: 100%;
     margin-top: auto;
     pointer-events: none;
 }
 
-.ola-animada {
+.ola-animada{
     display: block;
     width: 100%;
     height: 50px;
 }
 
-.ola-capa-1 {
+.ola-capa-1{
     animation: moverOla 12s linear infinite;
 }
 
-.ola-capa-2 {
+.ola-capa-2{
     animation: moverOla 15s linear infinite -2s;
 }
 
-@keyframes moverOla {
+@keyframes moverOla{
     from { transform: translateX(-90px); }
     to   { transform: translateX(85px); }
 }
 
-.planta-decorativa {
+.planta-decorativa{
     position: absolute;
     height: 145px;
     bottom: 0;
 }
 
-#planta1 { left: -25px; }
-#planta2 { right: -25px; transform: scaleX(-1); }
-
-/* ==========================================================================
-   9. DISEÑO RESPONSIVO (TABLETS Y TELÉFONOS)
-   ========================================================================== */
-@media (max-width: 1100px) {
-    #menu {
+#planta1{ left: -25px; }
+#planta2{ right: -25px; transform: scaleX(-1); }
+/*=======================================*/
+@media (max-width: 1100px){
+    #menu{
         padding: 10px 20px 0;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 185px;
         height: 46px;
     }
 
-    #division {
+    #division{
         gap: 6px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
     }
 
-    #btn-cerrar {
+    #btn-cerrar{
         padding: 0 16px;
         height: 40px;
         font-size: 14px;
     }
 }
 
-@media (max-width: 960px) {
-    #menu {
+@media (max-width: 960px){
+    #menu{
         flex-wrap: wrap;
         height: auto;
         padding: 8px 18px 0;
         gap: 8px;
     }
 
-    .logo-link { order: 1; }
-    #btn-cerrar { order: 2; }
+    .logo-link{ order: 1; }
+    #btn-cerrar{ order: 2; }
 
-    #icono-largo {
+    #icono-largo{
         width: 180px;
         height: 44px;
     }
 
-    #division {
+    #division{
         order: 3;
         width: 100%;
         padding-top: 6px;
         border-top: 1px solid rgba(45, 60, 35, 0.15);
     }
 
-    .division-btn {
+    .division-btn{
         height: 36px;
         padding: 0 12px;
         font-size: 14px;
     }
 
-    #cuerpo {
+    #cuerpo{
         padding-top: 112px;
         background-size: auto 260px;
     }
 
-    .cuenta {
+    .cuenta{
         flex-direction: column;
         align-items: center;
     }
 
-    .cuenta-menu {
+    .cuenta-menu{
         position: static;
         width: 100%;
         max-width: 540px;
     }
 
-    .cuenta-tabs {
+    .cuenta-tabs{
         flex-direction: row;
     }
 
     .reservas,
-    .datos-caja {
+    .datos-caja{
         width: 100%;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 105px;
     }
 }
 
-@media (max-width: 680px) {
-    #icono-largo {
+@media (max-width: 680px){
+    #icono-largo{
         width: 155px;
         height: 38px;
     }
 
-    #btn-cerrar {
+    #btn-cerrar{
         padding: 0 14px;
         height: 36px;
         font-size: 13px;
     }
 
-    #division {
+    #division{
         gap: 2px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 8px;
         height: 34px;
         font-size: 12.5px;
         gap: 4px;
     }
 
-    .division-btn i {
+    .division-btn i{
         font-size: 13px;
     }
 
-    #cuerpo {
+    #cuerpo{
         padding: 98px 14px 30px;
         background-size: auto 235px;
     }
 
-    .cuenta-tabs {
+    .cuenta-tabs{
         flex-direction: column;
     }
 
-    .reservas-caja {
+    .reservas-caja{
         flex-direction: column;
     }
 
-    .reserva-imagen {
+    .reserva-imagen{
         width: 100%;
         aspect-ratio: 16 / 9;
     }
 
-    .reservas-info {
+    .reservas-info{
         padding: 16px;
     }
 
-    .reserva-encabezado h2 {
+    .reserva-encabezado h2{
         font-size: 20px;
     }
 
-    .botones {
+    .botones{
         justify-content: flex-start;
     }
 
-    .btn-cancelar {
+    .btn-cancelar{
         margin-left: 0;
     }
 
-    .datos-caja {
+    .datos-caja{
         padding: 20px 18px;
     }
 
-    .datos-formulario {
+    .datos-formulario{
         grid-template-columns: 1fr;
     }
 
-    #btn-guardar {
+    #btn-guardar{
         width: 100%;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 75px;
         opacity: 0.8;
     }

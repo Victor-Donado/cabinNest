@@ -1,34 +1,37 @@
+<?php
+require_once __DIR__ . '/seguridad/sesion.php';
+iniciarSesionSegura();
+
+$estaAutenticado = !empty($_SESSION['documento']) && (($_SESSION['tipo_cuenta'] ?? '') === 'huesped');
+?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CabinNest | Alquiler de Cabañas</title>
-    
-    <!-- Fuentes y Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/inicio.css">
-    
-    <!-- Iconos -->
     <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="img/icono.png" type="image/png">
+    <link rel="icon" href="img/icono.png" type="image/png">
 </head>
 <body>
 
-    <!-- ================= SECCIÓN HERO & NAVEGACIÓN ================= -->
-    <section id="inicio" class="hero">
-        <header id="menu" class="navbar">
-            <a href="index.html" class="logo-link">
-                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+    <div id="inicio" class="hero">
+        <div id="menu" class="navbar">
+            <a href="index.php" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo">
             </a>
 
-            <nav id="division" class="nav-links" aria-label="Navegación principal">
-                <a href="index.html" class="division-btn a-activo">
+            <div id="division" class="nav-links">
+                <a href="index.php" class="division-btn a-activo">
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
-                <a href="catalogo.html" class="division-btn">
+                <a href="catalogo.php" class="division-btn">
                     <i class="fa-solid fa-campground"></i>
                     <span>Cabañas</span>
                 </a>
@@ -40,13 +43,20 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span>Contacto</span>
                 </a>
-            </nav>
+            </div>
 
-            <a href="login.html" id="btn-iniciar" class="btn-primario">
-                <i class="fa-solid fa-user"></i>
-                <span>Iniciar Sesión</span>
-            </a>
-        </header>
+            <?php if ($estaAutenticado): ?>
+                <a href="cuenta.php" id="btn-iniciar" class="btn-primario">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Mi Cuenta</span>
+                </a>
+            <?php else: ?>
+                <a href="login.php" id="btn-iniciar" class="btn-primario">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Iniciar Sesión</span>
+                </a>
+            <?php endif; ?>
+        </div>
 
         <div id="inicio-portada" class="hero-contenido">
             <div class="txt-naturaleza">
@@ -65,7 +75,7 @@
                 en nuestras cabañas de lujo.
             </p>
 
-            <form id="buscar" class="buscador-form" action="catalogo.html" method="GET">
+            <form id="buscar" class="buscador-form" action="catalogo.php" method="GET">
                 <div class="campo-busqueda">
                     <label for="date-in">Check-in</label>
                     <input type="date" id="date-in" name="checkin">
@@ -90,18 +100,17 @@
                 </button>
             </form>
         </div>
-    </section>
+    </div>
 
-    <!-- ================= SECCIÓN SERVICIOS ================= -->
-    <main>
-        <section id="nosotros" class="servicios">
-            <header class="servicios-header">
+    <div>
+        <div id="nosotros" class="servicios">
+            <div class="servicios-header">
                 <h2 id="nosotros-p1">--------- Nuestros Servicios ---------</h2>
                 <p id="nosotros-p2">Todo lo que necesitas para una estadía perfecta</p>
-            </header>
+            </div>
 
             <div id="informacion" class="servicios-grid">
-                <article class="card-inf">
+                <div class="card-inf">
                     <div class="circulo-icono icono--verde">
                         <i class="fa-solid fa-tree"></i>
                     </div>
@@ -109,9 +118,9 @@
                         <h3>Entorno Natural</h3>
                         <p>Respira aire puro y contacta con la naturaleza</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="card-inf">
+                <div class="card-inf">
                     <div class="circulo-icono icono--cafe">
                         <i class="fa-regular fa-house"></i>
                     </div>
@@ -119,9 +128,9 @@
                         <h3>Cabañas de Lujo</h3>
                         <p>Comodidad y diseño en un solo lugar</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="card-inf">
+                <div class="card-inf">
                     <div class="circulo-icono icono--verde">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
@@ -129,9 +138,9 @@
                         <h3>Reserva Segura</h3>
                         <p>Compra con confianza y total seguridad</p>
                     </div>
-                </article>
+                </div>
 
-                <article class="card-inf">
+                <div class="card-inf">
                     <div class="circulo-icono icono--cafe">
                         <i class="fa-solid fa-bell-concierge"></i>
                     </div>
@@ -139,11 +148,10 @@
                         <h3>Soporte 24/7</h3>
                         <p>Estamos siempre para ti</p>
                     </div>
-                </article>
+                </div>
             </div>
 
-            <!-- Decoración Inferior (Olas y Plantas) -->
-            <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none" aria-hidden="true">
+            <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="gradiente-ola">
                         <stop stop-color="#225d1d"></stop>
@@ -157,9 +165,9 @@
                 </g>
             </svg>
 
-            <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="" aria-hidden="true">
-            <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="" aria-hidden="true">
-        </section>
-    </main>
+            <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="">
+            <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="">
+        </div>
+    </div>
 </body>
 </html>

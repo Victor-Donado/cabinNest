@@ -1,20 +1,34 @@
+<?php
+require_once __DIR__ . '/seguridad/sesion.php';
+iniciarSesionSegura();
+
+if (($_SESSION['tipo_cuenta'] ?? '') === 'administrador') {
+    header('Location: dashboard.php');
+    exit;
+}
+
+$tokenCsrf    = generarTokenCsrf();
+$mensajeError = $_SESSION['error_login'] ?? '';
+unset($_SESSION['error_login']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CabinNest-Admin</title>
+    <title>CabinNest - Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/admin.css">
     <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="img/icono.png" type="image/png">
 </head>
 <body>
-    <section class="cuerpo">
+    <div class="cuerpo">
         <div class="caveza">
-            <img src="img/icono-largo.png" alt="">
-            <a href="index.html">Ir a la Pagina Web</a>
+            <img src="img/icono-largo.png">
+            <a href="index.php">Ir a la Pagina Web</a>
         </div>
         <div class="caja-iniciar">
             <div class="izq">
@@ -23,7 +37,7 @@
                     <h1>Panel Administrativo</h1>
                 </div>
                 <div class="img-caja">
-                    <img src="../img/f" alt="Cabaña en el bosque" class="cabin-img">
+                    <img src="subidas/cabanas/cabaña1.jpg" class="cabin-img">
                     <svg class="cabin-wave" viewBox="0 0 1440 150" preserveAspectRatio="none">
                         <path d="M45,150 C200,145 310,52 470,52 C680,52 930,118 1140,118 C1270,118 1360,98 1440,82 L1440,150 Z"></path>
                     </svg>
@@ -42,17 +56,27 @@
                         <p>Consulta <br> Reportes</p>
                     </div>
                 </div>
-                <img class="izq-footer" src="../img/fondo-caja1.jpg" alt="">
+                <img class="izq-footer" src="img/fondo-caja1.jpg" alt="">
             </div>
             <div class="der">
                 <div class="titulo">
                     <i class="fa-solid fa-gear"></i>
                     <h1>Iniciar Sesión - Administrador</h1>
                 </div>
-                <form class="formulario">
-                    <input type="text" placeholder="Correo Electrónico">
-                    <input type="password" name="" id="" placeholder="Contraseña">
-                    <button>
+
+                <?php if ($mensajeError !== ''): ?>
+                    <p style="width: 100%; background: #fbeae6; color: #c84b31; border: 1px solid rgba(200, 75, 49, 0.35); border-radius: 10px; padding: 9px 12px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-align: center;">
+                        <?= limpiarTexto($mensajeError) ?>
+                    </p>
+                <?php endif; ?>
+
+                <form class="formulario" action="acciones/iniciar_sesion.php" method="POST">
+                    <input type="hidden" name="token_csrf" value="<?= limpiarTexto($tokenCsrf) ?>">
+                    <input type="hidden" name="origen" value="admin">
+
+                    <input type="text" name="identificador" placeholder="Correo Electrónico o Documento" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <button type="submit">
                         <i class="fa-solid fa-right-to-bracket"></i>
                         <p>Iniciar Sesión</p>
                     </button>
@@ -63,8 +87,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <footer id="footer" aria-hidden="true">
+    </div>
+    <div id="footer">
         <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none">
             <defs>
                 <linearGradient id="gradiente-ola-login">
@@ -81,6 +105,6 @@
 
         <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="">
         <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="">
-    </footer>
+    </div>
 </body>
 </html>

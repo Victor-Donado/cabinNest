@@ -1,72 +1,49 @@
-/* ==========================================================================
-   1. VARIABLES Y RESET GLOBAL
-   ========================================================================== */
-:root {
-    --verde-oscuro: #2D3C23;
-    --naranja: #D16512;
-    --naranja-hover: #b8550b;
-    --crema-fondo: #FBF3E8;
-    --crema-panel: #F8EBD8;
-    --texto-oscuro: #1a1a1a;
-    --blanco: #FFFFFF;
-
-    --sombra-card: 0 10px 28px rgba(0, 0, 0, 0.14);
-    --sombra-boton: 0 4px 12px rgba(209, 101, 18, 0.28);
-    --transicion: all 0.25s ease;
-}
-
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Lora', serif;
 }
 
-body {
+body{
     overflow-x: hidden;
-    background-color: var(--crema-fondo);
-    color: var(--verde-oscuro);
+    background: #FBF3E8;
+    color: #2D3C23;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-a {
+a{
     text-decoration: none;
     cursor: pointer;
 }
 
-ul {
+ul{
     list-style: none;
 }
 
-/* ==========================================================================
-   2. CLASES BASE REUTILIZABLES (DRY)
-   ========================================================================== */
 .division-btn,
 #btn-iniciar,
-#btn-registrarse {
+#btn-registrarse{
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-weight: 700;
-    transition: var(--transicion);
+    font-weight: bold;
+    transition: 0.25s;
 }
 
 #btn-iniciar,
-#btn-registrarse {
+#btn-registrarse{
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #D16512;
+    color: white;
     border-radius: 40px;
     gap: 10px;
 }
-
-/* ==========================================================================
-   3. HEADER Y NAVEGACIÓN
-   ========================================================================== */
-#cabeza {
+/*=======================================*/
+#cabeza{
     width: 100%;
     position: absolute;
     top: 0;
@@ -74,7 +51,7 @@ ul {
     z-index: 10;
 }
 
-#menu {
+#menu{
     padding: 10px 32px 0;
     display: flex;
     justify-content: space-between;
@@ -86,20 +63,20 @@ ul {
     gap: 12px;
 }
 
-#icono-largo {
+#icono-largo{
     width: 230px;
     height: 58px;
     object-fit: contain;
 }
 
-#division {
+#division{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
 }
 
-.division-btn {
+.division-btn{
     background: none;
     border: 3px solid transparent;
     padding: 0 18px;
@@ -107,24 +84,24 @@ ul {
     border-radius: 45px;
     gap: 6px;
     font-size: 15px;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
     white-space: nowrap;
 }
 
-.division-btn i {
+.division-btn i{
     font-size: 17px;
 }
 
-.division-btn:hover {
-    border-color: var(--verde-oscuro);
+.division-btn:hover{
+    border-color: #2D3C23;
 }
 
-.a-activo {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.a-activo{
+    background: #2D3C23;
+    color: white;
 }
 
-#btn-iniciar {
+#btn-iniciar{
     padding: 0 24px;
     height: 45px;
     font-size: 15px;
@@ -132,18 +109,15 @@ ul {
     flex-shrink: 0;
 }
 
-#btn-iniciar i {
+#btn-iniciar i{
     font-size: 17px;
 }
 
-#btn-iniciar:hover {
+#btn-iniciar:hover{
     transform: scale(1.06);
 }
-
-/* ==========================================================================
-   4. CONTENIDO PRINCIPAL Y TARJETA DE REGISTRO
-   ========================================================================== */
-#cuerpo {
+/*=======================================*/
+#cuerpo{
     flex: 1;
     display: flex;
     justify-content: center;
@@ -153,24 +127,23 @@ ul {
     padding: 88px 24px 24px;
 }
 
-.registrarse-caja {
+.registrarse-caja{
     width: 100%;
     max-width: 1000px;
     min-height: 500px;
     overflow: hidden;
     display: flex;
     gap: 14px;
-    background: var(--blanco);
-    box-shadow: var(--sombra-card);
+    background: white;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
     border-radius: 30px;
-    border: 10px solid var(--blanco);
+    border: 10px solid white;
     z-index: 2;
 }
 
-/* --- Columna Izquierda: Beneficios --- */
-.caja1 {
+.caja1{
     width: 40%;
-    background: var(--crema-panel);
+    background: #F8EBD8;
     border-radius: 20px;
     overflow: hidden;
     display: flex;
@@ -178,26 +151,26 @@ ul {
     justify-content: space-between;
 }
 
-.caja1-contenido {
+.caja1-contenido{
     padding: 14px 16px 4px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.caja1 h1 {
+.caja1 h1{
     font-size: 27px;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.15;
 }
 
-.subtitulo-unete {
+.subtitulo-unete{
     font-size: 14.5px;
-    font-weight: 600;
+    font-weight: bold;
     line-height: 1.3;
 }
 
-.cabaña {
+.cabaña{
     width: 100%;
     height: 165px;
     object-fit: cover;
@@ -205,37 +178,36 @@ ul {
     display: block;
 }
 
-.cosas {
+.cosas{
     display: flex;
     flex-direction: column;
     gap: 6px;
     margin-top: 2px;
 }
 
-.apunte {
+.apunte{
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.apunte i {
+.apunte i{
     font-size: 24px;
     flex-shrink: 0;
 }
 
-.apunte span {
+.apunte span{
     font-size: 15px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
-.fondo {
+.fondo{
     width: 100%;
     display: block;
     object-fit: cover;
 }
 
-/* --- Columna Derecha: Formulario --- */
-.caja2 {
+.caja2{
     width: 60%;
     padding: 4px 12px 14px 4px;
     display: flex;
@@ -244,28 +216,28 @@ ul {
     gap: 14px;
 }
 
-.titulo {
+.titulo{
     width: 100%;
     display: flex;
     align-items: center;
     gap: 15px;
-    color: var(--blanco);
-    background: var(--verde-oscuro);
+    color: white;
+    background: #2D3C23;
     border-radius: 16px;
     height: 52px;
     padding: 0 20px;
 }
 
-.titulo i {
+.titulo i{
     font-size: 26px;
 }
 
-.titulo h2 {
+.titulo h2{
     font-size: 24px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
-#formulario {
+#formulario{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -274,253 +246,248 @@ ul {
     margin: auto 0;
 }
 
-.fila1 {
+.fila1{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
-#formulario input {
+#formulario input{
     width: 100%;
     height: 41px;
     padding: 0 12px;
     font-size: 15px;
-    color: var(--texto-oscuro);
-    background-color: var(--blanco);
+    color: #1a1a1a;
+    background: white;
     border: 2px solid rgba(209, 101, 18, 0.5);
     border-radius: 9px;
     outline: none;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: 0.25s;
 }
 
-#formulario input:focus {
-    border-color: var(--naranja);
+#formulario input:focus{
+    border-color: #D16512;
     box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.15);
 }
 
-/* Ocultar flechas del input numérico de C.C. */
 #formulario input[type="number"]::-webkit-inner-spin-button,
-#formulario input[type="number"]::-webkit-outer-spin-button {
+#formulario input[type="number"]::-webkit-outer-spin-button{
     -webkit-appearance: none;
     margin: 0;
 }
-#formulario input[type="number"] {
+
+#formulario input[type="number"]{
     -moz-appearance: textfield;
 }
 
-#btn-registrarse {
+#btn-registrarse{
     height: 44px;
     width: 92%;
     font-size: 18px;
     margin-top: 4px;
-    box-shadow: var(--sombra-boton);
+    box-shadow: 0 4px 12px rgba(209, 101, 18, 0.28);
 }
 
-#btn-registrarse:hover {
-    background: var(--naranja-hover);
+#btn-registrarse:hover{
+    background: #b8550b;
     transform: scale(1.02);
 }
 
-.iniciar-sesion {
+.iniciar-sesion{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     font-size: 15px;
-    color: var(--texto-oscuro);
+    color: #1a1a1a;
 }
 
-.iniciar-sesion a {
-    color: var(--verde-oscuro);
-    font-weight: 700;
+.iniciar-sesion a{
+    color: #2D3C23;
+    font-weight: bold;
 }
 
-.iniciar-sesion a:hover {
+.iniciar-sesion a:hover{
     text-decoration: underline;
-    color: var(--naranja);
+    color: #D16512;
 }
-
-/* ==========================================================================
-   5. DECORACIÓN INFERIOR (OLAS Y PLANTAS)
-   ========================================================================== */
-#footer {
+/*=======================================*/
+#footer{
     position: relative;
     width: 100%;
     margin-top: auto;
     pointer-events: none;
 }
 
-.ola-animada {
+.ola-animada{
     display: block;
     width: 100%;
     height: 50px;
 }
 
-.ola-capa-1 {
+.ola-capa-1{
     animation: moverOla 12s linear infinite;
 }
 
-.ola-capa-2 {
+.ola-capa-2{
     animation: moverOla 15s linear infinite -2s;
 }
 
-@keyframes moverOla {
+@keyframes moverOla{
     from { transform: translateX(-90px); }
     to   { transform: translateX(85px); }
 }
 
-.planta-decorativa {
+.planta-decorativa{
     position: absolute;
     height: 145px;
     bottom: 0;
 }
 
-#planta1 { left: -25px; }
-#planta2 { right: -25px; transform: scaleX(-1); }
-
-/* ==========================================================================
-   6. DISEÑO RESPONSIVO (TABLETS Y TELÉFONOS)
-   ========================================================================== */
-@media (max-width: 1100px) {
-    #menu {
+#planta1{ left: -25px; }
+#planta2{ right: -25px; transform: scaleX(-1); }
+/*=======================================*/
+@media (max-width: 1100px){
+    #menu{
         padding: 10px 20px 0;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 185px;
         height: 46px;
     }
 
-    #division {
+    #division{
         gap: 6px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
     }
 
-    #btn-iniciar {
+    #btn-iniciar{
         padding: 0 16px;
         height: 40px;
         font-size: 14px;
     }
 }
 
-@media (max-width: 960px) {
-    #menu {
+@media (max-width: 960px){
+    #menu{
         flex-wrap: wrap;
         height: auto;
         padding: 8px 18px 0;
         gap: 8px;
     }
 
-    .logo-link { order: 1; }
-    #btn-iniciar { order: 2; }
+    .logo-link{ order: 1; }
+    #btn-iniciar{ order: 2; }
 
-    #icono-largo {
+    #icono-largo{
         width: 180px;
         height: 44px;
     }
 
-    #division {
+    #division{
         order: 3;
         width: 100%;
         padding-top: 6px;
         border-top: 1px solid rgba(45, 60, 35, 0.15);
     }
 
-    .division-btn {
+    .division-btn{
         height: 36px;
         padding: 0 12px;
         font-size: 14px;
     }
 
-    #cuerpo {
+    #cuerpo{
         padding-top: 108px;
         background-size: auto 260px;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 105px;
     }
 }
 
-@media (max-width: 680px) {
-    #icono-largo {
+@media (max-width: 680px){
+    #icono-largo{
         width: 155px;
         height: 38px;
     }
 
-    #btn-iniciar {
+    #btn-iniciar{
         padding: 0 14px;
         height: 36px;
         font-size: 13px;
     }
 
-    #division {
+    #division{
         gap: 2px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 8px;
         height: 34px;
         font-size: 12.5px;
         gap: 4px;
     }
 
-    .division-btn i {
+    .division-btn i{
         font-size: 13px;
     }
 
-    #cuerpo {
+    #cuerpo{
         padding: 96px 14px 20px;
         background-size: auto 235px;
     }
 
-    .registrarse-caja {
+    .registrarse-caja{
         flex-direction: column;
         border-width: 8px;
         border-radius: 24px;
     }
 
     .caja1,
-    .caja2 {
+    .caja2{
         width: 100%;
     }
+
     .caja1-contenido{
         display: none;
     }
 
-    .caja1 h1 {
+    .caja1 h1{
         font-size: 24px;
     }
 
-    .cabaña {
+    .cabaña{
         height: 145px;
     }
 
-    .fondo {
+    .fondo{
         max-height: 75px;
     }
 
-    .caja2 {
+    .caja2{
         padding: 6px 4px 12px;
     }
 
-    .fila1 {
+    .fila1{
         grid-template-columns: 1fr;
         gap: 14px;
     }
 
-    #btn-registrarse {
+    #btn-registrarse{
         width: 100%;
         font-size: 17px;
     }
 
-    .planta-decorativa {
+    .planta-decorativa{
         height: 75px;
         opacity: 0.8;
     }

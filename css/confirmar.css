@@ -1,50 +1,25 @@
-/* ==========================================================================
-   1. VARIABLES Y RESET GLOBAL
-   ========================================================================== */
-:root {
-    --verde-oscuro: #2D3C23;
-    --verde-tarjeta: #2d4323;
-    --verde-suave: #EEF2E3;
-    --naranja: #D16512;
-    --naranja-vivo: #E25E14;
-    --crema-fondo: #FBF3E8;
-    --crema-tarjeta: #FBF6EE;
-    --borde-suave: #EADFD0;
-    --gris-texto: #5c5650;
-    --texto-oscuro: #262320;
-    --blanco: #FFFFFF;
-
-    --sombra-card: 0 10px 28px rgba(45, 60, 35, 0.12);
-    --sombra-suave: 2px 2px 6px rgba(0, 0, 0, 0.15);
-    --sombra-boton: 0 6px 16px rgba(209, 101, 18, 0.32);
-    --transicion: all 0.3s ease;
-}
-
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Lora', serif;
 }
 
-body {
+body{
     overflow-x: hidden;
-    background-color: var(--crema-fondo);
-    color: var(--verde-oscuro);
+    background: #FBF3E8;
+    color: #2D3C23;
 }
 
-a {
+a{
     text-decoration: none;
     cursor: pointer;
 }
 
-/* ==========================================================================
-   2. CLASES BASE REUTILIZABLES (DRY)
-   ========================================================================== */
 .division-btn,
 #btn-iniciar,
 #confirmar-btn,
-.fechas-icono {
+.fechas-icono{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,25 +27,22 @@ a {
 
 .division-btn,
 #btn-iniciar,
-#confirmar-btn {
+#confirmar-btn{
     cursor: pointer;
     border: none;
     font-weight: bolder;
-    transition: var(--transicion);
+    transition: 0.3s;
 }
 
 #btn-iniciar,
-#confirmar-btn {
-    background: var(--naranja);
-    color: var(--blanco);
+#confirmar-btn{
+    background: #D16512;
+    color: white;
     border-radius: 40px;
     gap: 10px;
 }
-
-/* ==========================================================================
-   3. HEADER Y NAVEGACIÓN
-   ========================================================================== */
-#cabeza {
+/*=======================================*/
+#cabeza{
     width: 100%;
     position: absolute;
     top: 0;
@@ -78,7 +50,7 @@ a {
     z-index: 10;
 }
 
-#menu {
+#menu{
     padding: 10px 32px 0;
     display: flex;
     justify-content: space-between;
@@ -90,20 +62,20 @@ a {
     gap: 12px;
 }
 
-#icono-largo {
+#icono-largo{
     width: 230px;
     height: 58px;
     object-fit: contain;
 }
 
-#division {
+#division{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
 }
 
-.division-btn {
+.division-btn{
     background: none;
     border: 3px solid transparent;
     padding: 0 18px;
@@ -111,40 +83,37 @@ a {
     border-radius: 45px;
     gap: 6px;
     font-size: 15px;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
     white-space: nowrap;
 }
 
-.division-btn i {
+.division-btn i{
     font-size: 17px;
 }
 
-.division-btn:hover {
-    border-color: var(--verde-oscuro);
+.division-btn:hover{
+    border-color: #2D3C23;
 }
 
-.a-activo {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.a-activo{
+    background: #2D3C23;
+    color: white;
 }
 
-#btn-iniciar {
+#btn-iniciar{
     padding: 0 24px;
     height: 45px;
     font-size: 15px;
     flex-shrink: 0;
 }
 
-.btn-oculto {
+.btn-oculto{
     opacity: 0;
     pointer-events: none;
     cursor: default;
 }
-
-/* ==========================================================================
-   4. LAYOUT PRINCIPAL DE CONFIRMACIÓN
-   ========================================================================== */
-#confirmar {
+/*=======================================*/
+#confirmar{
     display: flex;
     justify-content: center;
     background: url('../img/cabeza-reserva.jpg') top center / 100% auto no-repeat;
@@ -153,7 +122,7 @@ a {
     padding: 105px 24px 50px;
 }
 
-.confirmar-div {
+.confirmar-div{
     width: 100%;
     max-width: 1220px;
     display: flex;
@@ -162,413 +131,400 @@ a {
     gap: 28px;
 }
 
-/* ==========================================================================
-   5. COLUMNA IZQUIERDA: FORMULARIO DEL HUÉSPED
-   ========================================================================== */
-.registrar {
+.registrar{
     flex: 1;
     max-width: 740px;
 }
 
-.registrar-header {
+.registrar-header{
     margin-bottom: 16px;
 }
 
-.registrar h1 {
-    color: var(--verde-oscuro);
+.registrar h1{
+    color: #2D3C23;
     font-size: 42px;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.15;
 }
 
-.subtitulo-confirmar {
+.subtitulo-confirmar{
     font-size: 17px;
-    font-weight: 600;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
     margin-top: 4px;
 }
 
-#informacion-huesped {
+#informacion-huesped{
     width: 100%;
-    background: var(--blanco);
-    box-shadow: var(--sombra-card);
+    background: white;
+    box-shadow: 0 10px 28px rgba(45, 60, 35, 0.12);
     border: 1px solid rgba(45, 60, 35, 0.1);
     padding: 22px 24px 26px;
     border-radius: 20px;
 }
 
-.huesped-titulo {
+.huesped-titulo{
     display: flex;
     align-items: center;
     gap: 10px;
     padding-bottom: 14px;
     margin-bottom: 16px;
-    border-bottom: 1px solid var(--borde-suave);
+    border-bottom: 1px solid #EADFD0;
 }
 
-.huesped-titulo i {
-    color: var(--naranja);
+.huesped-titulo i{
+    color: #D16512;
     font-size: 24px;
 }
 
-.huesped-titulo h2 {
+.huesped-titulo h2{
     font-size: 22px;
-    color: var(--verde-oscuro);
+    color: #2D3C23;
 }
 
-.formulario {
+.formulario{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px 20px;
     width: 100%;
 }
 
-.campo {
+.campo{
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.campo label {
+.campo label{
     font-size: 14.5px;
-    font-weight: 700;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
 }
 
-.formulario input {
+.formulario input{
     width: 100%;
     padding: 0 12px;
     height: 42px;
     font-size: 15px;
-    color: var(--texto-oscuro);
-    background-color: var(--blanco);
+    color: #262320;
+    background: white;
     border: 2px solid rgba(209, 101, 18, 0.45);
     border-radius: 10px;
     outline: none;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: 0.25s;
 }
 
-.formulario input:focus {
-    border-color: var(--naranja);
+.formulario input:focus{
+    border-color: #D16512;
     box-shadow: 0 0 0 4px rgba(209, 101, 18, 0.14);
 }
-
-/* ==========================================================================
-   6. COLUMNA DERECHA: TARJETA RESUMEN DE LA CABAÑA (REDISEÑADA)
-   ========================================================================== */
-.cabaña {
+/*=======================================*/
+.cabaña{
     width: 375px;
     flex-shrink: 0;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(45, 60, 35, 0.12);
-    box-shadow: var(--sombra-card);
+    box-shadow: 0 10px 28px rgba(45, 60, 35, 0.12);
     border-radius: 22px;
     overflow: hidden;
 }
 
-.cabana-imagen-wrapper {
+.cabana-imagen-wrapper{
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
 }
 
-.cabana-imagen-wrapper img {
+.cabana-imagen-wrapper img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.45s ease;
+    transition: 0.45s;
 }
 
-.cabaña:hover .cabana-imagen-wrapper img {
+.cabaña:hover .cabana-imagen-wrapper img{
     transform: scale(1.04);
 }
 
-.cabana-contenido {
+.cabana-contenido{
     padding: 18px 20px 22px;
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.cabana-encabezado {
+.cabana-encabezado{
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--borde-suave);
+    border-bottom: 1px solid #EADFD0;
 }
 
-.cabana-encabezado h3 {
-    color: var(--verde-tarjeta);
-    font-weight: 700;
+.cabana-encabezado h3{
+    color: #2d4323;
+    font-weight: bold;
     font-size: 21px;
     margin-bottom: 4px;
 }
 
-.puntuacion {
+.puntuacion{
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.puntuacion i {
-    color: var(--naranja);
+.puntuacion i{
+    color: #D16512;
     font-size: 14px;
 }
 
-.puntuacion p {
-    color: var(--texto-oscuro);
+.puntuacion p{
+    color: #262320;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
-.puntuacion span {
-    color: var(--gris-texto);
-    font-weight: 500;
+.puntuacion span{
+    color: #5c5650;
 }
 
-/* Bloque de fechas y huéspedes */
-.fechas-div {
+.fechas-div{
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--crema-tarjeta);
-    border: 1px solid var(--borde-suave);
+    background: #FBF6EE;
+    border: 1px solid #EADFD0;
     border-radius: 14px;
     padding: 12px 14px;
 }
 
-.fechas-icono {
+.fechas-icono{
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: var(--verde-suave);
-    color: var(--verde-tarjeta);
+    background: #EEF2E3;
+    color: #2d4323;
     font-size: 18px;
     flex-shrink: 0;
 }
 
-.fechas {
+.fechas{
     flex: 1;
     min-width: 0;
 }
 
-.fechas-etiqueta {
+.fechas-etiqueta{
     display: block;
     font-size: 12px;
-    color: var(--gris-texto);
-    font-weight: 600;
+    color: #5c5650;
+    font-weight: bold;
 }
 
-#fechas-reservadas {
+#fechas-reservadas{
     font-size: 13.5px;
-    font-weight: 700;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
     margin-top: 2px;
 }
 
-.badge-huespedes {
-    background: var(--blanco);
-    border: 1px solid var(--borde-suave);
-    color: var(--verde-oscuro);
+.badge-huespedes{
+    background: white;
+    border: 1px solid #EADFD0;
+    color: #2D3C23;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     padding: 5px 10px;
     border-radius: 20px;
     white-space: nowrap;
 }
 
-.badge-huespedes i {
-    color: var(--naranja);
+.badge-huespedes i{
+    color: #D16512;
     margin-right: 3px;
 }
 
-/* Resumen de precio total */
-.total {
+.total{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--verde-suave);
+    background: #EEF2E3;
     border: 1px solid rgba(45, 60, 35, 0.14);
     border-radius: 14px;
     padding: 12px 16px;
 }
 
-.total-etiqueta {
+.total-etiqueta{
     display: block;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    color: var(--gris-texto);
+    color: #5c5650;
 }
 
-.total-desglose p {
+.total-desglose p{
     font-size: 14px;
-    font-weight: 600;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #2D3C23;
     margin-top: 2px;
 }
 
-.total-monto {
+.total-monto{
     font-size: 26px;
-    font-weight: 700;
-    color: var(--verde-tarjeta);
+    font-weight: bold;
+    color: #2d4323;
 }
 
-/* Botón Confirmar Reserva */
-#confirmar-btn {
+#confirmar-btn{
     width: 100%;
     height: 48px;
     font-size: 16px;
-    box-shadow: var(--sombra-boton);
+    box-shadow: 0 6px 16px rgba(209, 101, 18, 0.32);
 }
 
-#confirmar-btn i {
+#confirmar-btn i{
     font-size: 18px;
 }
 
-#confirmar-btn:hover {
-    background: var(--naranja-vivo);
+#confirmar-btn:hover{
+    background: #E25E14;
     transform: translateY(-2px);
 }
-
-/* ==========================================================================
-   7. DISEÑO RESPONSIVO (TABLETS Y TELÉFONOS)
-   ========================================================================== */
-@media (max-width: 1150px) {
-    #menu {
+/*=======================================*/
+@media (max-width: 1150px){
+    #menu{
         padding: 10px 20px 0;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 185px;
         height: 46px;
     }
 
-    #division {
+    #division{
         gap: 6px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
     }
 
-    .confirmar-div {
+    .confirmar-div{
         flex-direction: column;
         align-items: center;
     }
 
-    .registrar {
+    .registrar{
         width: 100%;
     }
 
-    .cabaña {
+    .cabaña{
         width: 100%;
         max-width: 520px;
     }
 }
 
-@media (max-width: 960px) {
-    #menu {
+@media (max-width: 960px){
+    #menu{
         flex-wrap: wrap;
         height: auto;
         padding: 8px 16px 0;
         gap: 6px;
     }
 
-    .logo-link {
+    .logo-link{
         margin: 0 auto;
     }
 
-    #icono-largo {
+    #icono-largo{
         width: 180px;
         height: 44px;
     }
 
-    .btn-oculto {
+    .btn-oculto{
         display: none;
     }
 
-    #division {
+    #division{
         width: 100%;
         padding-top: 6px;
         border-top: 1px solid rgba(45, 60, 35, 0.15);
     }
 
-    .division-btn {
+    .division-btn{
         height: 36px;
         padding: 0 12px;
         font-size: 14px;
     }
 
-    #confirmar {
+    #confirmar{
         padding-top: 110px;
         background-size: auto 260px;
     }
 
-    .registrar-header {
+    .registrar-header{
         text-align: center;
         margin-bottom: 12px;
     }
 
-    .registrar h1 {
+    .registrar h1{
         font-size: 34px;
-        -webkit-text-stroke: 6px var(--crema-fondo);
+        -webkit-text-stroke: 6px #FBF3E8;
         paint-order: stroke fill;
         stroke-linejoin: round;
     }
 
-    .subtitulo-confirmar {
-        -webkit-text-stroke: 4px var(--crema-fondo);
+    .subtitulo-confirmar{
+        -webkit-text-stroke: 4px #FBF3E8;
         paint-order: stroke fill;
         stroke-linejoin: round;
     }
 }
 
-@media (max-width: 600px) {
-    #icono-largo {
+@media (max-width: 600px){
+    #icono-largo{
         width: 160px;
         height: 38px;
     }
 
-    #division {
+    #division{
         gap: 2px;
     }
 
-    .division-btn {
+    .division-btn{
         padding: 0 8px;
         height: 34px;
         font-size: 12.5px;
         gap: 4px;
     }
 
-    .division-btn i {
+    .division-btn i{
         font-size: 13px;
     }
 
-    #confirmar {
+    #confirmar{
         padding: 98px 14px 40px;
         background-size: auto 235px;
     }
 
-    .registrar h1 {
+    .registrar h1{
         font-size: 27px;
     }
 
-    .subtitulo-confirmar {
+    .subtitulo-confirmar{
         font-size: 14.5px;
     }
 
-    .formulario {
+    .formulario{
         grid-template-columns: 1fr;
     }
 
-    .fechas-div {
+    .fechas-div{
         flex-wrap: wrap;
     }
 
-    .badge-huespedes {
+    .badge-huespedes{
         margin-left: auto;
     }
 }

@@ -1,30 +1,4 @@
-/* ==========================================================================
-   1. VARIABLES Y RESET GLOBAL
-   ========================================================================== */
-:root {
-    --verde-oscuro: #304026;
-    --verde-bosque: #22301a;
-    --verde-suave: #e9f0e4;
-    --naranja: #DF6D10;
-    --naranja-hover: #c55c09;
-    --naranja-suave: #f9ebe0;
-    --rojo-alerta: #c84b31;
-    --rojo-suave: #fbeae6;
-    --crema-fondo: #F8EFDE;
-    --crema-fila: #fcf9f3;
-    --borde-suave: #ebe3d5;
-    --gris-texto: #6b655e;
-    --texto-oscuro: #1f241d;
-    --blanco: #FFFFFF;
-
-    --sombra-menu: 2px 0 14px rgba(0, 0, 0, 0.18);
-    --sombra-card: 0 6px 18px rgba(48, 64, 38, 0.08);
-    --sombra-modal: 0 18px 40px rgba(0, 0, 0, 0.28);
-    --sombra-boton: 0 4px 12px rgba(223, 109, 16, 0.3);
-    --transicion: all 0.25s ease;
-}
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,29 +6,26 @@
 }
 
 html,
-body {
+body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: var(--crema-fondo);
-    color: var(--texto-oscuro);
+    background: #F8EFDE;
+    color: #1f241d;
     display: flex;
 }
 
-a {
+a{
     text-decoration: none;
 }
 
-/* ==========================================================================
-   2. CLASES BASE REUTILIZABLES (DRY)
-   ========================================================================== */
 .menu .img-cabeza,
 .botones a,
 #cerrar-sesion,
 .btn-reservas,
 .avatar-iniciales,
 .btn-cerrar-modal,
-.btn-cerrar-menu {
+.btn-cerrar-menu{
     display: flex;
     align-items: center;
 }
@@ -64,7 +35,7 @@ a {
 .btn-reservas,
 .avatar-iniciales,
 .btn-cerrar-modal,
-.btn-cerrar-menu {
+.btn-cerrar-menu{
     justify-content: center;
 }
 
@@ -73,55 +44,52 @@ a {
 .btn-reservas,
 .btn-cerrar-modal,
 .btn-cerrar-menu,
-.btn-hamburguesa {
+.btn-hamburguesa{
     cursor: pointer;
-    transition: var(--transicion);
+    transition: 0.25s;
 }
-
-/* ==========================================================================
-   3. MENÚ LATERAL Y CONTROLES DE DESPLIEGUE
-   ========================================================================== */
+/*=======================================*/
 .menu-checkbox,
 .menu-movil-top,
 .menu-overlay,
-.btn-hamburguesa {
+.btn-hamburguesa{
     display: none;
 }
 
-.menu {
+.menu{
     width: 200px;
     flex-shrink: 0;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--verde-oscuro);
-    box-shadow: var(--sombra-menu);
+    background: #304026;
+    box-shadow: 2px 0 14px rgba(0, 0, 0, 0.18);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 95;
 }
 
-.menu .img-cabeza {
+.menu .img-cabeza{
     width: 100%;
-    background: var(--blanco);
+    background: white;
     height: 78px;
     padding: 8px 12px;
     border-radius: 0 0 20px 20px;
     flex-shrink: 0;
 }
 
-.img-cabeza a {
+.img-cabeza a{
     display: flex;
     justify-content: center;
 }
 
-.img-cabeza img {
+.img-cabeza img{
     width: 88%;
     height: auto;
     object-fit: contain;
 }
 
-.botones {
+.botones{
     width: 84%;
     margin: auto;
     display: flex;
@@ -129,42 +97,39 @@ a {
     gap: 8px;
 }
 
-.botones a {
-    color: var(--blanco);
-    font-weight: 700;
+.botones a{
+    color: white;
+    font-weight: bold;
     font-size: 16px;
     padding: 8px 14px;
     border-radius: 50px;
     gap: 10px;
 }
 
-.botones a i {
+.botones a i{
     width: 18px;
     text-align: center;
     font-size: 15px;
 }
 
-.botones a:hover:not(.activo) {
+.botones a:hover:not(.activo){
     background: rgba(255, 255, 255, 0.12);
     transform: translateX(3px);
 }
 
-.botones a.activo {
-    background: var(--naranja);
-    box-shadow: var(--sombra-boton);
+.botones a.activo{
+    background: #DF6D10;
+    box-shadow: 0 4px 12px rgba(223, 109, 16, 0.3);
 }
 
-.img-footer {
+.img-footer{
     width: 100%;
     display: block;
     object-fit: cover;
     flex-shrink: 0;
 }
-
-/* ==========================================================================
-   4. CONTENEDOR PRINCIPAL Y CABECERA SUPERIOR
-   ========================================================================== */
-.dashboard {
+/*=======================================*/
+.dashboard{
     flex: 1;
     min-width: 0;
     height: 100vh;
@@ -173,7 +138,7 @@ a {
     flex-direction: column;
 }
 
-.cabeza-dashboard {
+.cabeza-dashboard{
     width: 100%;
     min-height: 76px;
     flex-shrink: 0;
@@ -185,48 +150,45 @@ a {
     padding: 10px 22px;
 }
 
-.cabeza-txt {
+.cabeza-txt{
     flex: 1;
     min-width: 0;
 }
 
-.cabeza-txt h1 {
+.cabeza-txt h1{
     font-size: 27px;
-    font-weight: 700;
-    color: var(--verde-bosque);
+    font-weight: bold;
+    color: #22301a;
     line-height: 1.15;
 }
 
-.cabeza-txt p {
+.cabeza-txt p{
     font-size: 14.5px;
-    font-weight: 600;
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    color: #304026;
     margin-top: 2px;
 }
 
-#cerrar-sesion {
+#cerrar-sesion{
     font-size: 14.5px;
-    font-weight: 700;
-    color: var(--blanco);
+    font-weight: bold;
+    color: white;
     border: none;
     border-radius: 999px;
     padding: 9px 18px;
-    background: var(--naranja);
+    background: #DF6D10;
     gap: 8px;
     white-space: nowrap;
     flex-shrink: 0;
-    box-shadow: var(--sombra-boton);
+    box-shadow: 0 4px 12px rgba(223, 109, 16, 0.3);
 }
 
-#cerrar-sesion:hover {
-    background: var(--naranja-hover);
+#cerrar-sesion:hover{
+    background: #c55c09;
     transform: scale(1.03);
 }
-
-/* ==========================================================================
-   5. CAJA DE USUARIOS INSCRITOS
-   ========================================================================== */
-.dashboard-contenido {
+/*=======================================*/
+.dashboard-contenido{
     flex: 1;
     min-height: 0;
     padding: 14px 22px 16px;
@@ -235,57 +197,57 @@ a {
     overflow: hidden;
 }
 
-.usuarios-caja {
+.usuarios-caja{
     flex: 1;
     min-height: 0;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(48, 64, 38, 0.12);
     border-radius: 18px;
-    box-shadow: var(--sombra-card);
+    box-shadow: 0 6px 18px rgba(48, 64, 38, 0.08);
     padding: 14px 18px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.usuarios-barra {
+.usuarios-barra{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--borde-suave);
+    border-bottom: 1px solid #ebe3d5;
     flex-shrink: 0;
 }
 
-.usuarios-titulo {
+.usuarios-titulo{
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--verde-bosque);
+    color: #22301a;
 }
 
-.usuarios-titulo i {
+.usuarios-titulo i{
     font-size: 18px;
-    color: var(--verde-oscuro);
+    color: #304026;
 }
 
-.usuarios-titulo h2 {
+.usuarios-titulo h2{
     font-size: 19px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
-.contador-usuarios {
+.contador-usuarios{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 600;
-    background: var(--verde-suave);
-    color: var(--verde-oscuro);
+    font-weight: bold;
+    background: #e9f0e4;
+    color: #304026;
     padding: 3px 10px;
     border-radius: 999px;
 }
 
 .tabla-encabezado,
-.usuario-item {
+.usuario-item{
     display: grid;
     grid-template-columns: 1.15fr 1fr 1.65fr 1.1fr 125px;
     align-items: center;
@@ -293,27 +255,26 @@ a {
     padding: 0 12px;
 }
 
-
-.tabla-encabezado {
+.tabla-encabezado{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    color: var(--gris-texto);
-    background: var(--crema-fila);
+    color: #6b655e;
+    background: #fcf9f3;
     border-radius: 10px;
     height: 36px;
     margin-top: 10px;
     flex-shrink: 0;
 }
 
-.col-accion {
+.col-accion{
     display: flex;
     justify-content: flex-end;
 }
 
-.lista-usuarios {
+.lista-usuarios{
     flex: 1;
     min-height: 0;
     overflow-y: auto;
@@ -323,97 +284,94 @@ a {
     padding-right: 4px;
 }
 
-.lista-usuarios::-webkit-scrollbar {
+.lista-usuarios::-webkit-scrollbar{
     width: 6px;
 }
 
-.lista-usuarios::-webkit-scrollbar-track {
-    background: var(--crema-fila);
+.lista-usuarios::-webkit-scrollbar-track{
+    background: #fcf9f3;
     border-radius: 10px;
 }
 
-.lista-usuarios::-webkit-scrollbar-thumb {
+.lista-usuarios::-webkit-scrollbar-thumb{
     background: rgba(48, 64, 38, 0.25);
     border-radius: 10px;
 }
 
-.usuario-item {
+.usuario-item{
     min-height: 48px;
     flex-shrink: 0;
     padding-top: 7px;
     padding-bottom: 7px;
-    border-bottom: 1px solid var(--borde-suave);
-    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #ebe3d5;
+    transition: 0.2s;
 }
 
-.usuario-item:last-child {
+.usuario-item:last-child{
     border-bottom: none;
 }
 
-.usuario-item:hover {
-    background-color: var(--crema-fila);
+.usuario-item:hover{
+    background: #fcf9f3;
     border-radius: 10px;
 }
 
-.dato-usuario {
+.dato-usuario{
     font-size: 14px;
-    color: var(--texto-oscuro);
+    color: #1f241d;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.dato-nombre {
+.dato-nombre{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.avatar-iniciales {
+.avatar-iniciales{
     width: 32px;
     height: 32px;
-    border-radius: 50%;
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+    border-radius: 100%;
+    background: #304026;
+    color: white;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: bold;
     flex-shrink: 0;
 }
 
-.avatar-iniciales.naranja {
-    background: var(--naranja);
+.avatar-iniciales.naranja{
+    background: #DF6D10;
 }
 
 .dato-correo,
-.dato-telefono {
+.dato-telefono{
     font-family: 'Inter', sans-serif;
     font-size: 13.5px;
-    color: var(--gris-texto);
+    color: #6b655e;
 }
 
-.btn-reservas {
+.btn-reservas{
     border: none;
-    background: var(--naranja);
-    color: var(--blanco);
+    background: #DF6D10;
+    color: white;
     height: 32px;
     padding: 0 14px;
     border-radius: 999px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: bold;
     gap: 6px;
     box-shadow: 0 3px 8px rgba(223, 109, 16, 0.25);
 }
 
-.btn-reservas:hover {
-    background: var(--naranja-hover);
+.btn-reservas:hover{
+    background: #c55c09;
     transform: translateY(-1px);
 }
-
-/* ==========================================================================
-   6. VENTANA MODAL COMPACTA DE RESERVAS
-   ========================================================================== */
-.modal-fondo {
+/*=======================================*/
+.modal-fondo{
     position: fixed;
     inset: 0;
     background: rgba(24, 32, 19, 0.52);
@@ -425,38 +383,38 @@ a {
     z-index: 100;
 }
 
-.modal-fondo.activo {
+.modal-fondo.activo{
     display: flex;
     animation: aparecerFondo 0.2s ease;
 }
 
-@keyframes aparecerFondo {
+@keyframes aparecerFondo{
     from { opacity: 0; }
     to   { opacity: 1; }
 }
 
-.modal-ventana {
+.modal-ventana{
     width: 100%;
     max-width: 470px;
     max-height: 75vh;
-    background: var(--blanco);
+    background: white;
     border: 1px solid rgba(48, 64, 38, 0.16);
     border-radius: 20px;
-    box-shadow: var(--sombra-modal);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     animation: subirVentana 0.22s ease;
 }
 
-@keyframes subirVentana {
+@keyframes subirVentana{
     from { transform: translateY(10px) scale(0.98); opacity: 0; }
     to   { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-.modal-encabezado {
-    background: var(--verde-oscuro);
-    color: var(--blanco);
+.modal-encabezado{
+    background: #304026;
+    color: white;
     padding: 14px 18px;
     display: flex;
     align-items: center;
@@ -464,39 +422,39 @@ a {
     flex-shrink: 0;
 }
 
-.btn-cerrar-modal {
+.btn-cerrar-modal{
     width: 34px;
     height: 34px;
-    border-radius: 50%;
+    border-radius: 100%;
     border: none;
     background: rgba(255, 255, 255, 0.16);
-    color: var(--blanco);
+    color: white;
     font-size: 16px;
     flex-shrink: 0;
 }
 
-.btn-cerrar-modal:hover {
-    background: var(--naranja);
+.btn-cerrar-modal:hover{
+    background: #DF6D10;
     transform: scale(1.06);
 }
 
-.modal-titulo-grupo {
+.modal-titulo-grupo{
     min-width: 0;
 }
 
-.modal-titulo-grupo h3 {
+.modal-titulo-grupo h3{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.2;
 }
 
-.modal-titulo-grupo span {
+.modal-titulo-grupo span{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.8);
 }
 
-.modal-cuerpo {
+.modal-cuerpo{
     padding: 16px 18px;
     overflow-y: auto;
     display: flex;
@@ -504,9 +462,9 @@ a {
     gap: 12px;
 }
 
-.reserva-modal-item {
-    background: var(--crema-fila);
-    border: 1px solid var(--borde-suave);
+.reserva-modal-item{
+    background: #fcf9f3;
+    border: 1px solid #ebe3d5;
     border-radius: 14px;
     padding: 12px 14px;
     display: flex;
@@ -514,65 +472,60 @@ a {
     gap: 6px;
 }
 
-.reserva-modal-top {
+.reserva-modal-top{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
 
-.reserva-modal-top strong {
+.reserva-modal-top strong{
     font-size: 15.5px;
-    color: var(--verde-bosque);
+    color: #22301a;
 }
 
-.badge-estado {
+.badge-estado{
     font-family: 'Inter', sans-serif;
     font-size: 11.5px;
-    font-weight: 700;
+    font-weight: bold;
     padding: 3px 10px;
     border-radius: 999px;
 }
 
-.badge-estado.activa {
-    background: var(--naranja-suave);
-    color: var(--naranja);
+.badge-estado.activa{
+    background: #f9ebe0;
+    color: #DF6D10;
 }
 
-.badge-estado.completada {
-    background: var(--verde-suave);
-    color: var(--verde-oscuro);
+.badge-estado.completada{
+    background: #e9f0e4;
+    color: #304026;
 }
 
-.badge-estado.cancelada {
-    background: var(--rojo-suave);
-    color: var(--rojo-alerta);
+.badge-estado.cancelada{
+    background: #fbeae6;
+    color: #c84b31;
 }
 
-.reserva-modal-detalle {
+.reserva-modal-detalle{
     font-family: 'Inter', sans-serif;
     font-size: 12.5px;
-    color: var(--gris-texto);
+    color: #6b655e;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.reserva-modal-detalle i {
-    color: var(--naranja);
+.reserva-modal-detalle i{
+    color: #DF6D10;
 }
-
-/* ==========================================================================
-   7. MENÚ DESPLEGABLE RESPONSIVO (<= 740px)
-   ========================================================================== */
-@media (max-width: 740px) {
-    /* Ocultar la imagen del logo y la ilustración del pie del menú */
+/*=======================================*/
+@media (max-width: 740px){
     .menu .img-cabeza{
         display: none;
     }
 
-    /* Botón hamburguesa de 3 líneas verdes en la cabecera */
-    .btn-hamburguesa {
+    .btn-hamburguesa{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -582,20 +535,19 @@ a {
         user-select: none;
     }
 
-    .btn-hamburguesa span {
+    .btn-hamburguesa span{
         display: block;
         width: 100%;
         height: 4.5px;
-        background-color: var(--verde-oscuro);
+        background: #304026;
         border-radius: 6px;
     }
 
-    .btn-hamburguesa:hover span {
-        background-color: var(--naranja);
+    .btn-hamburguesa:hover span{
+        background: #DF6D10;
     }
 
-    /* Panel lateral oculto que se despliega desde la izquierda */
-    .menu {
+    .menu{
         position: fixed;
         top: 0;
         left: -250px;
@@ -603,46 +555,45 @@ a {
         height: 100vh;
         justify-content: flex-start;
         padding: 16px 0 24px;
-        transition: left 0.3s ease;
+        transition: 0.3s;
     }
 
-    .menu-movil-top {
+    .menu-movil-top{
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 18px 14px;
         margin-bottom: 14px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-        color: var(--blanco);
+        color: white;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: bold;
     }
 
-    .btn-cerrar-menu {
+    .btn-cerrar-menu{
         width: 32px;
         height: 32px;
-        border-radius: 50%;
+        border-radius: 100%;
         background: rgba(255, 255, 255, 0.14);
-        color: var(--blanco);
+        color: white;
         font-size: 15px;
     }
 
-    .btn-cerrar-menu:hover {
-        background: var(--naranja);
+    .btn-cerrar-menu:hover{
+        background: #DF6D10;
     }
 
-    .botones {
+    .botones{
         margin: 0 auto;
         width: 86%;
         gap: 10px;
     }
 
-    /* Abrir el menú al activar el checkbox */
-    .menu-checkbox:checked ~ .menu {
+    .menu-checkbox:checked ~ .menu{
         left: 0;
     }
 
-    .menu-checkbox:checked ~ .menu-overlay {
+    .menu-checkbox:checked ~ .menu-overlay{
         display: block;
         position: fixed;
         inset: 0;
@@ -651,63 +602,61 @@ a {
         z-index: 90;
     }
 
-    /* Ajuste proporcional de la cabecera (Hamburguesa + Título + Cerrar Sesión) */
-    .cabeza-dashboard {
+    .cabeza-dashboard{
         padding: 12px 16px;
         gap: 12px;
     }
 
-    .cabeza-txt h1 {
+    .cabeza-txt h1{
         font-size: 21px;
     }
 
-    .cabeza-txt p {
+    .cabeza-txt p{
         font-size: 12.5px;
     }
 
-    #cerrar-sesion {
+    #cerrar-sesion{
         padding: 8px 14px;
         font-size: 13px;
         gap: 6px;
     }
 
-    /* Ajuste de la tabla de usuarios en pantallas <= 740px */
-    .dashboard-contenido {
+    .dashboard-contenido{
         padding: 12px 14px 14px;
     }
 
-    .tabla-encabezado {
+    .tabla-encabezado{
         display: none;
     }
 
-    .usuario-item {
+    .usuario-item{
         grid-template-columns: 1fr 1fr;
         gap: 6px 10px;
         padding: 10px 12px;
     }
 
-    .col-accion {
+    .col-accion{
         grid-column: 1 / -1;
         justify-content: flex-start;
         margin-top: 2px;
     }
 }
 
-@media (max-width: 500px) {
-    .cabeza-txt h1 {
+@media (max-width: 500px){
+    .cabeza-txt h1{
         font-size: 18px;
     }
 
-    .cabeza-txt p {
+    .cabeza-txt p{
         display: none;
     }
 
-    #cerrar-sesion {
+    #cerrar-sesion{
         padding: 7px 11px;
         font-size: 12px;
     }
 
-    .usuario-item {
+    .usuario-item{
         grid-template-columns: 1fr;
     }
 }

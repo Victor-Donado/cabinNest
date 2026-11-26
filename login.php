@@ -1,38 +1,48 @@
+<?php
+require_once __DIR__ . '/seguridad/sesion.php';
+iniciarSesionSegura();
+
+if (($_SESSION['tipo_cuenta'] ?? '') === 'huesped') {
+    header('Location: catalogo.php');
+    exit;
+}
+
+$tokenCsrf    = generarTokenCsrf();
+$mensajeError = $_SESSION['error_login'] ?? '';
+$mensajeExito = $_SESSION['exito_login'] ?? '';
+unset($_SESSION['error_login'], $_SESSION['exito_login']);
+?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CabinNest - Iniciar Sesión</title>
-
-    <!-- Fuentes y Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
-
-    <!-- Iconos -->
     <script src="https://kit.fontawesome.com/3d84e79734.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="img/icono.png" type="image/png">
 </head>
 <body>
 
-    <!-- ================= ENCABEZADO Y NAVEGACIÓN ================= -->
-    <header id="cabeza">
+    <div id="cabeza">
         <div id="menu">
-            <a href="index.html" class="logo-link">
-                <img src="img/icono-largo.png" id="icono-largo" alt="Logo de CabinNest">
+            <a href="index.php" class="logo-link">
+                <img src="img/icono-largo.png" id="icono-largo">
             </a>
 
-            <nav id="division" aria-label="Navegación principal">
-                <a href="index.html" class="division-btn">
+            <div id="division">
+                <a href="index.php" class="division-btn">
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
-                <a href="catalogo.html" class="division-btn">
+                <a href="catalogo.php" class="division-btn">
                     <i class="fa-solid fa-campground"></i>
                     <span>Cabañas</span>
                 </a>
-                <a href="index.html#nosotros" class="division-btn">
+                <a href="index.php#nosotros" class="division-btn">
                     <i class="fa-solid fa-circle-exclamation"></i>
                     <span>Nosotros</span>
                 </a>
@@ -40,50 +50,61 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span>Contacto</span>
                 </a>
-            </nav>
+            </div>
 
-            <!-- Espaciador invisible para mantener la barra centrada en escritorio -->
-            <div class="espaciador-menu" aria-hidden="true"></div>
+            <div class="espaciador-menu"></div>
         </div>
-    </header>
+    </div>
 
-    <!-- ================= CONTENIDO PRINCIPAL: LOGIN ================= -->
-    <main id="cuerpo">
+    <div id="cuerpo">
         <div class="login-caja">
 
-            <!-- Panel Izquierdo: Bienvenida -->
-            <section class="caja1" aria-labelledby="titulo-bienvenida">
+            <div class="caja1">
                 <div class="caja1-contenido">
                     <h1 id="titulo-bienvenida">Bienvenido de Nuevo</h1>
                     <p class="subtitulo-bienvenida">Inicia sesión y continúa tu experiencia en CabinNest</p>
 
-                    <img class="cabaña" src="img/cabaña1.jpg" alt="Cabaña de lujo rodeada de naturaleza">
+                    <img class="cabaña" src="img/cabaña1.jpg">
 
-                    <ul class="cosas">
-                        <li class="apunte">
+                    <div class="cosas">
+                        <div class="apunte">
                             <i class="fa-solid fa-circle-check"></i>
                             <span>Accede a tus Reservas</span>
-                        </li>
-                        <li class="apunte">
+                        </div>
+                        <div class="apunte">
                             <i class="fa-solid fa-circle-check"></i>
                             <span>Gestiona tus estancias</span>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <img class="fondo" src="img/fondo-caja1.jpg" alt="Tu refugio en la naturaleza">
-            </section>
+                <img class="fondo" src="img/fondo-caja1.jpg">
+            </div>
 
-            <!-- Panel Derecho: Formulario de Acceso -->
-            <section class="caja2" aria-labelledby="titulo-login">
+            <div class="caja2">
                 <div class="titulo">
                     <i class="fa-solid fa-user"></i>
                     <h2 id="titulo-login">Iniciar Sesión</h2>
                 </div>
 
-                <form id="formulario" action="cuenta.html" method="POST">
-                    <input type="email" id="correo-login" name="correo" placeholder="Correo Electrónico" aria-label="Correo Electrónico" required>
-                    <input type="password" id="password-login" name="password" placeholder="Contraseña" aria-label="Contraseña" required>
+                <?php if ($mensajeExito !== ''): ?>
+                    <p style="width: 100%; background: #e9f0e4; color: #304026; border: 1px solid rgba(48, 64, 38, 0.3); border-radius: 10px; padding: 9px 12px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-align: center;">
+                        <?= limpiarTexto($mensajeExito) ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if ($mensajeError !== ''): ?>
+                    <p style="width: 100%; background: #fbeae6; color: #c84b31; border: 1px solid rgba(200, 75, 49, 0.35); border-radius: 10px; padding: 9px 12px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; text-align: center;">
+                        <?= limpiarTexto($mensajeError) ?>
+                    </p>
+                <?php endif; ?>
+
+                <form id="formulario" action="acciones/iniciar_sesion.php" method="POST">
+                    <input type="hidden" name="token_csrf" value="<?= limpiarTexto($tokenCsrf) ?>">
+                    <input type="hidden" name="origen" value="cliente">
+
+                    <input type="text" id="correo-login" name="identificador" placeholder="Correo Electrónico o Documento" required>
+                    <input type="password" id="password-login" name="contrasena" placeholder="Contraseña" required>
 
                     <button type="submit" id="btn-iniciar">
                         <i class="fa-solid fa-right-to-bracket"></i>
@@ -93,15 +114,14 @@
 
                 <p class="registrarse">
                     <span>¿No tienes cuenta?</span>
-                    <a href="signup.html">Registrarse</a>
+                    <a href="signup.php">Registrarse</a>
                 </p>
-            </section>
+            </div>
 
         </div>
-    </main>
+    </div>
 
-    <!-- ================= PIE DECORATIVO (OLAS Y PLANTAS) ================= -->
-    <footer id="footer" aria-hidden="true">
+    <div id="footer">
         <svg class="ola-animada" viewBox="0 25 150 22" preserveAspectRatio="none">
             <defs>
                 <linearGradient id="gradiente-ola-login">
@@ -118,7 +138,7 @@
 
         <img id="planta1" class="planta-decorativa" src="img/planta.png" alt="">
         <img id="planta2" class="planta-decorativa" src="img/planta.png" alt="">
-    </footer>
+    </div>
 
 </body>
 </html>
